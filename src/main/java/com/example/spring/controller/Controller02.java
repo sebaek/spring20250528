@@ -1,10 +1,16 @@
 package com.example.spring.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class Controller02 {
@@ -144,5 +150,105 @@ public class Controller02 {
         System.out.println("married = " + married);
     }
 
+
+    // 값이 존재하지 않을 때 기본 값을 줄 수 있음
+    @RequestMapping("/main2/sub15")
+    public void method15(@RequestParam(required = false, defaultValue = "") String email,
+                         @RequestParam(required = false, defaultValue = "0.0") Double score,
+                         @RequestParam(required = false, defaultValue = "false") Boolean married) {
+        System.out.println("email = " + email);
+        System.out.println("score = " + score);
+        System.out.println("married = " + married);
+    }
+
+    // 값이 존재하지 않을 때 기본 값을 줄 수 있음
+    // -> required 는 false로 세팅됨
+    @RequestMapping("/main2/sub16")
+    public void method16(@RequestParam(defaultValue = "") String email,
+                         @RequestParam(defaultValue = "0.0") Double score,
+                         @RequestParam(defaultValue = "false") Boolean married) {
+        System.out.println("email = " + email);
+        System.out.println("score = " + score);
+        System.out.println("married = " + married);
+    }
+
+
+    // 연습 : 아래 조건 만족하는 메소드 작성해보세요.
+    // /main2/sub17?city=seoul&home=jeju&age=33
+    // /main2/sub17?city=seoul&home=jeju
+    // /main2/sub17?city=seoul&age=33
+    // /main2/sub17?home=jeju&age=33
+
+    // city 기본값 ""
+    // home 기본값 ""
+    // age 기본값 "0"
+
+    @RequestMapping("/main2/sub17")
+    public void method17(@RequestParam(defaultValue = "") String city,
+                         @RequestParam(defaultValue = "") String home,
+                         @RequestParam(defaultValue = "0") Integer age) {
+        System.out.println("city = " + city);
+        System.out.println("home = " + home);
+        System.out.println("age = " + age);
+    }
+
+    // 하나의 request parameter(요청 파라미터, 요청 변수)가 여러 값일 때
+    // /main2/sub18?city=seoul&city=jeju&city=busan
+//    /main2/sub18?city=seoul&city=jeju
+//    /main2/sub18?city=seoul
+//    /main2/sub18?
+    @RequestMapping("/main2/sub18")
+    public void method18(String[] city) {
+        System.out.println("Arrays.toString(city) = " + Arrays.toString(city));
+    }
+
+    @RequestMapping("/main2/sub19")
+    public void method18(@RequestParam(value = "city", defaultValue = "") ArrayList<String> city) {
+        System.out.println("city = " + city);
+    }
+
+    // 연습: 아래 URL로 요청 올 때 일하는 메소드 완성
+    // /main2/sub20?country=korean&score=90&score=80&score=70
+    @RequestMapping("/main2/sub20")
+    public void method20(String country, Integer[] score) {
+        System.out.println("country = " + country);
+        System.out.println("Arrays.toString(score) = " + Arrays.toString(score));
+    }
+
+    // /main2/sub21?city=서울&email=gmail&address=신촌&age=88&score=98&married=true
+    @RequestMapping("/main2/sub21")
+    public void method21(
+            String city,
+            String email,
+            String address,
+            Integer age,
+            Double score,
+            Boolean married) {
+        System.out.println("city = " + city);
+        System.out.println("email = " + email);
+        System.out.println("address = " + address);
+        System.out.println("age = " + age);
+        System.out.println("score = " + score);
+        System.out.println("married = " + married);
+
+    }
+
+    // /main2/sub22?city=서울&email=gmail&address=신촌&age=88&score=98&married=true
+    @RequestMapping("/main2/sub22")
+    public void method22(@RequestParam Map<String, Object> params) {
+        for (var entry : params.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+
+    }
+
+    // /main2/sub23?city=서울&email=gmail&address=신촌&age=88&score=98&score=87&score=76&married=true
+    @RequestMapping("/main2/sub23")
+    public void method23(@RequestParam MultiValueMap<String, Object> params) {
+        for (var entry : params.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+
+    }
 
 }
