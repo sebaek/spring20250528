@@ -1,11 +1,13 @@
 package com.example.spring.controller;
 
+import org.apache.catalina.connector.RequestFacade;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.context.request.async.StandardServletAsyncWebRequest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -249,6 +251,23 @@ public class Controller02 {
             System.out.println(entry.getKey() + " = " + entry.getValue());
         }
 
+    }
+
+    @RequestMapping("/main2/sub24")
+    public void method24(WebRequest request) {
+        Class<? extends WebRequest> a = request.getClass();
+        if (request instanceof StandardServletAsyncWebRequest b) {
+            Object c = b.getNativeRequest();
+            System.out.println("c.getClass() = " + c.getClass());
+            if (c instanceof RequestFacade d) {
+                String method = d.getMethod();
+                String servletPath = d.getServletPath();
+                System.out.println("method = " + method);
+                System.out.println("servletPath = " + servletPath);
+            }
+
+        }
+        System.out.println("a = " + a);
     }
 
 }
