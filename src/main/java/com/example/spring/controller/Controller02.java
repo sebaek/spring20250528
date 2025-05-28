@@ -125,6 +125,24 @@ public class Controller02 {
 
     // 연습 : 아래 URL로 요청 올 때 적절히 처리하는 메소드 작성
     // /main2/sub13?email=gmail&score=88.8&married=true
+    // /main2/sub13?score=88.8&married=true
+    @RequestMapping("/main2/sub13")
+    public void method13(String email, double score, boolean married) {
+        System.out.println("email = " + email);
+        System.out.println("score = " + score);
+        System.out.println("married = " + married);
+    }
+
+    // 연습 : 아래 URL로 요청 올 때 적절히 처리하는 메소드 작성
+    // /main2/sub14?email=gmail&score=88.8&married=true
+//    /main2/sub14?score=88.8&married=true
+    @RequestMapping("/main2/sub14")
+    public void method14(@RequestParam(required = false) String email,
+                         @RequestParam(required = false) Double score, Boolean married) {
+        System.out.println("email = " + email);
+        System.out.println("score = " + score);
+        System.out.println("married = " + married);
+    }
 
 
 }
