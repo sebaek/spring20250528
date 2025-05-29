@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 @Controller
@@ -107,5 +109,9 @@ public class Controller03 {
     // 연습
     // /main3/sub13?hobby=cook&hobby=walk&hobby=running&score=3.3&score=4.4&score=5.5
     // dto(MyBean0311)와 request handler method  만들기
-    
+    @RequestMapping("sub13")
+    public void sub13(MyBean0311 params, Double[] score) {
+        System.out.println(params);
+        System.out.println(Arrays.toString(score));
+    }
 }
