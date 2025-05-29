@@ -20,8 +20,12 @@ public class Controller06 {
         return "main6/sub1";
     }
 
+    // 연습:
+    // th:each 를 사용해서 html 에서 출력 하는 코드 완성
     @RequestMapping("sub2")
     public String sub2(Model model) {
+        model.addAttribute("aiList", List.of("chatgpt", "claude", "grok", "gemini"));
+        model.addAttribute("mySet", Set.of("apple", "orange", "banana", "cherry"));
 
         return "main6/sub2";
     }
