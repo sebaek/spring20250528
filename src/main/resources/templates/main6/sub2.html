@@ -8,5 +8,11 @@
 <h2 th:each="ai : ${aiList}" th:text="${ai}">Lorem.</h2>
 <hr>
 <h2 th:each="elem : ${mySet}" th:text="${elem}">fruit</h2>
+<hr>
+<h2 th:each="ai : ${aiList}">
+
+    <span th:text="${ai}">여기는 span</span>
+
+</h2>
 </body>
 </html>
