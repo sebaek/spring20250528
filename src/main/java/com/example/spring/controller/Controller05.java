@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean051;
+import com.example.spring.dto.MyBean052;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
