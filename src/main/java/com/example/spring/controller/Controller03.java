@@ -87,4 +87,15 @@ public class Controller03 {
     public void sub10(MyBean036 params) {
         System.out.println(params);
     }
+
+    // /main3/sub11?name=donald&address=ny&pw=1234
+    // /main3/sub11?name=donald&address=ny&password=5678
+
+    // request parameter와 같은 이름의 setter 메소드를 사용
+
+
+    @RequestMapping("sub11")
+    public void sub11(MyBean037 params) {
+        System.out.println(params);
+    }
 }
