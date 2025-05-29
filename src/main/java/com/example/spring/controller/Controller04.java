@@ -92,4 +92,32 @@ public class Controller04 {
     // /main4/sub6 으로 요청 오면
     // templates/main4/sub6.html 이 응답 되도록
     // request handler method 작성
+    @RequestMapping("sub6")
+    public String sub6(Model model) {
+
+        // model attribute : model에 넣은 값(객체)
+        model.addAttribute("name", "손흥민");
+        model.addAttribute("address", "런던");
+        model.addAttribute("email", "야후");
+        
+
+        return "main4/sub6";
+    }
+
+    // 연습 : 적절한 html 코드 작성
+    @RequestMapping("sub7")
+    public String sub7(Model model) {
+        model.addAttribute("age", 55);
+        model.addAttribute("score", 97.54);
+        model.addAttribute("school", "서울대");
+        model.addAttribute("city", "신림동");
+
+        return "main4/sub7";
+    }
+
+    @RequestMapping("sub8")
+    public String sub8(Model model) {
+        model.addAttribute("number", 1234567);
+        return "main4/sub8";
+    }
 }
