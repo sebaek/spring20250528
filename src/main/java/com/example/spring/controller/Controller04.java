@@ -67,4 +67,10 @@ public class Controller04 {
     // 아래 html이 최종 응답 되도록 request handler method를 작성해보세요.
 
     // src/main/resources/templates/main4/sub4.html
+
+    @RequestMapping("sub4")
+    public String sub4() {
+        return "main4/sub4";
+    }
+
 }
