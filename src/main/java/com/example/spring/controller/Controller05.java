@@ -69,4 +69,17 @@ public class Controller05 {
 
         return "main5/sub4";
     }
+
+    // 연습 : 아래 코드를 보고 main5/sub5.html을 완성해보세요.
+    @RequestMapping("sub5")
+    public String sub5(Model model) {
+        model.addAttribute("values", Map.of(
+                "home", "제주",
+                "address", "애월",
+                "birth date", "2010-01-01",
+                "score", 98.76
+        ));
+
+        return "main5/sub5";
+    }
 }
