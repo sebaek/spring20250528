@@ -148,7 +148,7 @@ public class Controller05 {
     }
 
     // 연습
-    ///  아래 코드가 동작해서 html에서 적절한 값들으 출력되도록 하세요.
+    ///  아래 코드가 동작해서 html에서 적절한 값들이 출력되도록 하세요.
     @RequestMapping("sub13")
     public String sub13(Model model) {
 
