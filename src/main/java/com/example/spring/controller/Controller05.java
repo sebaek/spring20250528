@@ -3,6 +3,7 @@ package com.example.spring.controller;
 import com.example.spring.dto.MyBean051;
 import com.example.spring.dto.MyBean052;
 import com.example.spring.dto.MyBean053;
+import com.example.spring.dto.MyBean054;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -118,5 +119,14 @@ public class Controller05 {
         model.addAttribute("list", List.of("tesla", "waymo", "volvo", "bmw"));
 
         return "main5/sub9";
+    }
+
+    @RequestMapping("sub10")
+    public String sub10(Model model) {
+        MyBean054 o = new MyBean054("trump", 77, List.of("1234", "5678", "0987"));
+
+        model.addAttribute("president", o);
+
+        return "main5/sub10";
     }
 }
