@@ -146,4 +146,19 @@ public class Controller05 {
 
         return "main5/sub12";
     }
+
+    // 연습
+    ///  아래 코드가 동작해서 html에서 적절한 값들으 출력되도록 하세요.
+    @RequestMapping("sub13")
+    public String sub13(Model model) {
+
+        // name, birthDate, price
+
+        model.addAttribute("aiList",
+                List.of(new MyBean57("gemini", "2020-01-01", 3000),
+                        new MyBean57("chatgpt", "1919-12-12", 3500),
+                        new MyBean57("claude", "1988-11-11", 6000)));
+
+        return "main5/sub13";
+    }
 }
