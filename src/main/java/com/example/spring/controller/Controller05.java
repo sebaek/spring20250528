@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -109,5 +110,13 @@ public class Controller05 {
     public String sub8(Model model) {
         model.addAttribute("skills", new String[]{"bootstrap", "thymeleaf", "react"});
         return "main5/sub8";
+    }
+
+    // 연습 : 리스트의 원소들을 출력하는 html 완성
+    @RequestMapping("sub9")
+    public String sub9(Model model) {
+        model.addAttribute("list", List.of("tesla", "waymo", "volvo", "bmw"));
+
+        return "main5/sub9";
     }
 }
