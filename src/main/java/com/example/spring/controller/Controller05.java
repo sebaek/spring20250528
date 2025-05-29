@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean051;
 import com.example.spring.dto.MyBean052;
+import com.example.spring.dto.MyBean053;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,5 +40,19 @@ public class Controller05 {
         model.addAttribute("attr", obj);
 
         return "main5/sub2";
+    }
+
+    @RequestMapping("sub3")
+    public String sub3(Model model) {
+
+        MyBean053 o = new MyBean053();
+        o.setStudentNumber(99);
+        o.setInfo("hello");
+        o.setMarried(true);
+        o.setWeight(99.88);
+
+        model.addAttribute("val", o);
+
+        return "main5/sub3";
     }
 }
