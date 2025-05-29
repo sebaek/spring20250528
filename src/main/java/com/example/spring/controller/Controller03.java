@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean031;
+import com.example.spring.dto.MyBean032;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,6 +59,12 @@ public class Controller03 {
 
     // 연습:
     // /main3/sub7?name=musk&company=tesla&home=texas
+    // /main3/sub7?name=musk&home=texas
+    // /main3/sub7?name=musk&home=texas&age=55
+    // /main3/sub7?name=musk&home=texas
     // MyBean032 javaBean(dto)를 만들어서 request parameter 받아보기
-    
+    @RequestMapping("sub7")
+    public void sub7(MyBean032 params) {
+        System.out.println(params);
+    }
 }
