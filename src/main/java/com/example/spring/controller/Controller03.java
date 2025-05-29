@@ -92,10 +92,20 @@ public class Controller03 {
     // /main3/sub11?name=donald&address=ny&password=5678
 
     // request parameter와 같은 이름의 setter 메소드를 사용
-
-
     @RequestMapping("sub11")
     public void sub11(MyBean037 params) {
         System.out.println(params);
     }
+
+
+    // /main3/sub12?name=donald&age=66&skill=work&skill=baseball&skill=java&skill=css
+    @RequestMapping("sub12")
+    public void sub12(MyBean0310 params) {
+        System.out.println(params);
+    }
+
+    // 연습
+    // /main3/sub13?hobby=cook&hobby=walk&hobby=running&score=3.3&score=4.4&score=5.5
+    // dto(MyBean0311)와 request handler method  만들기
+    
 }
