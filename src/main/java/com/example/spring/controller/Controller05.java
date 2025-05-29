@@ -96,4 +96,18 @@ public class Controller05 {
         return "main5/sub6";
 
     }
+
+    @RequestMapping("sub7")
+    public String sub7(Model model) {
+        model.addAttribute("list", new String[]{"java", "css", "react", "vue"});
+
+        return "main5/sub7";
+    }
+
+    // 연습 : 배열의 원소들을 출력하는 html 완성
+    @RequestMapping("sub8")
+    public String sub8(Model model) {
+        model.addAttribute("skills", new String[]{"bootstrap", "thymeleaf", "react"});
+        return "main5/sub8";
+    }
 }
