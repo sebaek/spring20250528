@@ -82,4 +82,18 @@ public class Controller05 {
 
         return "main5/sub5";
     }
+
+    @RequestMapping("sub6")
+    public String sub6(Model model) {
+        model.addAttribute("car", Map.of(
+                "model", "avante",
+                "company", "tesla",
+                "price", 5000,
+                "used", true,
+                "pre user", "trump"
+        ));
+
+        return "main5/sub6";
+
+    }
 }
