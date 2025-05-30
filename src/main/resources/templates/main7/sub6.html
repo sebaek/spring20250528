@@ -7,6 +7,12 @@
 <body>
 
 <!-- 아래와 같이 출력 되도록 expression inlining 활용해보기-->
+<ul th:object="${person}">
+    <li th:each="c,stat : *{company}">회사[[${stat.count}]] : [[${c}]]</li>
+</ul>
+<ul th:object="${person}">
+    <li th:each="a,stat : *{address}">주소[[${stat.count}]] : [[${a}]]</li>
+</ul>
 
 <hr>
 <ul>
