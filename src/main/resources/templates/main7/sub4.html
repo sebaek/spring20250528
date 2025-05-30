@@ -6,6 +6,18 @@
 </head>
 <body>
 <!-- 연습: person 객체를 selection 문법을 활용해서 보여주기 -->
+<div th:object="${person}">
+    <h3 th:text="*{number}"></h3>
+    <h4>company</h4>
+    <ul>
+        <li th:each="c : *{company}" th:text="${c}"></li>
+    </ul>
+    <h4>address</h4>
+    <ul>
+        <li th:each="a : *{address}" th:text="${a}"></li>
+    </ul>
+</div>
+<hr>
 <!-- selection -->
 <ul th:object="${item}">
     <li th:text="*{name}"></li>
