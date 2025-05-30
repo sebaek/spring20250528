@@ -5,6 +5,32 @@
     <title>Title</title>
 </head>
 <body>
+<table>
+  <thead>
+  <tr>
+    <th>번호</th>
+    <th>무게</th>
+    <th>이름</th>
+    <th>결혼</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="student : ${students}">
+    <th:block th:object="${student}">
+    <td th:text="*{studentNumber}"></td>
+    <td th:text="*{weight}"></td>
+    <td th:text="*{info}"></td>
+    <td>
+      <span th:if="*{married}">♥️</span>
+      <span th:unless="*{married}">💔</span>
+    </td>
+    </th:block>
+  </tr>
+
+  </tbody>
+</table>
+
+<hr>
 
 <!-- th:if : true이면-->
 <!-- th:unless : false이면-->
