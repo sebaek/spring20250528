@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .image {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 <!-- 
@@ -10,9 +15,9 @@
 /main8/sub4?animal=bear
 /main8/sub4?animal=eagle
  3개의 링크 만들기-->
-<a href="" th:href="">호랑이</a>
-<a href="" th:href="">곰</a>
-<a href="" th:href="">독수리</a>
+<a href="" th:href="@{/main8/sub4(animal='tiger')}">호랑이</a>
+<a href="" th:href="@{/main8/sub4(animal='bear')}">곰</a>
+<a href="" th:href="@{/main8/sub4(animal='eagle')}">독수리</a>
 <hr>
 
 <img src="../../static/images/tiger.jpg" alt="" class="image"
