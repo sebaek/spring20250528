@@ -74,4 +74,13 @@ public class Controller07 {
 
         return "main7/sub6";
     }
+
+    @RequestMapping("sub7")
+    public String sub7(Model model) {
+        model.addAttribute("person",
+                new MyBean055(98, List.of("tesla", "apple"), List.of("seoul", "jeju")));
+
+
+        return "main7/sub7";
+    }
 }
