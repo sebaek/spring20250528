@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean053;
 import com.example.spring.dto.MyBean57;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,12 @@ public class Controller08 {
                 new MyBean57("choi", "05-05", 7000)));
 
         return "main8/sub2";
+    }
+
+    @RequestMapping("sub3")
+    public String sub3(Model model, HttpSession session) {
+
+        return "main8/sub3";
     }
 
 }
