@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -83,4 +84,20 @@ public class Controller07 {
 
         return "main7/sub7";
     }
+
+    @RequestMapping("sub8")
+    public String sub8(Model model) {
+        List<String> company = new ArrayList<>();
+        company.add("tesla");
+        company.add("apple");
+        company.add(null);
+
+        model.addAttribute("person",
+                new MyBean055(98, company, List.of("seoul", "jeju")));
+
+
+        return "main7/sub8";
+    }
+
+
 }
