@@ -39,4 +39,12 @@ public class Controller07 {
 
         return "main7/sub2";
     }
+
+    @RequestMapping("sub3")
+    public String sub3(Model model) {
+
+        model.addAttribute("myList", List.of("java", "spring", "react", "gpt", "grok"));
+
+        return "main7/sub3";
+    }
 }
