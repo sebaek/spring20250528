@@ -54,4 +54,14 @@ public class Controller08 {
         return "main8/sub3";
     }
 
+    @RequestMapping("sub4")
+    public String sub4(Model model, String animal) {
+
+        model.addAttribute("animal", animal);
+
+        return "main8/sub4";
+    }
+
+
+
 }
