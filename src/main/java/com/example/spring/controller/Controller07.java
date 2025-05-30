@@ -1,5 +1,6 @@
 package com.example.spring.controller;
 
+import com.example.spring.dto.MyBean055;
 import com.example.spring.dto.MyBean57;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,5 +47,15 @@ public class Controller07 {
         model.addAttribute("myList", List.of("java", "spring", "react", "gpt", "grok"));
 
         return "main7/sub3";
+    }
+
+    @RequestMapping("sub4")
+    public String sub4(Model model) {
+        model.addAttribute("item", new MyBean57("trump", "09-09", 1000));
+        model.addAttribute("person",
+                new MyBean055(98, List.of("tesla", "apple"), List.of("seoul", "jeju")));
+
+
+        return "main7/sub4";
     }
 }

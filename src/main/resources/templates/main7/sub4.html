@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 연습: person 객체를 selection 문법을 활용해서 보여주기 -->
+<!-- selection -->
+<ul th:object="${item}">
+    <li th:text="*{name}"></li>
+    <li th:text="*{birthDate}"></li>
+    <li th:text="*{price}"></li>
+</ul>
+<hr>
+<ul>
+    <li th:text="${item.name}"></li>
+    <li th:text="${item.birthDate}"></li>
+    <li th:text="${item.price}"></li>
+</ul>
+
+</body>
+</html>
