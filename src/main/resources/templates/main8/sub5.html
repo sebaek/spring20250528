@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="~{main8/layout :: page-head('sub5 페이지', ~{::style} )}">
+    <style>
+        h1 {
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
+
+<!--
+코드 조각 사용시 값 전달 가능
+-->
+<div th:replace="~{main8/layout :: side-bar('hello')}"></div>
+<div th:replace="~{main8/layout :: side-bar('bye')}"></div>
+
 
 <!-- 코드 조각 적용 시
 th:replace : 현재 요소 교체

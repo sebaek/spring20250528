@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="page-head(title,style)">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${title}">Title</title>
+    <th:block th:replace="${style}" />
 </head>
 <body>
 <!-- th:fragment 코드조각에 이름 붙이기 -->
@@ -12,6 +13,10 @@
 </div>
 
 <h1>layout</h1>
+
+<div th:fragment="side-bar(var1)">
+    <div th:text="${var1}"></div>
+</div>
 
 <div th:fragment="footer" style="display: flex">
     <div style="flex: 1; text-align: center">
