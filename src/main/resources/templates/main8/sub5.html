@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- ~{} : 코드 조각 정보 -->
+<div th:replace="~{main8/layout :: navbar}"></div>
+
+<h1>sub5</h1>
+
+<!--
+layout.html에 footer fragment를 넣고
+아래 footer을 sub6.html 에도 적용
+-->
+<div style="display: flex">
+    <div style="flex: 1; text-align: center">
+        about
+    </div>
+    <div style="flex: 1; text-align: center">
+        price
+    </div>
+</div>
+
+</body>
+</html>
