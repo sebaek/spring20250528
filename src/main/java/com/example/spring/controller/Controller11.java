@@ -32,7 +32,8 @@ public class Controller11 {
 
         if (map == null) {
             // setAttribute : session 에 attribute 넣기
-            session.setAttribute("cart", new HashMap<String, Integer>());
+            map = new HashMap<>();
+            session.setAttribute("cart", map);
         }
 
         if (item != null && item.length > 0) {
