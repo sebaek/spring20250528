@@ -7,6 +7,34 @@
 <body>
 <h3> /main9/sub4 </h3>
 
+<form action="">
+    <div>
+        <!-- textarea : 긴 텍스트 작성용 -->
+        <textarea name="info3" id="" cols="30" rows="10"
+                  placeholder="정보 입력하세요"
+                  required
+                  readonly
+        ></textarea>
+    </div>
+    <div>
+        <!-- textarea : 긴 텍스트 작성용 -->
+        <textarea name="info2" id="" cols="30" rows="10">기본 텍스트 입력</textarea>
+    </div>
+    <div>
+        <!-- textarea : 긴 텍스트 작성용 -->
+        <textarea name="info" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="text" name="city">
+    </div>
+    <div>
+        <input type="submit" value="전송 ">
+    </div>
+
+</form>
+
+<hr>
+
 <form th:action="@{/main9/sub13}">
     <!--  request handler method를 보고 아래 input 요소들 만들기   -->
     <div>
