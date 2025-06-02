@@ -9,6 +9,35 @@
 
 <form th:action="@{/main9/sub13}">
     <!--  request handler method를 보고 아래 input 요소들 만들기   -->
+    <div>
+        <label for="input1">도시</label>
+        <input type="text" id="input1" name="city">
+    </div>
+    <div>
+        <label for="input2">나이</label>
+        <input type="number" id="input2" name="age">
+    </div>
+    <div>
+        <label for="input3">점수</label>
+        <input type="number" step="0.01" id="input3" name="score">
+    </div>
+    <div>
+        <label for="check1">사과</label>
+        <input type="checkbox" id="check1" name="fruits" value="apple">
+        <label for="check2">망고</label>
+        <input type="checkbox" id="check2" name="fruits" value="mango">
+        <label for="check3">멜론</label>
+        <input type="checkbox" id="check3" name="fruits" value="melon">
+    </div>
+    <div>
+        <label for="radio1">동의</label>
+        <input type="radio" name="accepted" id="radio1" value="true">
+        <label for="radio2">동의안함</label>
+        <input type="radio" name="accepted" id="radio2" value="false">
+    </div>
+    <div>
+        <input type="submit" value="전송">
+    </div>
 </form>
 
 <hr>
