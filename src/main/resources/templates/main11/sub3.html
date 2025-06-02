@@ -7,6 +7,19 @@
 <body>
 <h3>/main11/sub3</h3>
 
+<div th:each="entry : ${session.myValue}">
+    <div>
+        <span th:text="${entry.key}"></span>
+        :
+        <span th:text="${entry.value}"></span>
+    </div>
+</div>
+<hr>
+
+<div th:text="${session.myValue.name}"></div>
+<div th:text="${session.myValue.address}"></div>
+<div th:text="${session.myValue.age}"></div>
+<hr>
 <div>
     model attribute :
     <span th:text="${value}"></span>
