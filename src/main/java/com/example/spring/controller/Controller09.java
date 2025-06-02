@@ -3,6 +3,8 @@ package com.example.spring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
+
 @Controller
 @RequestMapping("main9")
 public class Controller09 {
@@ -64,6 +66,11 @@ public class Controller09 {
                         String[] fruits,
                         Boolean accepted) {
 
+        System.out.println("city = " + city);
+        System.out.println("age = " + age);
+        System.out.println("score = " + score);
+        System.out.println("Arrays.toString(fruits) = " + Arrays.toString(fruits));
+        System.out.println("accepted = " + accepted);
         return "main9/sub13";
     }
 }
