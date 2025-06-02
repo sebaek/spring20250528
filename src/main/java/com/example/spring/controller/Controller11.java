@@ -53,4 +53,16 @@ public class Controller11 {
 
         return "main11/sub1";
     }
+
+    @GetMapping("sub2")
+    public String sub3() {
+
+        return "main11/sub2";
+    }
+
+    @PostMapping("sub2")
+    public String sub4(HttpSession session) {
+
+        return "main11/sub2";
+    }
 }
