@@ -7,6 +7,29 @@
 <body>
 <h3> /main9/sub4 </h3>
 
+<form th:action="@{/main9/sub12}">
+<!-- 연습 : 3개의 country 중에 하나만 선택할 수 있는 radio 버튼 만들기-->
+    <div>
+
+    </div>
+
+    <div>
+
+<!-- radio button : 같은 name 중에 하나의 값만 선택 가능 -->
+    <label for="radio-mango">망고</label>
+    <input type="radio" name="fruit" id="radio-mango" value="mango">
+
+    <label for="radio-melon">멜론</label>
+    <input type="radio" name="fruit" id="radio-melon" value="melon" checked>
+
+    <label for="radio-apple">사과</label>
+    <input type="radio" name="fruit" id="radio-apple" value="apple">
+    </div>
+
+    <input type="submit" value="전송">
+</form>
+<hr>
+
 <form th:action="@{/main9/sub11}">
 <!--    label : 특정 input에 붙인 텍스트 -->
     <label for="input-mango">
@@ -15,10 +38,27 @@
     <input type="checkbox" name="fruit" id="input-mango" value="mango">
 
 <!-- 연습:   멜론, 사과도 label로 만들기 -->
+    <label for="input-melon">
     멜론
-    <input type="checkbox" name="fruit" id="" value="melon">
+    </label>
+    <input type="checkbox" name="fruit" id="input-melon" value="melon">
+
+    <label for="input-apple">
     사과
-    <input type="checkbox" name="fruit" id="" value="apple">
+    </label>
+    <input type="checkbox" name="fruit" id="input-apple" value="apple">
+
+    <label>
+        바나나
+        <input type="checkbox" name="fruit" value="banana">
+    </label>
+
+    <div>
+        <label for="input-text">
+            이름
+        </label>
+        <input type="text" id="input-text" name="name" value="머스크">
+    </div>
 
 </form>
 
