@@ -6,6 +6,34 @@
 </head>
 <body>
 <h3>/main11/sub3</h3>
+<!-- param : view 에서 request parameter에 접근할 수 있는 객체 -->
+<!--div*5>span*2-->
+<div>
+    <span> city </span>
+    :
+    <span th:text="${param.city}"></span>
+</div>
+<div>
+    <span>email</span>
+    :
+    <span th:text="${param.email}"></span>
+</div>
+<div>
+    <span>address</span>
+    :
+    <span th:text="${param.address}">address request parameter  출력</span>
+</div>
+<div>
+    <span>fruit</span>
+    :
+    <span th:text="${param.fruit[0]}"></span>
+</div>
+<div>
+    <span>fruit</span>
+    :
+    <span th:text="${param.fruit[1]}"></span>
+</div>
+<hr>
 
 <div th:each="entry : ${session.myValue}">
     <div>
