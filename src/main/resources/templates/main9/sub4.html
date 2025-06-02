@@ -6,6 +6,33 @@
 </head>
 <body>
 <h3> /main9/sub4 </h3>
+<form th:action="@{/main9/sub8}">
+<!--  value 속성 : 기본값 적용  -->
+    <input type="text" name="address" value="seoul">
+<!--    연습 :
+name, age 요청 파라미터를 작성할 수 있는
+input 요소 만들기
+name의 기본값은 홍길동
+age의 기본값은 1 로 적용
+-->
+
+    <button>저장</button>
+</form>
+
+<hr>
+
+<form th:action="@{/main9/sub7}">
+
+<!--  input 으로 만든 submit 버튼  -->
+    <input type="submit">
+<!--  button 으로 만든 submit 버튼 -->
+    <button>저장</button>
+
+<!--    그냥 버튼 들 -->
+    <input type="button" value="그냥1">
+    <button type="button">그냥2</button>
+</form>
+<hr>
 <!--연습-->
 <!-- submit 버튼을 클릭하면 /main9/sub6 에 -->
 <!-- address, age, city 요청 파라미터가 전송될 수 있게 -->
