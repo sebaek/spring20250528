@@ -1,6 +1,8 @@
 package com.example.spring.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,4 +41,17 @@ public class Controller10 {
         return "main10/sub3";
     }
 
+    //    @RequestMapping(value = "sub4", method = RequestMethod.GET)
+    @GetMapping("sub4")
+    public String sub5(String email) {
+        System.out.println("email = " + email);
+        return "main10/sub4";
+    }
+
+    //    @RequestMapping(value = "sub4", method = RequestMethod.POST)
+    @PostMapping("sub4")
+    public String sub6(String email) {
+        System.out.println("email = " + email);
+        return "main10/sub4";
+    }
 }
