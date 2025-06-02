@@ -22,4 +22,30 @@ public class Controller09 {
 
         return "main9/sub2";
     }
+
+    @RequestMapping("sub3")
+    public String sub3(String email,
+                       Boolean married,
+                       String team,
+                       String city) {
+        System.out.println("email = " + email);
+        System.out.println("married = " + married);
+        System.out.println("team = " + team);
+        System.out.println("city = " + city);
+        return "main9/sub3";
+
+    }
+
+    @RequestMapping("sub4")
+    public String sub4() {
+        return "main9/sub4";
+    }
+
+    @RequestMapping("sub5")
+    public String sub5(String keyword, String email) {
+        System.out.println("keyword = " + keyword);
+        System.out.println("email = " + email);
+        return "main9/sub5";
+    }
+
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> /main9/sub4 </h3>
+<!--연습-->
+<!-- submit 버튼을 클릭하면 /main9/sub5 에 -->
+<!-- address, age, city 요청 파라미터가 전송될 수 있게 -->
+
+<!-- form 요소를 만들어보기 -->
+<!-- /main9/sub5 의 요청경로에서 일하는 request handler method 만들기-->
+
+<form action=""></form>
+
+<hr>
+
+
+<!-- form : 사용자가 입력한 내용을 쿼리스트링에 붙여서 요청을 보냄 -->
+<!-- action 속성 : 쿼리스트링(request parameters)를 어디로 보낼 지 결정-->
+<form th:action="@{/main9/sub5}">
+<!--    form 요소들(input, textarea, select) : request parameter를 완성하는 요소 -->
+<!--    input, type=text -->
+<!--    name 속성 : request parameter의 이름 -->
+    <div>
+       <input type="text" name="keyword">
+    </div>
+    <div>
+        <input type="text" name="email">
+    </div>
+
+<!-- submit button : 클릭하면 form 내의 요소들로 쿼리스트링을 만들어서 action으로 요청 보냄 -->
+    <div>
+       <input type="submit" value="저장">
+    </div>
+</form>
+
+</body>
+</html>
