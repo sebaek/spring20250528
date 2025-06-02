@@ -7,13 +7,26 @@
 <body>
 <h3> /main9/sub4 </h3>
 <!--연습-->
-<!-- submit 버튼을 클릭하면 /main9/sub5 에 -->
+<!-- submit 버튼을 클릭하면 /main9/sub6 에 -->
 <!-- address, age, city 요청 파라미터가 전송될 수 있게 -->
 
 <!-- form 요소를 만들어보기 -->
-<!-- /main9/sub5 의 요청경로에서 일하는 request handler method 만들기-->
+<!-- /main9/sub6 의 요청경로에서 일하는 request handler method 만들기-->
 
-<form action=""></form>
+<form th:action="@{/main9/sub6}">
+
+    <div>
+        <input type="text" name="address">
+    </div>
+    <div>
+        <input type="text" name="city">
+    </div>
+    <div>
+        <input type="text" name="age">
+    </div>
+    
+    <input type="submit">
+</form>
 
 <hr>
 

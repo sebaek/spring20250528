@@ -48,4 +48,12 @@ public class Controller09 {
         return "main9/sub5";
     }
 
+    @RequestMapping("sub6")
+    public String sub6(String address, Integer age, String city) {
+        System.out.println("address = " + address);
+        System.out.println("age = " + age);
+        System.out.println("city = " + city);
+        return "main9/sub6";
+
+    }
 }
