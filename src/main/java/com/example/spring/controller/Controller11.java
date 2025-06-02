@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,7 +62,15 @@ public class Controller11 {
     }
 
     @PostMapping("sub2")
-    public String sub4(HttpSession session) {
+    public String sub4(HttpSession session, Model model) {
+        var number = (Integer) session.getAttribute("number");
+        if (number == null) {
+            number = 1;
+        } else {
+            number = number + 1;
+        }
+        session.setAttribute("number", number);
+        model.addAttribute("value", number);
 
         return "main11/sub2";
     }
