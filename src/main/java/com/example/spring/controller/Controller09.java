@@ -56,4 +56,14 @@ public class Controller09 {
         return "main9/sub6";
 
     }
+
+    @RequestMapping("sub13")
+    public String sub13(String city,
+                        Integer age,
+                        Double score,
+                        String[] fruits,
+                        Boolean accepted) {
+
+        return "main9/sub13";
+    }
 }
