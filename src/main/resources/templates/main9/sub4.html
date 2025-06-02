@@ -7,6 +7,21 @@
 <body>
 <h3> /main9/sub4 </h3>
 
+<form action="">
+    <!--  required : 필수 입력  -->
+    <input type="text" name="city" required>
+    <!--  multiple : 여러개 선택   -->
+    <input type="file" name="f" id="" multiple>
+    <!--  placeholder : 입력할 값의 hint  -->
+    <input type="text" name="address" placeholder="주소를 입력하세요.">
+    <!--    readonly : 변경 불가 -->
+    <input type="text" name="name" value="홍길동" readonly>
+
+    <input type="submit">
+</form>
+
+<hr>
+
 <form th:action="@{/main9/sub12}">
     <div>
         <!-- 연습 : 3개의 country 중에 하나만 선택할 수 있는 radio 버튼 만들기-->
