@@ -138,5 +138,11 @@ public class Controller12 {
         return "redirect:/main12/sub10";
     }
 
+    // 연습 : 로그인 예제
+    // 메소드 3개
+    // main, login, login 처리
+    // html 2개
+    // main, login 페이지
+
 
 }
