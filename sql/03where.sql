@@ -42,7 +42,22 @@ WHERE Price BETWEEN 50.00 AND 59.99;
 # 두 값 모두 포함
 
 # 연습 : 1950년대 태어난 직원들 조회
+SELECT *
+FROM Employees
+WHERE BirthDate >= '1950-01-01'
+  AND BirthDate <= '1959-12-31';
+SELECT *
+FROM Employees
+WHERE BirthDate BETWEEN '1950-01-01' AND '1959-12-31';
 #        1997년 7월에 주문한 주문 데이터 조회 (Orders)
+SELECT *
+FROM Orders
+WHERE OrderDate >= '1997-07-01'
+  AND OrderDate <= '1997-07-31';
+SELECT *
+FROM Orders
+WHERE OrderDate BETWEEN '1997-07-01'
+          AND '1997-07-31';
 
 
 
