@@ -121,7 +121,56 @@ WHERE OrderDate >= '1998-01-01';
 # OrderDate(주문날짜) 가 1996년 12월 31일 이전(포함)인 데이터 조회
 SELECT *
 FROM Orders
-WHERE OrderDate <= '1996-12-31'; # 152 rows
+WHERE OrderDate <= '1996-12-31';
+# 152 rows
+
+
+# 논리연산자
+# AND, OR, NOT
+
+#NOT
+SELECT *
+FROM Customers
+WHERE City = 'Berlin'; # 1row
+SELECT *
+FROM Customers
+WHERE City != 'Berlin'; # 90row
+
+SELECT *
+FROM Customers
+WHERE NOT (City = 'Berlin'); # 90row
+
+SELECT *
+FROM Customers
+WHERE NOT City = 'Berlin';
+# 90row
+
+# 연습 : 미국에 살지 않는 고객들 조회 (NOT 사용)
+SELECT *
+FROM Customers
+WHERE Country = 'USA'; # 13 rows
+SELECT *
+FROM Customers
+WHERE NOT (Country = 'USA');
+# 78 rows
+
+# OR
+SELECT *
+FROM Customers
+WHERE CustomerID = 1
+   OR CustomerID = 2;
+
+SELECT *
+FROM Customers
+WHERE Country = 'USA'
+   OR Country = 'UK';
+
+# 연습 : CategoryID가 1 또는 7인 상품들 조회
+#       도시 Madrid 또는 Lisboa에 있는 고객들 조회
+
+
+
+
 
 
 
