@@ -167,6 +167,32 @@ WHERE Country = 'USA'
 
 # 연습 : CategoryID가 1 또는 7인 상품들 조회
 #       도시 Madrid 또는 Lisboa에 있는 고객들 조회
+SELECT *
+FROM Products
+WHERE CategoryID = 1
+   OR CategoryID = 7; # 17 rows
+
+SELECT *
+FROM Customers
+WHERE City = 'Madrid'
+   OR City = 'Lisboa'; # 5 rows
+
+SELECT *
+FROM Customers
+WHERE City = 'Madrid'
+   OR City = 'Lisboa'
+   OR City = 'Barcelona';
+# 6 rows
+
+# AND
+SELECT *
+FROM Customers
+WHERE CustomerID >= 10
+  AND CustomerID < 20;
+
+# 연습 : 1950-01-01 ~ 1959-12-31 사이에 태어난 직원들 조회
+#        50.00(포함) ~ 60.00(포함안함) 가격인 상품들 조회
+
 
 
 
