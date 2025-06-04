@@ -102,8 +102,29 @@ WHERE CustomerName < 'd';
 # 연습 :
 # Products (상품) 테이블 조회
 # Price(가격)이 50 미만인 상품들
+SELECT *
+FROM Products
+WHERE Price < 50;
+# 70 rows
 # Price(가격)이 80 이상인 상품들
+SELECT *
+FROM Products
+WHERE Price >= 80;
+# 4 rows
 
 # Orders (주문) 테이블 조회
 # OrderDate(주문날짜) 가 1998년 1월 1일 이후(포함)인 데이터 조회
+SELECT *
+FROM Orders
+WHERE OrderDate >= '1998-01-01';
+# 270 rows
 # OrderDate(주문날짜) 가 1996년 12월 31일 이전(포함)인 데이터 조회
+SELECT *
+FROM Orders
+WHERE OrderDate <= '1996-12-31'; # 152 rows
+
+
+
+
+
+
