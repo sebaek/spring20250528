@@ -191,8 +191,29 @@ WHERE CustomerID >= 10
   AND CustomerID < 20;
 
 # 연습 : 1950-01-01 ~ 1959-12-31 사이에 태어난 직원들 조회
+SELECT *
+FROM Employees
+WHERE BirthDate >= '1950-01-01'
+  AND BirthDate <= '1959-12-31';
+SELECT *
+FROM Employees
+WHERE BirthDate >= '1950-01-01'
+  AND BirthDate < '1960-01-01';
 #        50.00(포함) ~ 60.00(포함안함) 가격인 상품들 조회
-
+SELECT *
+FROM Products
+WHERE Price >= 50.00
+  AND Price < 60.00;
+#        'B'로 시작하는 이름인 고객들 조회
+SELECT *
+FROM Customers
+WHERE CustomerName >= 'B'
+  AND CustomerName < 'C';
+SELECT *
+FROM Customers
+WHERE CustomerName >= 'B'
+  AND CustomerName < 'C'
+  AND Country = 'France';
 
 
 
