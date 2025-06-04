@@ -67,5 +67,34 @@ public class Controller12 {
         return "main12/sub5";
     }
 
+    @GetMapping("sub6")
+    public String sub6(RedirectAttributes rttr) {
+
+        // 다음 요청 Model에 옮겨 담음
+        rttr.addFlashAttribute("nickName", "trump");
+
+        // query string 에 붙음
+        // ?address=jeju
+        rttr.addAttribute("address", "jeju");
+
+        return "redirect:/main12/sub7";
+    }
+
+    @GetMapping("sub7")
+    public String sub7(Model model) {
+
+        return "main12/sub7";
+    }
+
+    // 연습 :
+    // get /main12/sub8 요청오면
+    //  : model(RedirectAttribute) 에 item : car
+    //     쿼리스트링에 company : tesla 를 붙이기
+
+    // get /main12/sub9 로 리디렉션 하고
+    //   : main12/sub9 view로 포워드 하고
+    //     item (model attribute)
+    //     company(request param) 을 출력
+
 
 }
