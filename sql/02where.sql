@@ -209,6 +209,7 @@ SELECT *
 FROM Customers
 WHERE CustomerName >= 'B'
   AND CustomerName < 'C';
+# 프랑스에 사는 'B'로 시작하는 이름인 고객들 조회
 SELECT *
 FROM Customers
 WHERE CustomerName >= 'B'
