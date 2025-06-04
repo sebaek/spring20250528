@@ -148,7 +148,7 @@ public class Controller12 {
         session.invalidate();
 
         rttr.addFlashAttribute("message", "로그아웃 되었습니다.");
-        
+
         return "redirect:/main12/sub10";
 
     }
@@ -159,5 +159,7 @@ public class Controller12 {
     // html 2개
     // main, login 페이지
 
+    // logout 메소드 추가
+    // main 페이지 변경 (로그아웃 링크 추가)
 
 }
