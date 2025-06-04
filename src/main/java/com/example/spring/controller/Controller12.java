@@ -129,13 +129,28 @@ public class Controller12 {
 
     // login 처리
     @PostMapping("sub11")
-    public String sub11Process(String id, RedirectAttributes rttr) {
+    public String sub11Process(String id, RedirectAttributes rttr, HttpSession session) {
 
         System.out.println(id + "로그인 처리");
 
+        session.setAttribute("userId", id);
         rttr.addFlashAttribute("message", id + "님이 로그인 되었습니다.");
 
         return "redirect:/main12/sub10";
+    }
+
+    @RequestMapping("sub11/logout")
+    public String sub11Logout(HttpSession session, RedirectAttributes rttr) {
+        // session attribute만 지우기
+//        session.removeAttribute("userId");
+
+        // session 객체 지우기
+        session.invalidate();
+
+        rttr.addFlashAttribute("message", "로그아웃 되었습니다.");
+        
+        return "redirect:/main12/sub10";
+
     }
 
     // 연습 : 로그인 예제
