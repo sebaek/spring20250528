@@ -90,11 +90,25 @@ public class Controller12 {
     // get /main12/sub8 요청오면
     //  : model(RedirectAttribute) 에 item : car
     //     쿼리스트링에 company : tesla 를 붙이기
+    @GetMapping("sub8")
+    public String sub8(RedirectAttributes rttr) {
+        // model로 전달
+        rttr.addFlashAttribute("item", "car");
+
+        // query string에 붙임
+        rttr.addAttribute("company", "tesla");
+
+        return "redirect:/main12/sub9";
+    }
 
     // get /main12/sub9 로 리디렉션 하고
     //   : main12/sub9 view로 포워드 하고
     //     item (model attribute)
     //     company(request param) 을 출력
+    @GetMapping("sub9")
+    public String sub9() {
 
+        return "main12/sub9";
+    }
 
 }
