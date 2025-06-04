@@ -49,10 +49,23 @@ public class Controller12 {
     //    : /main12/sub5 로 redirection
     //      RedirectAttributes 에 name : donald를 넣고
 
+    @GetMapping("sub4")
+    public String sub4(RedirectAttributes rttr) {
+        rttr.addFlashAttribute("name", "donald");
+
+        return "redirect:/main12/sub5";
+    }
+
     // get /main12/sub5 에서
     //    : main12/sub5.html 로 forward
 
     //    view에서 name Model attribute를 꺼내서 출력하기
 
-    
+    @GetMapping("sub5")
+    public String sub5(Model model) {
+
+        return "main12/sub5";
+    }
+
+
 }
