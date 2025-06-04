@@ -70,6 +70,19 @@ ORDER BY CustomerID DESC
 LIMIT 20, 10;
 
 #연습 : 가격이 두번째로 높은 상품명 조회
+SELECT ProductName
+FROM Products
+ORDER BY Price DESC
+LIMIT 1, 1;
 #      세번째로 나이가 많은 직원명 조회
+SELECT LastName, FirstName
+FROM Employees
+ORDER BY BirthDate
+LIMIT 2, 1;
 #   1번 카테고리에서 두번째로 저렴한 상품명 조회
+SELECT ProductName
+FROM Products
+WHERE CategoryID = 1
+ORDER BY Price
+LIMIT 1, 1;
 
