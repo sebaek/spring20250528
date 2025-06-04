@@ -1,4 +1,4 @@
-# docker run --name mydb1 --env=MYSQL_ROOT_PASSWORD=my-secret-pw -e TZ=Asia/Seoul  -p 3306:3306 --restart=always  -d mysql:lts --default-time-zone='+09:00'
+# docker run --name mydb1 --env=MYSQL_ROOT_PASSWORD=1234 -e TZ=Asia/Seoul  -p 3306:3306 --restart=always  -d mysql:lts --default-time-zone='+09:00'
 # create initial datas
 CREATE DATABASE IF NOT EXISTS w3schools;
 USE w3schools;
