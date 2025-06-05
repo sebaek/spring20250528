@@ -441,4 +441,12 @@ public class Controller13 {
         model.addAttribute("customerList", list);
         return "main13/sub12";
     }
+
+    // 연습
+    // dto, html, request handler method
+    // 모든 상품 조회, 출력
+    // get /main13/sub13
+    // main13/sub13.html
+    // ProductDto
+    
 }
