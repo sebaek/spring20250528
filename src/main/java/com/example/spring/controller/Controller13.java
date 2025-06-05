@@ -292,5 +292,32 @@ public class Controller13 {
     // get /main13/sub9
     // 고객테이블에서 미국,영국에 사는 고객이름과 국가를 조회해서
     // main13/sub9.html에서 출력
+    @GetMapping("sub9")
+    public String sub9(Model model) throws Exception {
+        String sql = """
+                SELECT CustomerName, Country
+                FROM Customers
+                WHERE Country IN ('usa', 'uk')
+                ORDER BY Country
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<Map<String, String>>();
+        while (resultSet.next()) {
+            String customerName = resultSet.getString("CustomerName");
+            String country = resultSet.getString("Country");
+            Map<String, String> map = new HashMap<>();
+            map.put("name", customerName);
+            map.put("country", country);
+            list.add(map);
+        }
+
+        model.addAttribute("customerList", list);
+        return "main13/sub9";
+    }
 
 }
