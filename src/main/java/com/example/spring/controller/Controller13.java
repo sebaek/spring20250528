@@ -170,5 +170,26 @@ public class Controller13 {
     // get /main13/sub5
     // Categories 테이블의 CategoryName 들을 조회해서
     // main13/sub5.html 에서 출력하기
+    @GetMapping("sub5")
+    public String sub5(Model model) throws Exception {
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+
+        String sql = """
+                SELECT CategoryName
+                FROM Categories
+                """;
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<String>();
+        while (resultSet.next()) {
+            String name = resultSet.getString("CategoryName");
+            list.add(name);
+        }
+        model.addAttribute("categoryList", list);
+        return "main13/sub5";
+    }
 
 }
