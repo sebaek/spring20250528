@@ -735,4 +735,9 @@ public class Controller13 {
 
     }
 
+    // 연습
+    // request handler method, SupplierDto, html(main13/sub20.html)
+    // 특정 국가에 있는 공급자들 조회
+    // get /main13/sub20
+
 }
