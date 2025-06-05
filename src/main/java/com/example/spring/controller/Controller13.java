@@ -10,7 +10,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("main13")
@@ -254,5 +256,41 @@ public class Controller13 {
         model.addAttribute("quantityList", list);
         return "main13/sub7";
     }
+
+    @GetMapping("sub8")
+    public String sub8(Model model) throws Exception {
+        String sql = """
+                SELECT LastName, FirstName
+                FROM Employees
+                """;
+
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<Map<String, String>>();
+        while (resultSet.next()) {
+            String lastName = resultSet.getString("LastName");
+            String firstName = resultSet.getString("FirstName");
+
+            var name = new HashMap<String, String>();
+            name.put("lastName", lastName);
+            name.put("firstName", firstName);
+
+            list.add(name);
+        }
+
+        model.addAttribute("nameList", list);
+        return "main13/sub8";
+    }
+
+    // 연습
+    // get /main13/sub9
+    // 고객테이블에서 미국,영국에 사는 고객이름과 국가를 조회해서
+    // main13/sub9.html에서 출력
 
 }
