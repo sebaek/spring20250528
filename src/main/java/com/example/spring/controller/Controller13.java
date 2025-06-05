@@ -295,10 +295,10 @@ public class Controller13 {
     @GetMapping("sub9")
     public String sub9(Model model) throws Exception {
         String sql = """
-                SELECT CustomerName, Country
+                SELECT CustomerName, City, Country
                 FROM Customers
                 WHERE Country IN ('usa', 'uk')
-                ORDER BY Country
+                ORDER BY Country, City
                 """;
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
@@ -310,9 +310,11 @@ public class Controller13 {
         while (resultSet.next()) {
             String customerName = resultSet.getString("CustomerName");
             String country = resultSet.getString("Country");
+            String city = resultSet.getString("City");
             Map<String, String> map = new HashMap<>();
             map.put("name", customerName);
             map.put("country", country);
+            map.put("city", city);
             list.add(map);
         }
 
