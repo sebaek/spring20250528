@@ -165,5 +165,10 @@ public class Controller13 {
         model.addAttribute("nameList", list);
         return "main13/sub3";
     }
-    
+
+    // 연습
+    // get /main13/sub5
+    // Categories 테이블의 CategoryName 들을 조회해서
+    // main13/sub5.html 에서 출력하기
+
 }
