@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -686,5 +683,56 @@ public class Controller13 {
 
     }
 
+    @GetMapping("sub19")
+    public String sub19(String country, Model model) throws Exception {
+        String countrySql = """
+                SELECT DISTINCT Country
+                FROM Customers
+                ORDER BY Country
+                """;
+
+        String sql = """
+                SELECT *
+                FROM Customers
+                WHERE Country = ?
+                ORDER BY City
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+
+        // 국가 조회
+        PreparedStatement statement1 = connection.prepareStatement(countrySql);
+        ResultSet resultSet1 = statement1.executeQuery();
+        var list1 = new ArrayList<String>();
+        while (resultSet1.next()) {
+            list1.add(resultSet1.getString("Country"));
+        }
+        model.addAttribute("countryList", list1);
+
+        // 고객 조회
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, country);
+
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<CustomerDto>();
+
+        while (resultSet.next()) {
+            CustomerDto dto = new CustomerDto();
+            dto.setId(resultSet.getInt("CustomerId"));
+            dto.setName(resultSet.getString("CustomerName"));
+            dto.setCity(resultSet.getString("City"));
+            dto.setCountry(resultSet.getString("Country"));
+            dto.setContactName(resultSet.getString("ContactName"));
+            dto.setPostalCode(resultSet.getString("PostalCode"));
+            dto.setAddress(resultSet.getString("Address"));
+            list.add(dto);
+        }
+        model.addAttribute("customerList", list);
+        return "main13/sub19";
+
+    }
 
 }
