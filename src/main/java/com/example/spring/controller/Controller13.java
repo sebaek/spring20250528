@@ -358,4 +358,9 @@ public class Controller13 {
         return "main13/sub10";
     }
 
+    // 연습
+    // get /main13/sub11
+    // 모든 고객의 정보를 출력하는 코드 작성
+    // main13/sub11.html 에서.
+
 }
