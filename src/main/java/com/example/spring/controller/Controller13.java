@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.CustomerDto;
+import com.example.spring.dto.ProductDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -448,5 +449,30 @@ public class Controller13 {
     // get /main13/sub13
     // main13/sub13.html
     // ProductDto
-    
+    @GetMapping("sub13")
+    public String sub13(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Products
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<ProductDto>();
+        while (resultSet.next()) {
+            ProductDto dto = new ProductDto();
+            dto.setId(resultSet.getInt("ProductId"));
+            dto.setName(resultSet.getString("ProductName"));
+            dto.setSupplier(resultSet.getInt("SupplierID"));
+            dto.setCategory(resultSet.getInt("CategoryID"));
+            dto.setUnit(resultSet.getString("Unit"));
+            dto.setPrice(resultSet.getDouble("Price"));
+            list.add(dto);
+        }
+        model.addAttribute("productList", list);
+        return "main13/sub13";
+    }
 }
