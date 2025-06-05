@@ -322,4 +322,40 @@ public class Controller13 {
         return "main13/sub9";
     }
 
+    @GetMapping("sub10")
+    public String sub10(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Products
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<Map<String, Object>>();
+        while (resultSet.next()) {
+            int productId = resultSet.getInt("ProductId");
+            String productName = resultSet.getString("ProductName");
+            int supplierID = resultSet.getInt("SupplierID");
+            int categoryID = resultSet.getInt("CategoryID");
+            String unit = resultSet.getString("Unit");
+            double price = resultSet.getDouble("Price");
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("productId", productId);
+            map.put("productName", productName);
+            map.put("supplierID", supplierID);
+            map.put("categoryID", categoryID);
+            map.put("unit", unit);
+            map.put("price", price);
+            list.add(map);
+        }
+
+        model.addAttribute("productList", list);
+        return "main13/sub10";
+    }
+
 }
