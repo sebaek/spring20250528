@@ -602,4 +602,52 @@ public class Controller13 {
 
     }
 
+    @GetMapping("sub17")
+    public String sub17(
+            @RequestParam(defaultValue = "10.00")
+            Double price,
+            @RequestParam(defaultValue = "1")
+            Integer categoryId,
+            Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Products
+                WHERE Price < ?
+                  AND CategoryID = ?
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setDouble(1, price);
+        statement.setInt(2, categoryId);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<ProductDto>();
+        while (resultSet.next()) {
+            ProductDto dto = new ProductDto();
+            dto.setId(resultSet.getInt("ProductId"));
+            dto.setName(resultSet.getString("ProductName"));
+            dto.setSupplier(resultSet.getInt("SupplierID"));
+            dto.setCategory(resultSet.getInt("CategoryID"));
+            dto.setUnit(resultSet.getString("Unit"));
+            dto.setPrice(resultSet.getDouble("Price"));
+            list.add(dto);
+
+        }
+        model.addAttribute("productList", list);
+
+
+        return "main13/sub17";
+    }
+
+    // 연습
+    // 특정 가격 사이의 상품들 조회,출력 코드
+    // 낮은가격~높은가격
+    // request handler method, html(main13/sub18.html)
+    // get /main13/sub18
+    //
+
+
 }
