@@ -562,11 +562,44 @@ public class Controller13 {
         return "main13/sub15";
     }
 
-//    연습
+    //    연습
 //    특정 카테고리 번호의 상품들 조회 후 출력
     // request handler method, html
     // get /main13/sub16
     // main13/sub16.html
+    @GetMapping("sub16")
+    public String sub16(
+            @RequestParam(defaultValue = "1")
+            Integer categoryId,
+            Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Products
+                WHERE CategoryID = ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, categoryId);
 
-    
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<ProductDto>();
+        while (resultSet.next()) {
+            ProductDto dto = new ProductDto();
+            dto.setId(resultSet.getInt("ProductId"));
+            dto.setName(resultSet.getString("ProductName"));
+            dto.setSupplier(resultSet.getInt("SupplierID"));
+            dto.setCategory(resultSet.getInt("CategoryID"));
+            dto.setUnit(resultSet.getString("Unit"));
+            dto.setPrice(resultSet.getDouble("Price"));
+            list.add(dto);
+
+        }
+        model.addAttribute("productList", list);
+        return "main13/sub16";
+
+    }
+
 }
