@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -475,4 +476,97 @@ public class Controller13 {
         model.addAttribute("productList", list);
         return "main13/sub13";
     }
+
+    @GetMapping("sub14")
+    public String sub14(Model model) throws Exception {
+        // ? : 변경 가능한 부분
+        String sql = """
+                SELECT *
+                FROM Products
+                WHERE Price < ?
+                """;
+
+        // 연결
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+
+        // 실행 준비
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        // PreparedStatement.execute....() : 쿼리 실행
+        // PreparedStatement.set...(index, value) : ? 채우는 메소드
+        statement.setDouble(1, 20.00);
+
+        // 실행
+        ResultSet resultSet = statement.executeQuery();
+
+        // 결과 처리
+        var list = new ArrayList<ProductDto>();
+        while (resultSet.next()) {
+            ProductDto dto = new ProductDto();
+            dto.setId(resultSet.getInt("ProductId"));
+            dto.setName(resultSet.getString("ProductName"));
+            dto.setSupplier(resultSet.getInt("SupplierID"));
+            dto.setCategory(resultSet.getInt("CategoryID"));
+            dto.setUnit(resultSet.getString("Unit"));
+            dto.setPrice(resultSet.getDouble("Price"));
+            list.add(dto);
+        }
+        model.addAttribute("productList", list);
+        return "main13/sub13";
+    }
+
+    // /main13/sub15?price=10.00
+    @GetMapping("sub15")
+    public String sub15(Model model,
+                        @RequestParam(defaultValue = "100.00")
+                        Double price) throws Exception {
+        // ? : 변경 가능한 부분
+        String sql = """
+                SELECT *
+                FROM Products
+                WHERE Price < ?
+                """;
+
+        // 연결
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+
+        // 실행 준비
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        // PreparedStatement.execute....() : 쿼리 실행
+        // PreparedStatement.set...(index, value) : ? 채우는 메소드
+        statement.setDouble(1, price);
+
+        // 실행
+        ResultSet resultSet = statement.executeQuery();
+
+        // 결과 처리
+        var list = new ArrayList<ProductDto>();
+        while (resultSet.next()) {
+            ProductDto dto = new ProductDto();
+            dto.setId(resultSet.getInt("ProductId"));
+            dto.setName(resultSet.getString("ProductName"));
+            dto.setSupplier(resultSet.getInt("SupplierID"));
+            dto.setCategory(resultSet.getInt("CategoryID"));
+            dto.setUnit(resultSet.getString("Unit"));
+            dto.setPrice(resultSet.getDouble("Price"));
+            list.add(dto);
+        }
+        model.addAttribute("productList", list);
+        return "main13/sub15";
+    }
+
+//    연습
+//    특정 카테고리 번호의 상품들 조회 후 출력
+    // request handler method, html
+    // get /main13/sub16
+    // main13/sub16.html
+
+    
 }
