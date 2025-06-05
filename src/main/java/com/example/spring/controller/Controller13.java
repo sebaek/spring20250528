@@ -1,5 +1,6 @@
 package com.example.spring.controller;
 
+import com.example.spring.dto.CustomerDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -400,5 +401,44 @@ public class Controller13 {
 
         model.addAttribute("customerList", list);
         return "main13/sub11";
+    }
+
+    @GetMapping("sub12")
+    public String sub12(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Customers
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<CustomerDto>();
+
+        while (resultSet.next()) {
+            String customerName = resultSet.getString("CustomerName");
+            int customerID = resultSet.getInt("CustomerID");
+            String contactName = resultSet.getString("ContactName");
+            String address = resultSet.getString("Address");
+            String city = resultSet.getString("City");
+            String country = resultSet.getString("Country");
+            String postalCode = resultSet.getString("PostalCode");
+
+            CustomerDto dto = new CustomerDto();
+            dto.setId(customerID);
+            dto.setName(customerName);
+            dto.setContactName(contactName);
+            dto.setAddress(address);
+            dto.setCity(city);
+            dto.setPostalCode(postalCode);
+            dto.setCountry(country);
+
+            list.add(dto);
+        }
+        model.addAttribute("customerList", list);
+        return "main13/sub12";
     }
 }
