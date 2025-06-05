@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.CustomerDto;
 import com.example.spring.dto.ProductDto;
+import com.example.spring.dto.SupplierDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -740,4 +741,50 @@ public class Controller13 {
     // 특정 국가에 있는 공급자들 조회
     // get /main13/sub20
 
+    @GetMapping("sub20")
+    public String sub20(String country, Model model) throws Exception {
+        String countrySql = """
+                SELECT DISTINCT Country
+                FROM Suppliers
+                ORDER BY Country
+                """;
+        String sql = """
+                SELECT *
+                FROM Suppliers
+                WHERE Country = ?
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement1 = connection.prepareStatement(countrySql);
+        ResultSet resultSet1 = statement1.executeQuery();
+        var list1 = new ArrayList<String>();
+        while (resultSet1.next()) {
+            list1.add(resultSet1.getString("Country"));
+
+        }
+        model.addAttribute("countryList", list1);
+
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, country);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<SupplierDto>();
+        while (resultSet.next()) {
+            SupplierDto dto = new SupplierDto();
+            dto.setId(resultSet.getInt("SupplierId"));
+            dto.setName(resultSet.getString("SupplierName"));
+            dto.setCity(resultSet.getString("City"));
+            dto.setCountry(resultSet.getString("Country"));
+            dto.setAddress(resultSet.getString("Address"));
+            dto.setPostalCode(resultSet.getString("PostalCode"));
+            dto.setPhone(resultSet.getString("Phone"));
+            dto.setContact(resultSet.getString("ContactName"));
+            list.add(dto);
+        }
+        model.addAttribute("supplierList", list);
+        return "main13/sub20";
+    }
 }
