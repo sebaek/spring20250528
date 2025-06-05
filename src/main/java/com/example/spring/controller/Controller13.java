@@ -362,5 +362,43 @@ public class Controller13 {
     // get /main13/sub11
     // 모든 고객의 정보를 출력하는 코드 작성
     // main13/sub11.html 에서.
+    @GetMapping("sub11")
+    public String sub11(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Customers
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<Map<String, Object>>();
+        while (resultSet.next()) {
 
+            String customerName = resultSet.getString("CustomerName");
+            int customerID = resultSet.getInt("CustomerID");
+            String contactName = resultSet.getString("ContactName");
+            String address = resultSet.getString("Address");
+            String city = resultSet.getString("City");
+            String country = resultSet.getString("Country");
+            String postalCode = resultSet.getString("PostalCode");
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("customerName", customerName);
+            map.put("customerID", customerID);
+            map.put("contactName", contactName);
+            map.put("address", address);
+            map.put("city", city);
+            map.put("country", country);
+            map.put("postalCode", postalCode);
+            list.add(map);
+
+
+        }
+
+        model.addAttribute("customerList", list);
+        return "main13/sub11";
+    }
 }
