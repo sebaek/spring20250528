@@ -230,5 +230,29 @@ public class Controller13 {
     // OrderDetails 에서 수량(Quantity) 상위 5개 조회해서
     // main13/sub7.html 에서 보여주기
 
-    
+    @GetMapping("sub7")
+    public String sub7(Model model) throws Exception {
+        String sql = """
+                SELECT Quantity
+                FROM OrderDetails
+                ORDER BY Quantity DESC
+                LIMIT 5
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<Integer>();
+        while (resultSet.next()) {
+            int quantity = resultSet.getInt("Quantity");
+            list.add(quantity);
+        }
+        model.addAttribute("quantityList", list);
+        return "main13/sub7";
+    }
+
 }
