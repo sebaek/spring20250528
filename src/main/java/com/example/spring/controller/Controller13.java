@@ -192,4 +192,43 @@ public class Controller13 {
         return "main13/sub5";
     }
 
+    @GetMapping("sub6")
+    public String sub6(Model model) throws Exception {
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+
+        String sql = """
+                SELECT Price
+                FROM Products
+                ORDER BY Price
+                """;
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+//        var list = new ArrayList<String>();
+//        while (resultSet.next()) {
+//            String price = resultSet.getString("Price");
+//            list.add(price);
+//        }
+
+        // 모든 데이터는 String으로 얻어 오는 것이 가능하지만
+        // 특별한 이유가 없다면 type에 맞는 get... 메소드 사용하자.
+        var list = new ArrayList<Double>();
+        while (resultSet.next()) {
+            double price = resultSet.getDouble("Price");
+            list.add(price);
+        }
+
+        model.addAttribute("priceList", list);
+        return "main13/sub6";
+    }
+
+    // 연습 :
+    // get /main13/sub7
+    // OrderDetails 에서 수량(Quantity) 상위 5개 조회해서
+    // main13/sub7.html 에서 보여주기
+
+    
 }
