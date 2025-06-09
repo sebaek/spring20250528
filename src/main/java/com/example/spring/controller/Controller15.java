@@ -132,4 +132,69 @@ public class Controller15 {
 
         return "main15/sub2";
     }
+
+    // 검색 + 페이징
+    @GetMapping("sub3")
+    public String sub3(
+            @RequestParam(defaultValue = "1")
+            Integer page,
+            @RequestParam(defaultValue = "")
+            String keyword,
+            Model model) throws Exception {
+
+        String countSql = """
+                SELECT COUNT(*) AS count
+                FROM Customers
+                WHERE CustomerName LIKE ?
+                   OR ContactName LIKE ?
+                """;
+        String sql = """
+                SELECT *
+                FROM Customers
+                WHERE CustomerName LIKE ?
+                   OR ContactName LIKE ?
+                ORDER BY CustomerID
+                LIMIT ?, ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement countStmt = connection.prepareStatement(countSql);
+        countStmt.setString(1, "%" + keyword + "%");
+        countStmt.setString(2, "%" + keyword + "%");
+        PreparedStatement selectStmt = connection.prepareStatement(sql);
+        selectStmt.setString(1, "%" + keyword + "%");
+        selectStmt.setString(2, "%" + keyword + "%");
+
+        int offset = (page - 1) * 5;
+        selectStmt.setInt(3, offset);
+        selectStmt.setInt(4, 5);
+
+        ResultSet rs1 = countStmt.executeQuery();
+        rs1.next();
+        int count = rs1.getInt("count");
+        int lastPage = (count - 1) / 5 + 1;
+        model.addAttribute("lastPage", lastPage);
+
+        ResultSet rs2 = selectStmt.executeQuery();
+        List<CustomerDto> list = new ArrayList<>();
+        while (rs2.next()) {
+            CustomerDto customerDto = new CustomerDto();
+            customerDto.setId(rs2.getInt("CustomerID"));
+            customerDto.setName(rs2.getString("CustomerName"));
+            customerDto.setContactName(rs2.getString("ContactName"));
+            customerDto.setAddress(rs2.getString("Address"));
+            customerDto.setCity(rs2.getString("City"));
+            customerDto.setPostalCode(rs2.getString("PostalCode"));
+            customerDto.setCountry(rs2.getString("Country"));
+            list.add(customerDto);
+
+        }
+        model.addAttribute("customerList", list);
+
+        return "main15/sub3";
+
+    }
+
 }
