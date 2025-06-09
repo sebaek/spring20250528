@@ -37,5 +37,25 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <span th:each="num : ${#numbers.sequence(1, lastPage)}">
+        <a th:href="@{/main15/sub1(page=${num})}"
+           th:text="${num}"></a>
+        |
+    </span>
+</div>
+<!--/*
+<div>
+    <a th:href="@{/main15/sub1(page=1)}">1</a>
+    |
+    <a th:href="@{/main15/sub1(page=2)}">2</a>
+    |
+    <a th:href="@{/main15/sub1(page=3)}">3</a>
+    |
+    <a th:href="@{/main15/sub1(page=4)}">4</a>
+    |
+    <a th:href="@{/main15/sub1(page=5)}">5</a>
+</div>
+*/-->
 </body>
 </html>

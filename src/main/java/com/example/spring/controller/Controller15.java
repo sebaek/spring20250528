@@ -29,6 +29,12 @@ public class Controller15 {
                 ORDER BY CustomerID
                 LIMIT ?, ?
                 """;
+        // 총 고객 수
+        String countSql = """
+                SELECT COUNT(*) AS count
+                FROM Customers
+                """;
+
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
         String password = "1234";
@@ -41,6 +47,14 @@ public class Controller15 {
         int offset = (page - 1) * 10;
         statement.setInt(1, offset);
         statement.setInt(2, 10);
+
+        ResultSet rs2 = connection.prepareStatement(countSql).executeQuery();
+        rs2.next();
+        int count = rs2.getInt("count"); // 총 고객수
+        int lastPage = (count - 1) / 10 + 1; // 마지막 페이지 번호
+
+        model.addAttribute("lastPage", lastPage);
+
 
         ResultSet rs = statement.executeQuery();
         List<CustomerDto> list = new ArrayList<>();
