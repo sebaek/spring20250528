@@ -45,6 +45,14 @@ FROM Customers;
 SELECT COUNT(*)
 FROM Customers;
 
+#대량의 상품 정보 입력
+INSERT INTO Products
+    (ProductName, SupplierID, CategoryID, Unit, Price)
+SELECT ProductName, SupplierID, CategoryID, Unit, Price
+FROM Products;
+SELECT COUNT(*)
+FROM Products;
+
 
 
 

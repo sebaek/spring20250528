@@ -210,6 +210,7 @@ public class Controller15 {
 
     // 연습
     // 상품명 조회 로직 작성 (w/ paging)
+    // 페이지네이션 완성(이전, 다음)
     @GetMapping("sub4")
     public String sub4(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "") String keyword,
