@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.CustomerDto;
+import com.example.spring.dto.SupplierDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,5 +79,57 @@ public class Controller15 {
     // 연습:
     // 한 페이지에 5개의 공급자가 출력되도록 코드 작성 (정렬은 공급자 번호 순)
     // request handler method, html
+    @GetMapping("sub2")
+    public String sub2(
+            @RequestParam(defaultValue = "1")
+            Integer page,
+            Model model) throws Exception {
+        String countSql = """
+                SELECT COUNT(*) AS count
+                FROM Suppliers
+                """;
+        String sql = """
+                SELECT *
+                FROM Suppliers
+                ORDER BY SupplierID
+                LIMIT ?, ?
+                """;
 
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        ResultSet rs2 = connection.prepareStatement(countSql).executeQuery();
+        rs2.next();
+        int count = rs2.getInt("count");// 총 레코드 수
+        int lastPage = (count - 1) / 5 + 1; // 마지막 페이지 번호
+
+        model.addAttribute("lastPage", lastPage);
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        int offset = (page - 1) * 5;
+        statement.setInt(1, offset);
+        statement.setInt(2, 5);
+
+        ResultSet resultSet = statement.executeQuery();
+        List<SupplierDto> list = new ArrayList<>();
+        while (resultSet.next()) {
+            SupplierDto supplierDto = new SupplierDto();
+            supplierDto.setId(resultSet.getInt("SupplierID"));
+            supplierDto.setName(resultSet.getString("SupplierName"));
+            supplierDto.setContact(resultSet.getString("ContactName"));
+            supplierDto.setAddress(resultSet.getString("Address"));
+            supplierDto.setCity(resultSet.getString("City"));
+            supplierDto.setPostalCode(resultSet.getString("PostalCode"));
+            supplierDto.setCountry(resultSet.getString("Country"));
+            supplierDto.setPhone(resultSet.getString("Phone"));
+            list.add(supplierDto);
+
+        }
+        model.addAttribute("supplierList", list);
+
+
+        return "main15/sub2";
+    }
 }
