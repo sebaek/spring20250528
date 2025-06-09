@@ -117,8 +117,15 @@ WHERE Price = (SELECT MIN(Price)
   AND CategoryID = 2;
 
 
-
-
-
+# AVG() : 평균
+SELECT AVG(Price)
+FROM Products;
+SELECT AVG(Price)
+FROM Products
+WHERE CategoryID = 1;
+# 연습 : 2번카테고리 상품 가격의 평균
+SELECT AVG(Price)
+FROM Products
+WHERE CategoryID = 2;
 
 
