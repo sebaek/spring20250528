@@ -48,13 +48,36 @@
     </tbody>
 </table>
 <div>
-    <span th:each="num : ${#numbers.sequence(1, lastPage)}">
+    <!--/*  이전 버튼  */-->
+    <span th:if="${prevPage > 0}">
+        <a th:if="${param.keyword == null}"
+           th:href="@{/main15/sub3(page=${prevPage})}">
+            이전
+        </a>
+        <a th:if="${param.keyword != null}"
+           th:href="@{/main15/sub3(page=${prevPage},keyword=${param.keyword})}"></a>
+        |
+    </span>
+
+    <!--/* 페이지 번호들 */-->
+    <span th:each="num : ${#numbers.sequence(leftPage, rightPage)}">
         <a th:if="${param.keyword == null}"
            th:href="@{/main15/sub3(page=${num})}"
            th:text="${num}"></a>
         <a th:if="${param.keyword != null}"
            th:href="@{/main15/sub3(page=${num},keyword=${param.keyword})}"
            th:text="${num}"></a>
+        |
+    </span>
+
+    <!--/* 다음 버튼 */-->
+    <span th:if="${nextPage <= lastPage}">
+        <a th:if="${param.keyword == null}"
+           th:href="@{/main15/sub3(page=${nextPage})}">
+            다음
+        </a>
+        <a th:if="${param.keyword != null}"
+           th:href="@{/main15/sub3(page=${nextPage},keyword=${param.keyword})}"></a>
         |
     </span>
 </div>

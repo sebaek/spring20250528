@@ -174,9 +174,19 @@ public class Controller15 {
 
         ResultSet rs1 = countStmt.executeQuery();
         rs1.next();
-        int count = rs1.getInt("count");
-        int lastPage = (count - 1) / 5 + 1;
-        model.addAttribute("lastPage", lastPage);
+        int count = rs1.getInt("count"); // 총 레코드 수
+        int lastPage = (count - 1) / 5 + 1; // 마지막 페이지
+        int rightPage = ((page - 1) / 10 + 1) * 10; // 오른쪽 페이지번호
+        int leftPage = rightPage - 9; // 왼쪽 페이지 번호
+        int prevPage = leftPage - 10;
+        int nextPage = rightPage + 1;
+        rightPage = Math.min(rightPage, lastPage); // 오른쪽 페이지번호는 마지막보다 클수없음
+        model.addAttribute("lastPage", lastPage); // 마지막 페이지
+        model.addAttribute("rightPage", rightPage);
+        model.addAttribute("leftPage", leftPage);
+        model.addAttribute("prevPage", prevPage);
+        model.addAttribute("nextPage", nextPage);
+
 
         ResultSet rs2 = selectStmt.executeQuery();
         List<CustomerDto> list = new ArrayList<>();
