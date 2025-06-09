@@ -48,4 +48,13 @@ public class Controller14 {
 
         return "main14/sub1";
     }
+
+    // 연습 : request handler method, html
+    // get /main14/sub2
+    // 고객명 조회하는 코드 완성
+    // sql :
+    // SELECT * FROM Customers
+    // WHERE CustomerName LIKE '%keyword%'
+    //    OR ContactName LIKE '%keyword%'
+    //
 }
