@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.CustomerDto;
+import com.example.spring.dto.ProductDto;
 import com.example.spring.dto.SupplierDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -199,5 +200,57 @@ public class Controller15 {
 
     // 연습
     // 상품명 조회 로직 작성 (w/ paging)
-    
+    @GetMapping("sub4")
+    public String sub4(@RequestParam(defaultValue = "1") Integer page,
+                       @RequestParam(defaultValue = "") String keyword,
+                       Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Products
+                WHERE ProductName LIKE ?
+                ORDER BY ProductID
+                LIMIT ?, ?
+                """;
+        String countSql = """
+                SELECT COUNT(*) AS count
+                FROM Products
+                WHERE ProductName LIKE ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement countStmt = connection.prepareStatement(countSql);
+        countStmt.setString(1, "%" + keyword + "%");
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, "%" + keyword + "%");
+        int offset = (page - 1) * 5;
+        statement.setInt(2, offset);
+        statement.setInt(3, 5);
+
+        ResultSet rs1 = countStmt.executeQuery();
+        rs1.next();
+        int count = rs1.getInt("count");
+        int lastPage = (count - 1) / 5 + 1;
+        model.addAttribute("lastPage", lastPage);
+        ResultSet rs2 = statement.executeQuery();
+        List<ProductDto> list = new ArrayList<>();
+
+        while (rs2.next()) {
+            ProductDto productDto = new ProductDto();
+            productDto.setId(rs2.getInt("ProductID"));
+            productDto.setName(rs2.getString("ProductName"));
+            productDto.setSupplier(rs2.getInt("SupplierID"));
+            productDto.setCategory(rs2.getInt("CategoryID"));
+            productDto.setUnit(rs2.getString("Unit"));
+            productDto.setPrice(rs2.getDouble("Price"));
+            list.add(productDto);
+        }
+
+        model.addAttribute("productList", list);
+
+
+        return "main15/sub4";
+
+    }
 }
