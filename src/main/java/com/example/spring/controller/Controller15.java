@@ -74,4 +74,9 @@ public class Controller15 {
 
         return "main15/sub1";
     }
+
+    // 연습:
+    // 한 페이지에 5개의 공급자가 출력되도록 코드 작성
+    // request handler method, html
+
 }
