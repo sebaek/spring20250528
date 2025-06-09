@@ -241,8 +241,19 @@ public class Controller15 {
 
         ResultSet rs1 = countStmt.executeQuery();
         rs1.next();
-        int count = rs1.getInt("count");
-        int lastPage = (count - 1) / 5 + 1;
+        int count = rs1.getInt("count"); // 총 레코드 수
+        int lastPage = (count - 1) / 5 + 1; // 마지막 페이지 번호
+        int rightPage = ((page - 1) / 10 + 1) * 10;
+        int leftPage = rightPage - 9;
+        int prevPage = leftPage - 10;
+        int nextPage = rightPage + 1;
+
+        rightPage = Math.min(rightPage, lastPage);
+
+        model.addAttribute("leftPage", leftPage);
+        model.addAttribute("rightPage", rightPage);
+        model.addAttribute("prevPage", prevPage);
+        model.addAttribute("nextPage", nextPage);
         model.addAttribute("lastPage", lastPage);
         ResultSet rs2 = statement.executeQuery();
         List<ProductDto> list = new ArrayList<>();
