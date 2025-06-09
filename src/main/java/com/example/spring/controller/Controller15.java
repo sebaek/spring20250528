@@ -197,4 +197,7 @@ public class Controller15 {
 
     }
 
+    // 연습
+    // 상품명 조회 로직 작성 (w/ paging)
+    
 }
