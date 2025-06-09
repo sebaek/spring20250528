@@ -1,5 +1,6 @@
 package com.example.spring.controller;
 
+import com.example.spring.dto.CustomerDto;
 import com.example.spring.dto.EmployeeDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,4 +58,37 @@ public class Controller14 {
     // WHERE CustomerName LIKE '%keyword%'
     //    OR ContactName LIKE '%keyword%'
     //
+    @GetMapping("sub2")
+    public String sub2(String keyword, Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Customers
+                WHERE CustomerName LIKE ?
+                   OR ContactName LIKE ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, "%" + keyword + "%");
+        statement.setString(2, "%" + keyword + "%");
+        List<CustomerDto> list = new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            CustomerDto customerDto = new CustomerDto();
+            customerDto.setId(resultSet.getInt("CustomerId"));
+            customerDto.setName(resultSet.getString("CustomerName"));
+            customerDto.setContactName(resultSet.getString("ContactName"));
+            customerDto.setAddress(resultSet.getString("Address"));
+            customerDto.setCity(resultSet.getString("City"));
+            customerDto.setPostalCode(resultSet.getString("PostalCode"));
+            customerDto.setCountry(resultSet.getString("Country"));
+
+            list.add(customerDto);
+        }
+        model.addAttribute("customerList", list);
+
+        return "main14/sub2";
+    }
 }
