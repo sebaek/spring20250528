@@ -76,7 +76,7 @@ public class Controller15 {
     }
 
     // 연습:
-    // 한 페이지에 5개의 공급자가 출력되도록 코드 작성
+    // 한 페이지에 5개의 공급자가 출력되도록 코드 작성 (정렬은 공급자 번호 순)
     // request handler method, html
 
 }
