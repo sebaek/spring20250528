@@ -1,0 +1,63 @@
+package com.example.spring.controller;
+
+import com.example.spring.dto.CustomerDto;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Controller
+@RequestMapping("main15")
+public class Controller15 {
+
+    // paging
+
+    @GetMapping("sub1")
+    public String sub1(
+            @RequestParam(defaultValue = "1")
+            Integer page,
+            Model model) throws SQLException {
+        // 한 페이지에 10개씩
+        String sql = """
+                SELECT *
+                FROM Customers
+                ORDER BY CustomerID
+                LIMIT ?, ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        // offset : (page - 1) * 10
+//        statement.setInt(1, 0); // 1page
+//        statement.setInt(1, 10); // 2page
+//        statement.setInt(1, 20); // 3page
+        int offset = (page - 1) * 10;
+        statement.setInt(1, offset);
+        statement.setInt(2, 10);
+
+        ResultSet rs = statement.executeQuery();
+        List<CustomerDto> list = new ArrayList<>();
+        while (rs.next()) {
+            CustomerDto customerDto = new CustomerDto();
+            customerDto.setId(rs.getInt("CustomerID"));
+            customerDto.setPostalCode(rs.getString("PostalCode"));
+            customerDto.setCity(rs.getString("City"));
+            customerDto.setCountry(rs.getString("Country"));
+            customerDto.setContactName(rs.getString("ContactName"));
+            customerDto.setName(rs.getString("CustomerName"));
+            customerDto.setAddress(rs.getString("Address"));
+            list.add(customerDto);
+        }
+        model.addAttribute("customerList", list);
+
+
+        return "main15/sub1";
+    }
+}
