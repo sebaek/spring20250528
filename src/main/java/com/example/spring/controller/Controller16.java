@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.CustomerDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +10,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("main16")
 public class Controller16 {
 
     @GetMapping("sub1")
-    public String form1() {
+    public String form1(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Customers
+                ORDER BY CustomerId DESC
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        List<CustomerDto> customerDtoList = new ArrayList<>();
+        while (resultSet.next()) {
+            CustomerDto customerDto = new CustomerDto();
+            customerDto.setId(resultSet.getInt("CustomerId"));
+            customerDto.setName(resultSet.getString("CustomerName"));
+            customerDto.setAddress(resultSet.getString("Address"));
+            customerDto.setCity(resultSet.getString("City"));
+            customerDto.setContactName(resultSet.getString("ContactName"));
+            customerDto.setCountry(resultSet.getString("Country"));
+            customerDto.setPostalCode(resultSet.getString("PostalCode"));
+            customerDtoList.add(customerDto);
+        }
+        model.addAttribute("customerList", customerDtoList);
 
         return "main16/sub1";
     }
@@ -44,7 +72,7 @@ public class Controller16 {
 //        statement.executeQuery(); // select
         statement.executeUpdate(); // insert, delete, update
 
-        return "main16/sub1";
+        return "redirect:/main16/sub1";
     }
 
 }
