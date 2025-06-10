@@ -75,4 +75,9 @@ public class Controller16 {
         return "redirect:/main16/sub1";
     }
 
+    // 연습:
+    // 새 공급자 등록 로직 작성
+    // handler method * 2 (get, post)
+    // html * 1
+
 }
