@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.CustomerDto;
+import com.example.spring.dto.SupplierDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,5 +80,60 @@ public class Controller16 {
     // 새 공급자 등록 로직 작성
     // handler method * 2 (get, post)
     // html * 1
+    @GetMapping("sub2")
+    public String form2(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Suppliers
+                ORDER BY SupplierId DESC
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        List<SupplierDto> supplierDtoList = new ArrayList<>();
+        while (resultSet.next()) {
+            SupplierDto supplierDto = new SupplierDto();
+            supplierDto.setId(resultSet.getInt("SupplierId"));
+            supplierDto.setName(resultSet.getString("SupplierName"));
+            supplierDto.setAddress(resultSet.getString("Address"));
+            supplierDto.setCity(resultSet.getString("City"));
+            supplierDto.setCountry(resultSet.getString("Country"));
+            supplierDto.setPostalCode(resultSet.getString("PostalCode"));
+            supplierDto.setPhone(resultSet.getString("Phone"));
+            supplierDto.setContact(resultSet.getString("ContactName"));
+            supplierDtoList.add(supplierDto);
+        }
+        model.addAttribute("supplierList", supplierDtoList);
+
+        return "main16/sub2";
+    }
+
+    @PostMapping("sub2")
+    public String process2(SupplierDto supplier) throws Exception {
+        String sql = """
+                INSERT INTO Suppliers
+                (SupplierName, ContactName, Address, City, PostalCode, Country, Phone)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, supplier.getName());
+        statement.setString(2, supplier.getContact());
+        statement.setString(3, supplier.getAddress());
+        statement.setString(4, supplier.getCity());
+        statement.setString(5, supplier.getPostalCode());
+        statement.setString(6, supplier.getCountry());
+        statement.setString(7, supplier.getPhone());
+        statement.executeUpdate();
+
+        return "redirect:/main16/sub2";
+    }
 
 }
