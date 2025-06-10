@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -172,9 +173,27 @@ public class Controller16 {
     }
 
     @PostMapping("sub3")
-    public String process3() throws Exception {
+    public String process3(Integer id, RedirectAttributes rttr) throws Exception {
+        String sql = """
+                DELETE
+                FROM Customers
+                WHERE CustomerId = ?
+                """;
 
-        return "main16/sub3";
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate(); // delete, update, insert
+
+        rttr.addAttribute("id", id); // query string에 붙임
+
+        return "redirect:/main16/sub3";
     }
 
+    // 연습:
+    // 공급자 조회 후 삭제 로직 완성
+    // request handler method * 2, html * 1
 }

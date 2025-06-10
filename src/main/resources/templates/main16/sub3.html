@@ -7,7 +7,7 @@
 <body>
 <h3>고객 정보 조회</h3>
 <hr>
-<form action="">
+<form th:action="@{/main16/sub3}">
     <label>
         ID
         <input type="number" name="id" th:value="${param.id}">
@@ -63,6 +63,16 @@
         </label>
     </div>
 
+    <div>
+        <button form="delete-form">삭제</button>
+
+        <div style="display: none">
+            <!--   post /main16/sub3     -->
+            <form id="delete-form" method="post" th:action="@{/main16/sub3}">
+                <input type="text" name="id" th:value="${customer.id}">
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
