@@ -42,6 +42,25 @@ ORDER BY CustomerID DESC;
 # 연습
 # 공급자 테이블에서
 # 28,29번 공급자 삭제 하기
+SELECT *
+FROM Suppliers
+WHERE SupplierID = 28;
+
+DELETE
+FROM Suppliers
+WHERE SupplierID = 28;
+
+SELECT *
+FROM Suppliers
+WHERE SupplierID = 29;
+
+DELETE
+FROM Suppliers
+WHERE SupplierID = 29;
 
 # 공급자 테이블의 모든 레코드 삭제하기
+DELETE
+FROM Suppliers;
 
+SELECT *
+FROM Suppliers;
