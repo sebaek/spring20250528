@@ -196,4 +196,56 @@ public class Controller16 {
     // 연습:
     // 공급자 조회 후 삭제 로직 완성
     // request handler method * 2, html * 1
+    @GetMapping("sub4")
+    public String get(Integer id, Model model) throws Exception {
+        if (id != null) {
+            // 조회 후 모델에 추가
+            String sql = """
+                    SELECT *
+                    FROM Suppliers
+                    WHERE SupplierId = ?
+                    """;
+            String url = "jdbc:mysql://localhost:3306/w3schools";
+            String username = "root";
+            String password = "1234";
+            Connection connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                SupplierDto supplierDto = new SupplierDto();
+                supplierDto.setId(resultSet.getInt("SupplierId"));
+                supplierDto.setName(resultSet.getString("SupplierName"));
+                supplierDto.setContact(resultSet.getString("ContactName"));
+                supplierDto.setAddress(resultSet.getString("Address"));
+                supplierDto.setCity(resultSet.getString("City"));
+                supplierDto.setCountry(resultSet.getString("Country"));
+                supplierDto.setPostalCode(resultSet.getString("PostalCode"));
+                supplierDto.setPhone(resultSet.getString("Phone"));
+                model.addAttribute("supplier", supplierDto);
+            }
+        }
+
+        return "main16/sub4";
+    }
+
+    @PostMapping("sub4")
+    public String delete(Integer id, RedirectAttributes rttr) throws Exception {
+        String sql = """
+                DELETE
+                FROM Suppliers
+                WHERE SupplierId = ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        statement.executeUpdate();
+        rttr.addAttribute("id", id);
+
+        return "redirect:/main16/sub4";
+    }
+
 }
