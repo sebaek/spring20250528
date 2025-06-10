@@ -88,6 +88,10 @@ ORDER BY ProductID DESC;
 
 # 연습
 # 카테고리 테이블 조회, description이 null 이면 '정해지지 않음'으로 조회
-
+SELECT CategoryID, CategoryName, IFNULL(Description, '정해지지 않음') Description
+FROM Categories
+ORDER BY CategoryID DESC;
 # description 컬럼으로 COUNT()함수 결과 조회, NULL도 count에 포함되도록
+SELECT COUNT(IFNULL(Description, '')) count
+FROM Categories;
 
