@@ -136,4 +136,45 @@ public class Controller16 {
         return "redirect:/main16/sub2";
     }
 
+    @GetMapping("sub3")
+    public String form3(Integer id, Model model) throws Exception {
+        if (id != null) {
+            String sql = """
+                    SELECT *
+                    FROM Customers
+                    WHERE CustomerId = ?
+                    """;
+            String url = "jdbc:mysql://localhost:3306/w3schools";
+            String username = "root";
+            String password = "1234";
+            Connection connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+
+//        statement.executeUpdate(); // insert, update, delete
+            ResultSet resultSet = statement.executeQuery(); // select
+            if (resultSet.next()) {
+                //조회 결과가 있을 때만
+                CustomerDto customerDto = new CustomerDto();
+                customerDto.setId(resultSet.getInt("CustomerId"));
+                customerDto.setName(resultSet.getString("CustomerName"));
+                customerDto.setAddress(resultSet.getString("Address"));
+                customerDto.setCity(resultSet.getString("City"));
+                customerDto.setContactName(resultSet.getString("ContactName"));
+                customerDto.setCountry(resultSet.getString("Country"));
+                customerDto.setPostalCode(resultSet.getString("PostalCode"));
+
+                model.addAttribute("customer", customerDto);
+            }
+        }
+
+        return "main16/sub3";
+    }
+
+    @PostMapping("sub3")
+    public String process3() throws Exception {
+
+        return "main16/sub3";
+    }
+
 }
