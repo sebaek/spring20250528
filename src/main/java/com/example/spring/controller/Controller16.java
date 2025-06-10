@@ -316,4 +316,73 @@ public class Controller16 {
     }
 
 
+    //연습 :
+    // 공급자 정보 조회/수정
+    // request handler method * 2, html * 1
+    @GetMapping("sub6")
+    public String select2(Integer id, Model model) throws Exception {
+        if (id != null) {
+            String sql = """
+                    SELECT *
+                    FROM Suppliers
+                    WHERE SupplierId = ?
+                    """;
+            String url = "jdbc:mysql://localhost:3306/w3schools";
+            String username = "root";
+            String password = "1234";
+            Connection connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                SupplierDto supplierDto = new SupplierDto();
+                supplierDto.setId(resultSet.getInt("SupplierId"));
+                supplierDto.setName(resultSet.getString("SupplierName"));
+                supplierDto.setContact(resultSet.getString("ContactName"));
+                supplierDto.setAddress(resultSet.getString("Address"));
+                supplierDto.setCity(resultSet.getString("City"));
+                supplierDto.setCountry(resultSet.getString("Country"));
+                supplierDto.setPostalCode(resultSet.getString("PostalCode"));
+                supplierDto.setPhone(resultSet.getString("Phone"));
+
+                model.addAttribute("supplier", supplierDto);
+
+            }
+        }
+        return "main16/sub6";
+    }
+
+    @PostMapping("sub6")
+    public String update2(SupplierDto supplierDto, RedirectAttributes rttr) throws Exception {
+        String sql = """
+                UPDATE Suppliers
+                SET SupplierName = ?,
+                    ContactName = ?,
+                    Address = ?,
+                    City = ?,
+                    PostalCode = ?,
+                    Country = ?,
+                    Phone = ?
+                WHERE SupplierId = ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, supplierDto.getName());
+        statement.setString(2, supplierDto.getContact());
+        statement.setString(3, supplierDto.getAddress());
+        statement.setString(4, supplierDto.getCity());
+        statement.setString(5, supplierDto.getPostalCode());
+        statement.setString(6, supplierDto.getCountry());
+        statement.setString(7, supplierDto.getPhone());
+        statement.setInt(8, supplierDto.getId());
+        statement.executeUpdate();
+
+        rttr.addAttribute("id", supplierDto.getId());
+
+        return "redirect:/main16/sub6";
+    }
+
 }
