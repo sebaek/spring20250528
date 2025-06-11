@@ -1,10 +1,15 @@
 package com.example.spring.controller;
 
+import lombok.Data;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Controller
 @RequestMapping("main17")
@@ -110,5 +115,45 @@ public class Controller17 {
         }
         return null;
     }
+
+
+    @Data
+    static class Dto5 {
+        private String col1; // VARCHAR
+        private Integer col2; // INT
+        private Long col3; // BIGINT
+        private Double col4; // DEC
+        private LocalDate col5; // DATE
+        private LocalTime col6; // TIME
+        private LocalDateTime col7; // DATETIME
+    }
+
+    @GetMapping("sub5")
+    public String sub5(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM table12
+                LIMIT 1
+                """;
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            Dto5 dto5 = new Dto5();
+            dto5.setCol1(resultSet.getString("col1")); // VARCHAR
+            dto5.setCol2(resultSet.getInt("col2")); // INT
+            dto5.setCol3(resultSet.getLong("col3")); // BIGINT
+            dto5.setCol4(resultSet.getDouble("col4")); // DEC
+            dto5.setCol5(resultSet.getDate("col5").toLocalDate()); // DATE
+            dto5.setCol6(resultSet.getTime("col6").toLocalTime()); // TIME
+            dto5.setCol7(resultSet.getTimestamp("col7").toLocalDateTime()); // DATETIME
+            model.addAttribute("data", dto5);
+        }
+        return "main17/sub5";
+    }
+
 
 }
