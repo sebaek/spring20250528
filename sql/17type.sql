@@ -163,8 +163,25 @@ FROM table10;
 # 연습
 # birth_date(날짜), work_time(시간), born(날짜시간) table11 만들기
 # 두 개의 레코드 입력
+CREATE TABLE table11
+(
+    birth_date DATE,
+    work_time  TIME,
+    born       DATETIME
+);
+INSERT INTO table11
+    (birth_date, work_time, born)
+VALUES ('1999-01-01', '13:11:12', '2002-06-30 15:15:15');
+INSERT INTO table11
+    (birth_date, work_time, born)
+VALUES ('1888-01-01', '03:11:12', '1500-06-30 05:15:15');
+SELECT *
+FROM table11;
 
 
+# STRING : VARCHAR(길이)
+# NUMBER : INT, BIGINT, DEC(총길이,소수점이하길이)
+# 날짜시간: DATE, TIME, DATETIME
 
 
 
