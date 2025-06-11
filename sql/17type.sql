@@ -122,6 +122,22 @@ FROM table8;
 # score (총길이 4, 소숫점이하2), money(총길이 10, 소숫점이하 3)table9
 # 두 개 레코드 입력 성공
 # 한 개 레코드 실패
-    
+CREATE TABLE table9
+(
+    score DEC(4, 2),
+    money DEC(10, 3)
+);
+INSERT INTO table9
+    (score, money)
+VALUES (99.99, 29347.234);
+INSERT INTO table9
+    (score, money)
+VALUES (88.88, 1122937.234);
+INSERT INTO table9
+    (score, money)
+VALUES (100, 1122937.234);
+SELECT *
+FRom table9;
+
 
 # DATE,TIME
