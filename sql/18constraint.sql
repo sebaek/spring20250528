@@ -36,6 +36,74 @@ FROM table14;
 
 # 연습
 # (name varchar not null), (address varchar) table15 만들기
+CREATE TABLE table15
+(
+    name    VARCHAR(30) NOT NULL,
+    address VARCHAR(30) NULL
+);
+INSERT INTO table15
+    (name)
+VALUES ('son');
+INSERT INTO table15
+    (address)
+VALUES ('seoul');
+
+
+# DEFAULT : 값 안주면 기본값
+CREATE TABLE table16
+(
+    col1 VARCHAR(10),
+    col2 VARCHAR(10) DEFAULT 'anonymous'
+);
+INSERT INTO table16
+    (col1, col2)
+VALUES ('abc', 'def');
+
+INSERT INTO table16
+    (col2)
+VALUES ('def');
+
+INSERT INTO table16
+    (col1)
+VALUES ('qwe');
+
+INSERT INTO table16
+    (col1, col2)
+VALUES ('qwe', NULL);
+
+SELECT *
+FROM table16;
+
+CREATE TABLE table17
+(
+    col1 VARCHAR(10)          DEFAULT 'val1',
+    col2 VARCHAR(10) NOT NULL DEFAULT 'val2'
+);
+INSERT INTO table17
+    (col1, col2)
+VALUES ('abc', 'def');
+
+INSERT INTO table17
+    (col1, col2)
+VALUES (null, 'def');
+
+INSERT INTO table17
+    (col1, col2)
+VALUES ('abc', null);
+
+INSERT INTO table17
+    (col2)
+VALUES ('zxc');
+
+INSERT INTO table17
+    (col1)
+VALUES ('iop');
+
+SELECT *
+FROM table17;
+
+#연습
+# (name varchar not null), (score int not null default 0) table18 만들기
 
 
 # Primary Key : 주키(PK), 키
