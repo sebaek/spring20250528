@@ -104,7 +104,19 @@ FROM table17;
 
 #연습
 # (name varchar not null), (score int not null default 0) table18 만들기
-
+CREATE TABLE table18
+(
+    name  VARCHAR(10) NOT NULL,
+    score INT         NOT NULL DEFAULT 0
+);
+INSERT INTO table18
+    (name, score)
+VALUES ('son', 10);
+INSERT INTO table18
+    (name)
+VALUES ('musk');
+SELECT *
+FROM table18;
 
 # Primary Key : 주키(PK), 키
 # Foreign Key : 외래키(FK), 참조키
