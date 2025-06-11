@@ -183,7 +183,16 @@ FROM table11;
 # NUMBER : INT, BIGINT, DEC(총길이,소수점이하길이)
 # 날짜시간: DATE, TIME, DATETIME
 
-
+CREATE TABLE table12
+(
+    col1 VARCHAR(10),
+    col2 INT,
+    col3 BIGINT,
+    col4 DEC(10, 2),
+    col5 DATE,
+    col6 TIME,
+    col7 DATETIME
+);
 
 
 
