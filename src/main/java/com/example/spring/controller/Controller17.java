@@ -11,6 +11,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("main17")
@@ -192,7 +193,63 @@ public class Controller17 {
     // name(텍스트), birth_date(날짜), score(소숫점2까지), born_at(날짜시간) table13 만들기
     // html * 1
     // request handler method * 2 (get, post)
+    // dto * 1
     // get /main17/sub7
     // post /main17/sub7
-    
+    @Data
+    static class Dto7 {
+        private String name;
+        private LocalDate birthDate;
+        private Double score;
+        private LocalDateTime bornAt;
+    }
+
+    @GetMapping("sub7")
+    public String sub7(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM table13
+                """;
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<Dto7>();
+        while (resultSet.next()) {
+
+            Dto7 dto7 = new Dto7();
+            dto7.setName(resultSet.getString("name"));
+            dto7.setScore(resultSet.getDouble("score"));
+            dto7.setBirthDate(resultSet.getDate("birth_date").toLocalDate());
+            dto7.setBornAt(resultSet.getTimestamp("born_at").toLocalDateTime());
+            list.add(dto7);
+        }
+        model.addAttribute("list", list);
+        return "main17/sub7";
+    }
+
+    @PostMapping("sub7")
+    public String process7(Dto7 dto) throws Exception {
+        String sql = """
+                INSERT INTO table13
+                (name, birth_date, score, born_at)
+                VALUE (?, ?, ?, ?);
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, dto.getName());
+        statement.setDate(2, Date.valueOf(dto.getBirthDate()));
+        statement.setDouble(3, dto.getScore());
+        statement.setTimestamp(4, Timestamp.valueOf(dto.getBornAt()));
+        statement.executeUpdate();
+        return "redirect:/main17/sub7";
+
+    }
+
 }

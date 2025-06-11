@@ -201,7 +201,16 @@ FROM table12;
 
 
 
-
+CREATE TABLE table13
+(
+    name       VARCHAR(200),
+    birth_date DATE,
+    score      DEC(10, 2),
+    born_at    DATETIME
+);
+INSERT INTO table13
+    (name, birth_date, score, born_at)
+    VALUE ();
 
 
 
