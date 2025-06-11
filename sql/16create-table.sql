@@ -53,3 +53,29 @@ CREATE TABLE my_table1
 # 연습
 # id, name, address, team 컬럼이 있는 table3 만들기
 # 2개의 레코드 입력(insert) 하기
+CREATE TABLE table3
+(
+    id      VARCHAR(255),
+    name    VARCHAR(255),
+    address VARCHAR(255),
+    team    VARCHAR(255)
+);
+INSERT INTO table3
+    (id, name, address, team)
+VALUES ('1', 'son', 'seoul', '토트넘');
+INSERT INTO table3
+    (id, name, address, team)
+VALUES ('3', 'lee', 'paris', '파리');
+
+SELECT *
+FROM table3;
+
+# DROP TABLE : 테이블 삭제 하기
+DROP TABLE my_table1;
+
+# 연습
+# table3 삭제하기
+DROP TABLE table3;
+
+
+
