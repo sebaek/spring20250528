@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.*;
@@ -153,6 +154,37 @@ public class Controller17 {
             model.addAttribute("data", dto5);
         }
         return "main17/sub5";
+    }
+
+    @GetMapping("sub6")
+    public String sub6(Model model) throws Exception {
+        return "main17/sub6";
+    }
+
+    @PostMapping("sub6")
+    public String process6(Dto5 dto5) throws Exception {
+//        System.out.println("dto5 = " + dto5);
+        String sql = """
+                INSERT INTO table12
+                (col1, col2, col3, col4, col5, col6, col7)
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+                """;
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, dto5.getCol1());
+        statement.setInt(2, dto5.getCol2());
+        statement.setLong(3, dto5.getCol3());
+        statement.setDouble(4, dto5.getCol4());
+        statement.setDate(5, Date.valueOf(dto5.getCol5()));
+        statement.setTime(6, Time.valueOf(dto5.getCol6()));
+        statement.setTimestamp(7, Timestamp.valueOf(dto5.getCol7()));
+
+        statement.executeUpdate();
+
+        return "redirect:/main17/sub6";
     }
 
 
