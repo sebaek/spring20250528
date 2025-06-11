@@ -118,5 +118,65 @@ VALUES ('musk');
 SELECT *
 FROM table18;
 
+
+# UNIQUE : 중복 허용 안함
+
+CREATE TABLE table19
+(
+    col1 VARCHAR(10),
+    col2 VARCHAR(10) UNIQUE
+);
+INSERT INTO table19
+    (col1, col2)
+VALUES ('abc', 'def');
+
+INSERT INTO table19
+    (col1, col2)
+VALUES ('abc', 'qwe');
+
+INSERT INTO table19
+    (col1, col2)
+VALUES ('iop', 'qwe');
+
+INSERT INTO table19
+    (col1)
+VALUES ('iop');
+
+INSERT INTO table19
+    (col1)
+VALUES ('asd');
+
+
+SELECT *
+FROM table19;
+
+CREATE TABLE table20
+(
+    col1 VARCHAR(3),
+    col2 VARCHAR(3) UNIQUE NOT NULL
+);
+INSERT INTO table20
+    (col1, col2)
+VALUES ('abc', 'def');
+INSERT INTO table20
+    (col1, col2)
+VALUES ('abc', 'qwe');
+
+INSERT INTO table20
+    (col2)
+VALUES ('asd');
+
+INSERT INTO table20
+    (col1)
+VALUES ('asd');
+
+INSERT INTO table20
+    (col2)
+VALUES ('qwe');
+
+# 연습
+# (name varchar not null unique), (score int not null default 0) table21
+
+
 # Primary Key : 주키(PK), 키
 # Foreign Key : 외래키(FK), 참조키
