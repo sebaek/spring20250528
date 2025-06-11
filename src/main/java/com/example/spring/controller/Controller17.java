@@ -188,4 +188,11 @@ public class Controller17 {
     }
 
 
+    // 연습
+    // name(텍스트), birth_date(날짜), score(소숫점2까지), born_at(날짜시간) table13 만들기
+    // html * 1
+    // request handler method * 2 (get, post)
+    // get /main17/sub7
+    // post /main17/sub7
+    
 }
