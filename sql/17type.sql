@@ -141,3 +141,36 @@ FRom table9;
 
 
 # DATE,TIME
+# DATE : 날짜
+# TIME : 시간
+# DATETIME : 날짜시간
+CREATE TABLE table10
+(
+    col1 DATE,
+    col2 TIME,
+    col3 DATETIME
+);
+INSERT INTO table10
+    (col1, col2, col3)
+VALUES ('2025-06-11', '10:25:50', '2025-06-11 10:25:50');
+
+INSERT INTO table10
+    (col1, col2, col3)
+VALUES ('2025-06-11', '23:25:50', '2025-06-11 10:25:50');
+SELECT *
+FROM table10;
+
+# 연습
+# birth_date(날짜), work_time(시간), born(날짜시간) table11 만들기
+# 두 개의 레코드 입력
+
+
+
+
+
+
+
+
+
+
+
