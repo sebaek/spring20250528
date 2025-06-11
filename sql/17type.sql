@@ -71,6 +71,57 @@ VALUES (2147483648, 2147483647);
 # score(정수), length(큰정수) 컬럼이 있는 table7 번 만들기
 # 두 개의 레코드 입력(성공)
 # 한 개의 레코드 입력 실패
+CREATE TABLE table7
+(
+    score  INT,
+    length BIGINT
+);
+INSERT INTO table7
+    (score, length)
+VALUES (234234, 234234);
+INSERT INTO table7
+    (score, length)
+VALUES (2147483647, 234234);
+INSERT INTO table7
+    (score, length)
+VALUES ('2147483647', 234234);
+INSERT INTO table7
+    (score, length)
+VALUES (3.14, 234234);
+INSERT INTO table7
+    (score, length)
+VALUES (2147483648, 234234);
+SELECT *
+FROM table7;
 
+# DECIMAL(총길이, 소숫점이하길이)
+CREATE TABLE table8
+(
+    col1 INT,
+    col2 DECIMAL(5, 1),
+    col3 DECIMAL(10, 3),
+    col4 DEC(5, 1),
+    col5 DEC(10, 3)
+);
+INSERT INTO table8
+    (col1, col2, col3, col4, col5)
+VALUES (2342, 1234.5, 1234567.123, null, null);
+INSERT INTO table8
+    (col1, col2, col3, col4, col5)
+VALUES (2342, 1234.56, 1234567.1234, null, null);
+INSERT INTO table8
+    (col1, col2, col3, col4, col5)
+VALUES (2342, 12345.5, 12345678.123, null, null);
+INSERT INTO table8
+    (col1, col2, col3, col4, col5)
+VALUES (2342, 1234.5, 12345678.123, null, null);
+SELECT *
+FROM table8;
+
+# 연습
+# score (총길이 4, 소숫점이하2), money(총길이 10, 소숫점이하 3)table9
+# 두 개 레코드 입력 성공
+# 한 개 레코드 실패
+    
 
 # DATE,TIME
