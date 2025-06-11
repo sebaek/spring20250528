@@ -176,6 +176,43 @@ VALUES ('qwe');
 
 # 연습
 # (name varchar not null unique), (score int not null default 0) table21
+CREATE TABLE table21
+(
+    name  VARCHAR(10) NOT NULL UNIQUE,
+    score INT         NOT NULL DEFAULT 0
+);
+INSERT INTO table21
+    (name, score)
+VALUES ('son', 88);
+
+INSERT INTO table21
+    (name, score)
+VALUES ('lee', 77);
+
+# 테이블의 구조 보기
+DESCRIBE table21;
+DESCRIBE table19;
+DESC table19;
+
+SHOW CREATE TABLE table19;
+
+CREATE TABLE `table19`
+(
+    `col1` varchar(10) DEFAULT NULL,
+    `col2` varchar(10) DEFAULT NULL,
+    UNIQUE KEY `col2` (`col2`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci;
+
+create table mydatabase.table21
+(
+    name  varchar(10)   not null,
+    score int default 0 not null,
+    constraint name
+        unique (name)
+);
+
 
 
 # Primary Key : 주키(PK), 키
