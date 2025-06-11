@@ -213,6 +213,35 @@ create table mydatabase.table21
         unique (name)
 );
 
+# 연습
+# w3schools.Products 테이블 구조보기
+# DESC, SHOW CREATE TABLE, generate DDL
+DESC w3schools.Products;
+SHOW CREATE TABLE w3schools.Products;
+CREATE TABLE `Products`
+(
+    `ProductID`   int NOT NULL AUTO_INCREMENT,
+    `ProductName` varchar(255)   DEFAULT NULL,
+    `SupplierID`  int            DEFAULT NULL,
+    `CategoryID`  int            DEFAULT NULL,
+    `Unit`        varchar(255)   DEFAULT NULL,
+    `Price`       decimal(10, 2) DEFAULT NULL,
+    PRIMARY KEY (`ProductID`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 78
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci;
+create table w3schools.Products
+(
+    ProductID   int auto_increment
+        primary key,
+    ProductName varchar(255)   null,
+    SupplierID  int            null,
+    CategoryID  int            null,
+    Unit        varchar(255)   null,
+    Price       decimal(10, 2) null
+);
+
 
 
 # Primary Key : 주키(PK), 키
