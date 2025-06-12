@@ -106,6 +106,14 @@ ORDER BY 합 DESC;
 # 연습
 # 1997-09 월에 가장 많은 주문(가격 기준)을 처리한 직원 조회
 # Employees, Orders, OrderDetails, Products
+SELECT e.FirstName, e.LastName, SUM(p.Price * od.Quantity) 합
+FROM w3schools.Employees e
+         JOIN w3schools.Orders o on e.EmployeeID = o.EmployeeID
+         JOIN w3schools.OrderDetails od on o.OrderID = od.OrderID
+         JOIN w3schools.Products p on od.ProductID = p.ProductID
+WHERE OrderDate BETWEEN '1997-09-01' AND '1997-09-30'
+GROUP BY e.EmployeeID
+ORDER BY 합 DESC;
 
 
 
