@@ -74,6 +74,59 @@ WHERE avg >= 50;
 
 # 연습
 # 1996-09 월 평균 처리 금액 보다 높은 금액을 처리한 직원 목록
+# 1. 총 처리 금액
+# 2. 직원 수 나누고
+# 3. 직원별 처리 금액
+# 4. 평균금액보다 높은 직원 조회
+
+SELECT SUM(od.Quantity * p.Price)
+FROM w3schools.Orders o
+         JOIN w3schools.OrderDetails od
+              ON o.OrderID = od.OrderID
+         JOIN w3schools.Products p
+              ON od.ProductID = p.ProductID
+WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30';
+
+SELECT COUNT(DISTINCT EmployeeID)
+FROM w3schools.Orders o
+WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30';
+
+SELECT (SELECT SUM(od.Quantity * p.Price)
+        FROM w3schools.Orders o
+                 JOIN w3schools.OrderDetails od
+                      ON o.OrderID = od.OrderID
+                 JOIN w3schools.Products p
+                      ON od.ProductID = p.ProductID
+        WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30') /
+       (SELECT COUNT(DISTINCT EmployeeID)
+        FROM w3schools.Orders o
+        WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30');
+
+SELECT e.EmployeeID, e.LastName, e.FirstName, SUM(od.Quantity * p.Price) sum
+FROM w3schools.Orders o
+         JOIN w3schools.OrderDetails od
+              ON o.OrderID = od.OrderID
+         JOIN w3schools.Products p
+              ON od.ProductID = p.ProductID
+         JOIN w3schools.Employees e ON
+    e.EmployeeID = o.EmployeeID
+WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30'
+GROUP BY e.EmployeeID
+HAVING sum > (SELECT (SELECT SUM(od.Quantity * p.Price)
+                      FROM w3schools.Orders o
+                               JOIN w3schools.OrderDetails od
+                                    ON o.OrderID = od.OrderID
+                               JOIN w3schools.Products p
+                                    ON od.ProductID = p.ProductID
+                      WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30') /
+                     (SELECT COUNT(DISTINCT EmployeeID)
+                      FROM w3schools.Orders o
+                      WHERE o.OrderDate BETWEEN '1996-09-01' AND '1996-09-30'))
+ORDER BY EmployeeID;
+
+
+
+
 
 
 
