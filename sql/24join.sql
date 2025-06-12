@@ -77,6 +77,35 @@ ORDER BY p.ProductName;
 # 연습
 # Tofu 상품을 어떤 고객이 언제 주문했는지 조회
 # Orders, Products, Customers, OrderDetails
+SELECT p.ProductName, c.CustomerName, o.OrderDate
+FROM w3schools.Orders o
+         JOIN w3schools.OrderDetails od
+              ON o.OrderID = od.OrderID
+         JOIN w3schools.Products p
+              ON od.ProductID = p.ProductID
+         JOIN w3schools.Customers c
+              ON o.CustomerID = c.CustomerID
+# WHERE ProductName = 'Tofu'
+WHERE p.ProductID = 14 # 조건에 사용된는 컬럼들은 PK 사용할 수록 성능이 좋음
+ORDER BY c.CustomerName, o.OrderDate;
+
+# 우수고객 선정 조회
+# 고객별 주문 금액
+# Orders, OrderDetails, Products, Customers
+SELECT c.CustomerName, SUM(od.Quantity * p.Price) 합
+FROM w3schools.Orders o
+         JOIN w3schools.OrderDetails od
+              ON o.OrderID = od.OrderID
+         JOIN w3schools.Products p
+              ON p.ProductID = od.ProductID
+         JOIN w3schools.Customers c
+              ON o.CustomerID = c.CustomerID
+GROUP BY c.CustomerID
+ORDER BY 합 DESC;
+
+# 연습
+# 1997-09 월에 가장 많은 주문(가격 기준)을 처리한 직원 조회
+
 
 
 
