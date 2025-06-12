@@ -141,6 +141,35 @@ WHERE e.EmployeeID = 3;
 
 # 연습
 # 1번 고객이 주문한 날짜들 조회
+SELECT C.CustomerName, O.OrderDate
+FROM w3schools.Orders O
+         JOIN w3schools.Customers C on O.CustomerID = C.CustomerID
+WHERE C.CustomerID = 1
+ORDER BY O.OrderDate;
+
+# 고객별 주문 건수
+SELECT c.CustomerID, c.CustomerName, COUNT(*)
+FROM w3schools.Orders o
+         JOIN w3schools.Customers c
+              ON o.CustomerID = c.CustomerID
+GROUP BY c.CustomerID
+ORDER BY c.CustomerID
+;
+# 주문이 20건 이상인 고객들
+SELECT c.CustomerID, c.CustomerName, COUNT(*)
+FROM w3schools.Orders o
+         JOIN w3schools.Customers c
+              ON o.CustomerID = c.CustomerID
+GROUP BY c.CustomerID
+HAVING COUNT(*) >= 20
+ORDER BY c.CustomerID
+;
+
+# 연습
+# 직원 별 주문 처리 건수
+
+# 카테고리별 상품의 평균가격
+
 
 
 
