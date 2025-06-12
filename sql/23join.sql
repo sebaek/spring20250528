@@ -99,6 +99,48 @@ FROM table36
      table37
      ON table36.우승자 = table37.우승자;
 
+SELECT `대회`, `연도`, table37.`우승자`, `생년월일`
+FROM table36
+         JOIN
+     table37
+     ON table36.우승자 = table37.우승자;
+
+# ALIAS : 별칭
+SELECT `대회` AS congress, `연도` year, t7.`우승자`, `생년월일`
+FROM table36 t6
+         JOIN
+     table37 AS t7
+     ON t6.우승자 = t7.우승자;
+
+#
+SELECT *
+FROM w3schools.Products;
+SELECT *
+FROM w3schools.Categories;
+
+SELECT c.CategoryName, p.ProductName
+FROM w3schools.Products p
+         JOIN w3schools.Categories c
+              ON p.CategoryID = c.CategoryID
+ORDER BY c.CategoryName, p.ProductName;
+
+# 연습 :
+# 공급자별 공급하는 상품 목록 조회
+SELECT s.SupplierName, p.ProductName
+FROM w3schools.Suppliers s
+         JOIN w3schools.Products p
+              ON s.SupplierID = p.SupplierID
+ORDER BY s.SupplierName, ProductName;
+
+
+# 주문별 처리 직원
+SELECT o.OrderDate, o.OrderID, e.FirstName, e.LastName
+FROM w3schools.Orders o
+         JOIN w3schools.Employees e on o.EmployeeID = e.EmployeeID
+WHERE e.EmployeeID = 3;
+
+# 연습
+# 1번 고객이 주문한 날짜들 조회
 
 
 
