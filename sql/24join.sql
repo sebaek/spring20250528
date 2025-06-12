@@ -105,7 +105,7 @@ ORDER BY 합 DESC;
 
 # 연습
 # 1997-09 월에 가장 많은 주문(가격 기준)을 처리한 직원 조회
-
+# Employees, Orders, OrderDetails, Products
 
 
 
