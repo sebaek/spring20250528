@@ -166,9 +166,28 @@ ORDER BY c.CustomerID
 ;
 
 # 연습
-# 직원 별 주문 처리 건수
-
 # 카테고리별 상품의 평균가격
+SELECT c.CategoryID, c.CategoryName, AVG(p.Price)
+FROM w3schools.Categories c
+         JOIN w3schools.Products p
+              ON c.CategoryID = p.CategoryID
+GROUP BY c.CategoryID
+ORDER BY c.CategoryID;
+
+# 직원 별 주문 처리 건수
+SELECT e.EmployeeID, e.LastName, e.FirstName, COUNT(*) count
+FROM w3schools.Orders o
+         JOIN w3schools.Employees e ON o.EmployeeID = e.EmployeeID
+GROUP BY e.EmployeeID
+ORDER BY count DESC;
+
+SELECT e.EmployeeID, e.LastName, e.FirstName, COUNT(*) count
+FROM w3schools.Orders o
+         JOIN w3schools.Employees e ON o.EmployeeID = e.EmployeeID
+WHERE OrderDate BETWEEN '1997-01-01' AND '1997-12-31'
+GROUP BY e.EmployeeID
+ORDER BY count DESC;
+
 
 
 
