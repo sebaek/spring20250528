@@ -86,4 +86,25 @@ FROM w3schools.Orders o
                     ON o.EmployeeID = e.EmployeeID
 WHERE o.OrderID IS NULL;
 
-# UNION
+# UNION (합집합)
+SELECT col1
+FROM table39;
+SELECT col_a
+FROM table40;
+
+SELECT col1
+FROM table39
+UNION
+SELECT col_a
+FROM table40;
+
+# FULL OUTER JOIN
+SELECT *
+FROM table39
+         LEFT JOIN table40 ON table39.col1 = col_a
+
+UNION
+
+SELECT *
+FROM table39
+         RIGHT JOIN table40 ON table39.col1 = col_a;
