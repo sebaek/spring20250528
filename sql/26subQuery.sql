@@ -48,4 +48,32 @@ WHERE OrderDate = '1996-08-01';
 # 연습
 # 상품의 평균가격보다 높은 상품들 조회
 # sub query
+SELECT AVG(Price)
+FROM w3schools.Products;
+
+SELECT *
+FROM w3schools.Products
+WHERE Price > 28.866364;
+
+SELECT *
+FROM w3schools.Products
+WHERE Price > (SELECT AVG(Price)
+               FROM w3schools.Products);
+
+# 상품의 평균가격이 50 이상인 카테고리 번호
+SELECT CategoryID, AVG(Price)
+FROM w3schools.Products
+GROUP BY CategoryID
+HAVING AVG(Price) >= 50;
+
+SELECT *
+FROM (SELECT CategoryID, AVG(Price) avg
+      FROM w3schools.Products
+      GROUP BY CategoryID) p
+WHERE avg >= 50;
+
+# 연습
+# 1996-09 월 평균 처리 금액 보다 높은 금액을 처리한 직원 목록
+
+
 
