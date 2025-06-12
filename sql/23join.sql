@@ -74,3 +74,36 @@ INSERT INTO table37
 VALUES ('chip', '77-3-14'),
        ('al', '75-7-21'),
        ('bob', '68-9-28');
+
+
+SELECT *
+FROM table36;
+SELECT *
+FROM table37;
+
+# 카테시안 곱
+SELECT *
+FROM table36
+         JOIN
+     table37;
+
+SELECT *
+FROM table36
+         JOIN
+     table37
+WHERE table36.우승자 = table37.우승자;
+
+SELECT *
+FROM table36
+         JOIN
+     table37
+     ON table36.우승자 = table37.우승자;
+
+
+
+
+
+
+
+
+
