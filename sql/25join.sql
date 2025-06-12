@@ -108,3 +108,16 @@ UNION
 SELECT *
 FROM table39
          RIGHT JOIN table40 ON table39.col1 = col_a;
+
+# 연습
+DELETE
+FROM w3schools.OrderDetails
+WHERE ProductID IN (10, 20, 30, 40);
+# 한 번도 주문된 적 없는 상품들 이름 조회
+SELECT p.ProductID, p.ProductName
+FROM w3schools.OrderDetails od
+         RIGHT JOIN w3schools.Products p on od.ProductID = p.ProductID
+WHERE od.OrderDetailID IS NULL
+ORDER BY p.ProductID;
+
+
