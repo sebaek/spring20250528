@@ -1,5 +1,8 @@
 package com.example.core.app5;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Service1 {
 
     public void action() {
