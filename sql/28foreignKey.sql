@@ -27,3 +27,22 @@ ALTER TABLE Products
 # 참조하는 외래키가 되도록 alter table 실행
 # diagram 보기
 
+ALTER TABLE Products
+    ADD FOREIGN KEY (SupplierID) REFERENCES Suppliers (SupplierID);
+
+ALTER TABLE OrderDetails
+    ADD FOREIGN KEY (OrderID) REFERENCES Orders (OrderID);
+
+ALTER TABLE OrderDetails
+    ADD FOREIGN KEY (ProductID) REFERENCES Products (ProductID);
+
+ALTER TABLE Orders
+    ADD FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID);
+
+ALTER TABLE Orders
+    ADD FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID);
+
+ALTER TABLE Orders
+    ADD FOREIGN KEY (ShipperID) REFERENCES Shippers (ShipperID);
+
+
