@@ -77,6 +77,33 @@ CREATE TABLE table49
 # 연습
 # 다대다 테이블 만들어 보기
 # 50,51,52
+# 영화, 배우, 영화-배우
+CREATE TABLE table50
+(
+    id     INT AUTO_INCREMENT PRIMARY KEY,
+    title  VARCHAR(30),
+    length VARCHAR(50),
+    info   VARCHAR(50)
+);
+CREATE TABLE table51
+(
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    name       VARCHAR(30),
+    birth_date DATE,
+    info       VARCHAR(50)
+);
+
+CREATE TABLE table52
+(
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    table50_id INT,
+    table51_id INT,
+    money      INT,
+    info       VARCHAR(30),
+#     PRIMARY KEY (table50_id, table51_id),
+    FOREIGN KEY (table50_id) REFERENCES table50 (id),
+    FOREIGN KEY (table51_id) REFERENCES table51 (id)
+);
 
 
 
