@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -176,24 +177,83 @@ public class Controller18 {
 
     }
 
+    // 연습
     @GetMapping("sub6")
     public String sub6(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM table53
+                """;
 
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        List<Map<String, Object>> list = new ArrayList<>();
+        while (resultSet.next()) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("user", resultSet.getString("user"));
+            map.put("money", resultSet.getInt("money"));
+            list.add(map);
+        }
+
+        model.addAttribute("list", list);
         return "main18/sub6";
     }
 
     @PostMapping("sub7")
-    public String sub7(Model model) throws Exception {
+    public String sub7(Model model, RedirectAttributes rttr) {
         // b -> a (500원)
         // 50% 확률로 성공/실패
+        String sql1 = """
+                UPDATE table53
+                SET money = money - 500
+                WHERE user = 'b'
+                """;
+        String sql2 = """
+                UPDATE table53
+                SET money = money + 500
+                WHERE user = 'a'
+                """;
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String username = "root";
+        String password = "1234";
 
-        // b의 돈 500원 차감
-        double random = Math.random();
-        if (random < 0.5) {
-            throw new Exception("네트워크 오류");
+        try {
+
+            Connection connection = DriverManager.getConnection(url, username, password);
+            connection.setAutoCommit(false);
+            try (connection) {
+                PreparedStatement statement1 = connection.prepareStatement(sql1);
+                PreparedStatement statement2 = connection.prepareStatement(sql2);
+
+                try (statement1; statement2) {
+                    // b의 돈 500원 차감
+                    try {
+                        statement1.executeUpdate();
+
+                        double random = Math.random();
+                        if (random < 0.5) {
+                            throw new Exception("네트워크 오류");
+                        }
+
+                        // a의 돈 500원 더함
+                        statement2.executeUpdate();
+
+                        connection.commit();
+                        rttr.addFlashAttribute("message", "(b -> a) 500원 송금 성공");
+                    } catch (Exception e) {
+                        connection.rollback();
+                        rttr.addFlashAttribute("message", "(b -> a) 500원 송금 실패");
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // a의 돈 500원 더함
 
 
         return "redirect:/main18/sub6";
