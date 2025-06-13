@@ -3,8 +3,8 @@ package com.example.core.app7;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Bean1 {
-    public void go() {
-        System.out.println("Bean1.go");
+public class Bean3 {
+    public void abc() {
+        System.out.println("Bean3.abc");
     }
 }
