@@ -175,4 +175,27 @@ public class Controller18 {
         return "redirect:/main18/sub1";
 
     }
+
+    @GetMapping("sub6")
+    public String sub6(Model model) throws Exception {
+
+        return "main18/sub6";
+    }
+
+    @PostMapping("sub7")
+    public String sub7(Model model) throws Exception {
+        // b -> a (500원)
+        // 50% 확률로 성공/실패
+
+        // b의 돈 500원 차감
+        double random = Math.random();
+        if (random < 0.5) {
+            throw new Exception("네트워크 오류");
+        }
+
+        // a의 돈 500원 더함
+
+
+        return "redirect:/main18/sub6";
+    }
 }
