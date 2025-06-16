@@ -100,6 +100,11 @@ CREATE TABLE my_table6
 
 
 
+# 연습
+# my_table7과
+# 매핑되는 Entity7을 만들어 보세요.
+
+
 
 
 
