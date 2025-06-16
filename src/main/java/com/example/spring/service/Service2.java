@@ -163,4 +163,13 @@ public class Service2 {
     }
 
 
+    public void process15(Integer id, String address) {
+        // 조회
+        Entity15 entity15 = entity15Repository.findById(id).get();
+        // 변경
+        entity15.setAddress(address);
+        // save
+        entity15Repository.save(entity15);
+
+    }
 }

@@ -137,4 +137,10 @@ public class Controller20 {
     // 연습
     // /main20/sub18?id=1&address=강남
     // 으로 요청시 15번테이블의 1번 키의 레코드의address 값을 강남으로 바꾸는 코드 작성
+
+    @GetMapping("sub18")
+    public String sub18(Integer id, String address) {
+        service2.process15(id, address);
+        return "/main20/sub18";
+    }
 }
