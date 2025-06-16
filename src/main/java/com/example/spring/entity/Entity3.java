@@ -31,5 +31,5 @@ public class Entity3 {
     //연습
     //work_address 테이블컬럼에 매핑되는
     // java field 작성하기
-
+    private String workAddress;
 }
