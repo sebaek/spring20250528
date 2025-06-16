@@ -33,6 +33,19 @@ FROM my_table1;
 SELECT *
 FROM my_table2;
 
+CREATE TABLE my_table3
+(
+    id    INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(30),
+    info  VARCHAR(30),
+    nick  VARCHAR(30)
+);
+INSERT INTO my_table3
+    (email, info, nick)
+VALUES ('gmail', '어쩌구 저쩌구', 'trump');
+SELECT *
+FROM my_table3;
+
 
 
 

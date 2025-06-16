@@ -25,4 +25,18 @@ public class Controller20 {
 
         return "/main20/sub2";
     }
+
+    @GetMapping("sub3")
+    public String sub3() {
+        service2.process3();
+
+        return "/main20/sub3";
+    }
+
+    @GetMapping("sub4")
+    public String sub4() {
+        service2.process4();
+
+        return "/main20/sub4";
+    }
 }
