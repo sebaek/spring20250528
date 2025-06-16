@@ -143,4 +143,17 @@ public class Controller20 {
         service2.process15(id, address);
         return "/main20/sub18";
     }
+
+    // /main20/sub19?id=1
+    @GetMapping("sub19")
+    public String sub19(Integer id) {
+        service2.process16(id);
+
+        return "/main20/sub19";
+    }
+
+    // 연습
+    // /main20/sub20?id=1
+    // 15번 테이블 1번 레코드 삭제 코드 작성
+
 }

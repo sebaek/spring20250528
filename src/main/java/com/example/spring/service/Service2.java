@@ -172,4 +172,8 @@ public class Service2 {
         entity15Repository.save(entity15);
 
     }
+
+    public void process16(Integer id) {
+        entity14Repository.deleteById(id);
+    }
 }
