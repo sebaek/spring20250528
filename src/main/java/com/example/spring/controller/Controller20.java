@@ -1,8 +1,10 @@
 package com.example.spring.controller;
 
+import com.example.spring.entity.Entity14;
 import com.example.spring.service.Service2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -97,5 +99,21 @@ public class Controller20 {
     public String sub13() {
         service2.process10();
         return "/main20/sub10";
+    }
+
+    @GetMapping("sub14")
+    public String sub14(Integer id, Model model) {
+        Entity14 data = service2.process11(id);
+
+        model.addAttribute("data", data);
+        System.out.println(data);
+        return "/main20/sub14";
+    }
+
+    // /main20/sub15?name=choi&score=88.9&city=dokdo
+    @GetMapping("sub15")
+    public String sub15(String name, Double score, String city) {
+        service2.process12(name, score, city);
+        return "/main20/sub15";
     }
 }

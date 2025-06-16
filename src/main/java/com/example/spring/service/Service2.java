@@ -20,6 +20,7 @@ public class Service2 {
     private final Entity11Repository entity11Repository;
     private final Entity12Repository entity12Repository;
     private final Entity13Repository entity13Repository;
+    private final Entity14Repository entity14Repository;
 
     public void process1() {
         System.out.println("실제 업무 로직 (business logic, crud)");
@@ -106,4 +107,34 @@ public class Service2 {
         System.out.println(byId.isEmpty());
     }
 
+    public Entity14 process11(Integer id) {
+
+        // SELECT : 
+        // findById(key) : key에 해당하는 record를 저장한 Entity 객체를 리턴(Optional)
+        Optional<Entity14> data = entity14Repository.findById(id);
+        if (data.isPresent()) {
+            return data.get();
+        }
+        return null;
+    }
+
+    public void process12(String name, Double score, String city) {
+        // INSERT :
+        // save(): 해당 entity를 새 record로 입력
+        //          해당 entity에 매핑되는 record를 업데이트
+
+        Entity14 data = new Entity14();
+        data.setName(name);
+        data.setScore(score);
+        data.setCity(city);
+
+        entity14Repository.save(data);
+    }
+
+    // table, entity, repository
+
+    // 연습
+    // save 메소드 활용하는 코드 작성해보기
+
+    
 }
