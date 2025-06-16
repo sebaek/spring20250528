@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
 @Controller
 @RequestMapping("main20")
 @RequiredArgsConstructor
@@ -115,5 +117,13 @@ public class Controller20 {
     public String sub15(String name, Double score, String city) {
         service2.process12(name, score, city);
         return "/main20/sub15";
+    }
+
+    // /main20/sub16?address=신촌&score=5678&inserted=2010-10-10T12:13:14
+    @GetMapping("sub16")
+    public String sub16(String address, Integer score, LocalDateTime inserted) {
+        service2.process13(address, score, inserted);
+
+        return "/main20/sub16";
     }
 }

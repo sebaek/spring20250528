@@ -5,6 +5,7 @@ import com.example.spring.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,7 @@ public class Service2 {
     private final Entity12Repository entity12Repository;
     private final Entity13Repository entity13Repository;
     private final Entity14Repository entity14Repository;
+    private final Entity15Repository entity15Repository;
 
     public void process1() {
         System.out.println("실제 업무 로직 (business logic, crud)");
@@ -137,6 +139,13 @@ public class Service2 {
     // save 메소드 활용하는 코드 작성해보기
 //    repository, service 메소드, controller의 메소드
     //
+    public void process13(String address, Integer price, LocalDateTime inserted) {
+        Entity15 data = new Entity15();
+        data.setAddress(address);
+        data.setPrice(price);
+        data.setInsertedAt(inserted);
+        entity15Repository.save(data);
+    }
 
 
 }
