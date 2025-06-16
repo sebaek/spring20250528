@@ -93,4 +93,9 @@ public class Controller20 {
     // Entity13Repository 만들기
     // request handler method, service.process10() 메소드
     // 만들어서 findById() 호출해보기 //-> 테이블 없다는 에러 보기
+    @GetMapping("sub13")
+    public String sub13() {
+        service2.process10();
+        return "/main20/sub10";
+    }
 }

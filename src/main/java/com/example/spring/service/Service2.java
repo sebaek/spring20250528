@@ -19,6 +19,7 @@ public class Service2 {
     private final Entity10Repository entity10Repository;
     private final Entity11Repository entity11Repository;
     private final Entity12Repository entity12Repository;
+    private final Entity13Repository entity13Repository;
 
     public void process1() {
         System.out.println("실제 업무 로직 (business logic, crud)");
@@ -97,6 +98,12 @@ public class Service2 {
         Optional<Entity12> data = entity12Repository.findById(1);
         System.out.println(data.isPresent());
         System.out.println(data.isEmpty());
+    }
+
+    public void process10() {
+        Optional<Entity13> byId = entity13Repository.findById(1);
+        System.out.println(byId.isPresent());
+        System.out.println(byId.isEmpty());
     }
 
 }
