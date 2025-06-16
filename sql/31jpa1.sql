@@ -114,6 +114,20 @@ CREATE TABLE my_table7
 );
 
 
+CREATE TABLE my_table8
+(
+    id          INT AUTO_INCREMENT NOT NULL,
+    address     VARCHAR(255)       NULL,
+    salary      DEC(10, 2)         NULL,
+    inserted_at datetime           NULL,
+    hire_date   date               NULL,
+    CONSTRAINT pk_my_table8 PRIMARY KEY (id)
+);
+
+# 연습
+# Entity9 먼저 만들고
+# my_table9 만들어보기
+
 
 
 
