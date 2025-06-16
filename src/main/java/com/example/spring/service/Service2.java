@@ -135,7 +135,7 @@ public class Service2 {
 
     // 연습
     // save 메소드 활용하는 코드 작성해보기
-//    repository, service 메소드, controller의 메소
+//    repository, service 메소드, controller의 메소드
     //
 
 
