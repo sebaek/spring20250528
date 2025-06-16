@@ -155,5 +155,10 @@ public class Controller20 {
     // 연습
     // /main20/sub20?id=1
     // 15번 테이블 1번 레코드 삭제 코드 작성
+    @GetMapping("sub20")
+    public String sub20(Integer id) {
+        service2.process17(id);
+        return "/main20/sub20";
+    }
 
 }
