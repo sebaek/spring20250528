@@ -87,6 +87,16 @@ INSERT INTO my_table5
 VALUES ('뉴욕', '1976-09-10', '2025-01-02 17:19:22', 200.34, 567);
 # 연습 my_table5 에 매핑되는 Entity5 만들어 보기
 
+CREATE TABLE my_table6
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    city        VARCHAR(30),
+    score       DEC(10, 2),
+    weight      BIGINT,
+    birth_date  DATE,
+    started_at  TIME,
+    inserted_at DATETIME
+);
 
 
 
