@@ -128,7 +128,18 @@ CREATE TABLE my_table8
 # Entity9 먼저 만들고
 # my_table9 만들어보기
 
-
+CREATE TABLE my_table9
+(
+    id         INT AUTO_INCREMENT NOT NULL,
+    city       VARCHAR(1000)      NULL,
+    country    VARCHAR(2000)      NULL,
+    latitude   DEC(20, 10)        NULL,
+    longitude  DEC(20, 10)        NULL,
+    created_at datetime           NULL,
+    CONSTRAINT pk_my_table9 PRIMARY KEY (id)
+);
+SELECT *
+FROM my_table9;
 
 
 
