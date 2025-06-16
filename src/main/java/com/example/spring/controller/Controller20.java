@@ -126,4 +126,15 @@ public class Controller20 {
 
         return "/main20/sub16";
     }
+
+    // /main20/sub17?id=2&score=12.34
+    @GetMapping("sub17")
+    public String sub17(Integer id, Double score) {
+        service2.process14(id, score);
+        return "/main20/sub17";
+    }
+
+    // 연습
+    // /main20/sub18?id=1&address=강남
+    // 으로 요청시 15번테이블의 1번 키의 레코드의address 값을 강남으로 바꾸는 코드 작성
 }

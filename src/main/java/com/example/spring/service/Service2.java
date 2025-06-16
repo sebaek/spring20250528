@@ -147,5 +147,20 @@ public class Service2 {
         entity15Repository.save(data);
     }
 
+    public void process14(Integer id, Double score) {
+        //1. 조회하고
+        Entity14 data = entity14Repository.findById(id).get();
+
+//        Entity14 data = new Entity14(); // 하지마세요.
+        //2. 값 변경
+//        data.setId(id);
+//        data.setName("강");
+        data.setScore(score);
+
+        //3. save
+        entity14Repository.save(data);
+
+    }
+
 
 }
