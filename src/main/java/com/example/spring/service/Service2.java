@@ -1,9 +1,16 @@
 package com.example.spring.service;
 
+import com.example.spring.entity.Entity1;
+import com.example.spring.repository.Entity1Repository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class Service2 {
+
+    private final Entity1Repository entity1Repository;
+
     public void process1() {
         System.out.println("실제 업무 로직 (business logic, crud)");
 
@@ -13,6 +20,11 @@ public class Service2 {
         // business logic
 
         // spring data jpa 를 사용해서 crud
+        Entity1 res = entity1Repository.findById(1).get();
+        System.out.println(res.getId());
+        System.out.println(res.getName());
+        System.out.println(res.getAddress());
+        System.out.println(res.getCity());
 
 
     }
