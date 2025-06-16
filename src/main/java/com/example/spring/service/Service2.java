@@ -2,6 +2,7 @@ package com.example.spring.service;
 
 import com.example.spring.entity.Entity1;
 import com.example.spring.entity.Entity2;
+import com.example.spring.entity.Entity3;
 import com.example.spring.repository.Entity1Repository;
 import com.example.spring.repository.Entity2Repository;
 import com.example.spring.repository.Entity3Repository;
