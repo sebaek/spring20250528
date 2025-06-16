@@ -131,10 +131,12 @@ public class Service2 {
         entity14Repository.save(data);
     }
 
-    // table, entity, repository
+    // table, entity,
 
     // 연습
     // save 메소드 활용하는 코드 작성해보기
+//    repository, service 메소드, controller의 메소
+    //
 
-    
+
 }
