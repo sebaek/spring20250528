@@ -46,6 +46,17 @@ VALUES ('gmail', '어쩌구 저쩌구', 'trump');
 SELECT *
 FROM my_table3;
 
+ALTER TABLE my_table3
+    CHANGE COLUMN county country VARCHAR(30);
+
+# 테이블명, 컬럼명 lower_snake_case
+ALTER TABLE my_table3
+    ADD COLUMN home_address VARCHAR(30);
+
+ALTER TABLE my_table3
+    ADD COLUMN work_address VARCHAR(30);
+
+
 
 
 
