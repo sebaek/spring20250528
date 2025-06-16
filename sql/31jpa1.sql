@@ -104,7 +104,14 @@ CREATE TABLE my_table6
 # my_table7과
 # 매핑되는 Entity7을 만들어 보세요.
 
-
+CREATE TABLE my_table7
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(3),
+    weight      DEC(10, 2),
+    height      BIGINT,
+    inserted_at DATETIME
+);
 
 
 
