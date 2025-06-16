@@ -57,6 +57,35 @@ ALTER TABLE my_table3
     ADD COLUMN work_address VARCHAR(30);
 
 
+#
+CREATE TABLE my_table4
+(
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    name       VARCHAR(30),
+    score      DEC(10, 2),
+    birth_date DATE,
+    start_at   TIME,
+    created_at DATETIME
+);
+INSERT INTO my_table4
+    (name, score, birth_date, start_at, created_at)
+VALUES ('trump', 33.12, '1999-09-09', '14:12:11', '1988-03-03 12:10:10');
+SELECT *
+FROM my_table4;
+
+CREATE TABLE my_table5
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    address     VARCHAR(30),
+    hired_date  DATE,
+    inserted_at DATETIME,
+    height      DEC(10, 2),
+    score       INT
+);
+INSERT INTO my_table5
+    (address, hired_date, inserted_at, height, score)
+VALUES ('뉴욕', '1976-09-10', '2025-01-02 17:19:22', 200.34, 567);
+# 연습 my_table5 에 매핑되는 Entity5 만들어 보기
 
 
 
