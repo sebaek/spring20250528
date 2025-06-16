@@ -28,4 +28,15 @@ public class Service2 {
 
 
     }
+
+    // jpa 사용
+    // 1. Entity
+    //// : table과 1대1 매칭되는 클래스
+    //// : 이 클래스로 만든 각 객체는  table의 각 행과 매치됨
+    //// : @Entity, @Table(클래스-테이블)
+    //// : @Column(클래스필드와 - 테이블컬럼)
+    //// : @Id(클래스필드 - 테이블PK)
+    
+    // 2. Repository
+
 }
