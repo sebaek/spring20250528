@@ -75,4 +75,22 @@ public class Controller20 {
         return "/main20/sub10";
 
     }
+
+    @GetMapping("sub11")
+    public String sub11() {
+        service2.process8();
+        return "/main20/sub8";
+    }
+
+    @GetMapping("sub12")
+    public String sub12() {
+        service2.process9();
+        return "/main20/sub9";
+    }
+
+    // 연습
+    // Entity13 만들고
+    // Entity13Repository 만들기
+    // request handler method, service.process10() 메소드
+    // 만들어서 findById() 호출해보기 //-> 테이블 없다는 에러 보기
 }

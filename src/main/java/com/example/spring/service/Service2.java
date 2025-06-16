@@ -17,6 +17,8 @@ public class Service2 {
     private final Entity4Repository entity4Repository;
     private final Entity5Repository entity5Repository;
     private final Entity10Repository entity10Repository;
+    private final Entity11Repository entity11Repository;
+    private final Entity12Repository entity12Repository;
 
     public void process1() {
         System.out.println("실제 업무 로직 (business logic, crud)");
@@ -85,5 +87,16 @@ public class Service2 {
     // entity11Repository.findById()를 사용해서 하나의 record를 조회하는
     // process8 메소드 작성
     // Controller에 request handler method
+    public void process8() {
+        Optional<Entity11> data = entity11Repository.findById(1);
+        System.out.println(data.isPresent());
+        System.out.println(data.isEmpty());
+    }
+
+    public void process9() {
+        Optional<Entity12> data = entity12Repository.findById(1);
+        System.out.println(data.isPresent());
+        System.out.println(data.isEmpty());
+    }
 
 }
