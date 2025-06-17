@@ -123,4 +123,28 @@ public class Controller21 {
         service3.action13(keyword);
         return "main21/sub13";
     }
+
+    @GetMapping("sub14")
+    public String sub14(String country) {
+        service3.action14(country);
+        return "main21/sub14";
+    }
+
+    @GetMapping("sub15")
+    public String sub15(String city) {
+        service3.action15(city);
+        return "main21/sub15";
+    }
+
+    @GetMapping("sub16")
+    public String sub16(LocalDate start, LocalDate end) {
+        service3.action16(start, end);
+        return "main21/sub16";
+    }
+
+    @GetMapping("sub17")
+    public String sub17() {
+        service3.action17();
+        return "main21/sub17";
+    }
 }

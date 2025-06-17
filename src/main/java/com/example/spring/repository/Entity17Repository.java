@@ -31,4 +31,6 @@ public interface Entity17Repository extends JpaRepository<Entity17, Integer> {
                OR e.lastName LIKE :keyword
             """)
     List<Entity17> query3(String keyword);
+
+    List<Entity17> findByBirthDateBetween(LocalDate start, LocalDate end);
 }

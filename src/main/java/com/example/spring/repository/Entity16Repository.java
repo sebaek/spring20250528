@@ -83,4 +83,18 @@ public interface Entity16Repository extends JpaRepository<Entity16, Integer> {
             WHERE c.customerName LIKE :keyword
             """)
     List<Entity16> query7(String keyword);
+
+
+    /* JPQL
+    @Query("""
+            SELECT e
+            FROM Entity16 e
+            WHERE e.country = :country
+            """)
+     */
+    List<Entity16> findByCountry(String country);
+
+    // sql, jpql 안써도 됨
+    // SELECT * FROM customer WHERE city = :city
+    List<Entity16> findByCity(String city);
 }

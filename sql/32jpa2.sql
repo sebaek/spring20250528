@@ -52,6 +52,27 @@ FROM w3schools.Employees;
 # service.action3() 메소드 만들고
 ## entity17(employee) 테이블의 모든 레코드 조회하고 size 출력하기
 
+DESC w3schools.Suppliers
+;
+CREATE TABLE supplier
+(
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_name VARCHAR(255),
+    contact_name  VARCHAR(255),
+    address       VARCHAR(255),
+    city          VARCHAR(255),
+    postal_code   VARCHAR(255),
+    country       VARCHAR(255),
+    phone         VARCHAR(255)
+);
+DROP TABLE supplier;
+INSERT INTO supplier
+(supplier_name, contact_name, address, city, postal_code, country, phone)
+SELECT suppliername, contactname, address, city, postalcode, country, phone
+FROM w3schools.Suppliers;
+
+SELECT *
+FROM supplier;
 
 
 
