@@ -49,4 +49,19 @@ public class Service3 {
             System.out.println(entity16);
         }
     }
+
+    public void action5(String city) {
+        List<Entity16> data = entity16Repository.query2(city);
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
+
+    public void action6(String city1, String city2) {
+        List<Entity16> list = entity16Repository.query3(city1, city2);
+
+        for (Entity16 entity16 : list) {
+            System.out.println(entity16);
+        }
+    }
 }

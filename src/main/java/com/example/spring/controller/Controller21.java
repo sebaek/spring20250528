@@ -41,5 +41,29 @@ public class Controller21 {
 
         return "main21/sub4";
     }
-    
+
+    // 연습
+    // get /main21/sub5?city=berlin
+    // service3.action5()
+    // entity16Repository.query2()
+    @GetMapping("sub5")
+    public String sub5(String city) {
+        service3.action5(city);
+
+        return "main21/sub4";
+    }
+
+    // get /main21/sub6?city1=berlin&city2=london
+    @GetMapping("sub6")
+    public String sub6(String city1, String city2) {
+        service3.action6(city1, city2);
+
+        return "main21/sub6";
+    }
+
+    // get /main21/sub7?start=1950-01-01&end=1959-12-31
+    // controller.sub7()
+    // service.action7()
+    // entity17repository.query1()
+    // SELECT * FROM employee WHERE birth_date BETWEEN :start AND :end
 }
