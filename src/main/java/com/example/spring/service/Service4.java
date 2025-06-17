@@ -74,6 +74,29 @@ public class Service4 {
 
     public void action5() {
         // 가격 역순으로 10개씩 1페이지 상품 내용 보기
-        
+        List<Entity19> list = entity19Repository
+                .findAll(PageRequest.of(1 - 1, 10, Sort.by("price").descending()))
+                .getContent();
+        for (Entity19 entity19 : list) {
+            System.out.println(entity19);
+        }
+    }
+
+    public void action6(Integer page) {
+        // 91 레코드
+        // 1~10 페이지
+
+        System.out.println("########### " + page + " page ##############");
+        Page<Entity16> page1 = entity16Repository
+                .findAll(PageRequest.of(page - 1, 10, Sort.by("id").descending()));
+
+        List<Entity16> content1 = page1.getContent();
+        int totalPages = page1.getTotalPages(); // 10
+        long totalElements = page1.getTotalElements(); // 91
+
+        System.out.println("totalPages = " + totalPages);
+        System.out.println("totalElements = " + totalElements);
+
+        content1.forEach(entity16 -> System.out.println(entity16));
     }
 }
