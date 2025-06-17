@@ -227,5 +227,35 @@ public class Service3 {
             System.out.println(entity19);
         }
 
+
+    }
+
+    public void action19() {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        List<Entity19> list1 = entity19Repository.query1(6);
+        for (Entity19 entity19 : list1) {
+            System.out.println(entity19);
+        }
+
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        List<Entity19> list2 = entity19Repository.query2(5);
+        for (Entity19 entity19 : list2) {
+            System.out.println(entity19);
+        }
+
+        System.out.println("###########################");
+        for (Entity19 entity19 : entity19Repository.findByCategoryIdOrderByPrice(4)) {
+            System.out.println(entity19);
+        }
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        for (Entity19 entity19 : entity19Repository.findByCategoryIdOrderByPriceAsc(3)) {
+            System.out.println(entity19);
+        }
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        for (Entity19 entity19 : entity19Repository.findByCategoryIdOrderByPriceDesc(2)) {
+            System.out.println(entity19);
+        }
+
     }
 }
