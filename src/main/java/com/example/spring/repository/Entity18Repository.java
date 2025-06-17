@@ -43,6 +43,9 @@ public interface Entity18Repository extends JpaRepository<Entity18, Integer> {
 
     // 연습
     // SELECT * FROM supplier WHERE county IN (?, ?, ?) ORDER BY supplier_name
-//    SELECT * FROM supplier WHERE supplier_name LIKE :keyword ORDER BY supplier_name DESC
+    List<Entity18> findByCountryInOrderBySupplierName(List<String> country);
+
+    //    SELECT * FROM supplier WHERE supplier_name LIKE :keyword ORDER BY supplier_name DESC
+    List<Entity18> findBySupplierNameContainsOrderBySupplierNameDesc(String supplierName);
     // query method 만들기
 }

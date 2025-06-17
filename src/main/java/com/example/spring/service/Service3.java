@@ -258,4 +258,18 @@ public class Service3 {
         }
 
     }
+
+    public void action20() {
+        System.out.println("!!!!!!!!!!!!!!!!!!");
+        for (Entity18 entity18 : entity18Repository.findByCountryInOrderBySupplierName(List.of("japan", "uk"))) {
+            System.out.println(entity18);
+        }
+
+
+        System.out.println("@@@@@@@@@@@@@@@@@@@");
+        for (Entity18 entity18 : entity18Repository.findBySupplierNameContainsOrderBySupplierNameDesc("er")) {
+            System.out.println(entity18);
+        }
+
+    }
 }
