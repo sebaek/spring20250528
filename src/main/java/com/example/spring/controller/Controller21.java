@@ -85,10 +85,14 @@ public class Controller21 {
         return "main21/sub8";
     }
 
-    // get /main21/sub8?keyword=an
+    // get /main21/sub9?keyword=an
     // 직원이름에 an이 있는 직원들 조회
     // controller.sub9()
     // service.action9()
     // entity17repository.query2()
-    
+    @GetMapping("sub9")
+    public String sub9(String keyword) {
+        service3.action9(keyword);
+        return "main21/sub9";
+    }
 }
