@@ -94,4 +94,18 @@ public class Service3 {
             System.out.println(entity16);
         }
     }
+
+    public void action11(String city) {
+        List<Entity16> data = entity16Repository.query6(city);
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
+
+    public void action12(String keyword) {
+        List<Entity16> data = entity16Repository.query7("%" + keyword + "%");
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
 }

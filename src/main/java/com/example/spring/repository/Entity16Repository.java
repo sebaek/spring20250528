@@ -62,4 +62,25 @@ public interface Entity16Repository extends JpaRepository<Entity16, Integer> {
     // 연습
     // 도시이름으로 고객 조회하는 쿼리 JPQL로 작성
     // service, controller
+    @Query("""
+            SELECT a
+            FROM Entity16 a
+            WHERE a.city = :city
+            """)
+    List<Entity16> query6(String city);
+
+
+    // SQL
+//    @Query(value = """
+//            SELECT *
+//            FROM customer
+//            WHERE customer_name LIKE :keyword
+//            """, nativeQuery = true)
+    // JPQL
+    @Query("""
+            SELECT c
+            FROM Entity16 c
+            WHERE c.customerName LIKE :keyword
+            """)
+    List<Entity16> query7(String keyword);
 }

@@ -102,4 +102,20 @@ public class Controller21 {
 
         return "main21/sub10";
     }
+
+    @GetMapping("sub11")
+    public String sub11(String city) {
+        service3.action11(city);
+        return "main21/sub11";
+    }
+
+    @GetMapping("sub12")
+    public String sub12(String keyword) {
+        service3.action12(keyword);
+        return "main21/sub12";
+    }
+
+    // 연습
+    // 직원 이름 검색 로직 JPQL로 완성
+    // 
 }
