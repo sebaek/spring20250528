@@ -87,4 +87,11 @@ public class Service3 {
         }
 
     }
+
+    public void action10(String country) {
+        List<Entity16> data = entity16Repository.query5(country);
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
 }

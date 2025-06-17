@@ -95,4 +95,11 @@ public class Controller21 {
         service3.action9(keyword);
         return "main21/sub9";
     }
+
+    @GetMapping("sub10")
+    public String sub10(String country) {
+        service3.action10(country);
+
+        return "main21/sub10";
+    }
 }
