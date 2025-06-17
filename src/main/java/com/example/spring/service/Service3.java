@@ -7,6 +7,7 @@ import com.example.spring.repository.Entity17Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -62,6 +63,13 @@ public class Service3 {
 
         for (Entity16 entity16 : list) {
             System.out.println(entity16);
+        }
+    }
+
+    public void action7(LocalDate start, LocalDate end) {
+        List<Entity17> list = entity17Repository.query1(start, end);
+        for (Entity17 entity17 : list) {
+            System.out.println(entity17);
         }
     }
 }

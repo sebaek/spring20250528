@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("main21")
@@ -66,4 +68,10 @@ public class Controller21 {
     // service.action7()
     // entity17repository.query1()
     // SELECT * FROM employee WHERE birth_date BETWEEN :start AND :end
+    @GetMapping("sub7")
+    public String sub7(LocalDate start, LocalDate end) {
+        service3.action7(start, end);
+
+        return "main21/sub7";
+    }
 }
