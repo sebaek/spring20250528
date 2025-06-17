@@ -27,4 +27,10 @@ public class Controller21 {
 
         return "main21/sub2";
     }
+
+    @GetMapping("sub3")
+    public String sub3() {
+        service3.action3();
+        return "main21/sub3";
+    }
 }
