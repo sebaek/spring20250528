@@ -74,4 +74,21 @@ public class Controller21 {
 
         return "main21/sub7";
     }
+
+    // get /main21/sub8?keyword=fred
+    // 고객이름에 fred가 있는 고객들 조회
+    @GetMapping("sub8")
+    public String sub8(String keyword) {
+
+        service3.action8(keyword);
+
+        return "main21/sub8";
+    }
+
+    // get /main21/sub8?keyword=an
+    // 직원이름에 an이 있는 직원들 조회
+    // controller.sub9()
+    // service.action9()
+    // entity17repository.query2()
+    
 }
