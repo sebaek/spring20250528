@@ -117,5 +117,10 @@ public class Controller21 {
 
     // 연습
     // 직원 이름 검색 로직 JPQL로 완성
-    // 
+    //
+    @GetMapping("sub13")
+    public String sub13(String keyword) {
+        service3.action13(keyword);
+        return "main21/sub13";
+    }
 }

@@ -108,4 +108,11 @@ public class Service3 {
             System.out.println(entity16);
         }
     }
+
+    public void action13(String keyword) {
+        List<Entity17> list = entity17Repository.query3("%" + keyword + "%");
+        for (Entity17 entity17 : list) {
+            System.out.println(entity17);
+        }
+    }
 }
