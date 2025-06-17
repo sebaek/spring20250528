@@ -99,4 +99,18 @@ public class Service4 {
 
         content1.forEach(entity16 -> System.out.println(entity16));
     }
+
+    public void action7(Integer page) {
+        Page<Entity19> page1 = entity19Repository.findAll(PageRequest.of(page - 1, 10, Sort.by("price")));
+        List<Entity19> content1 = page1.getContent();
+        int totalPages = page1.getTotalPages();
+        long totalElements = page1.getTotalElements();
+        boolean next = page1.hasNext();
+        System.out.println("###############" + page + " page ###############");
+        System.out.println("next = " + next);
+        System.out.println("totalPages = " + totalPages);
+        System.out.println("totalElements = " + totalElements);
+        content1.forEach(entity19 -> System.out.println(entity19));
+
+    }
 }

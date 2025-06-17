@@ -55,6 +55,7 @@ public class Controller22 {
 
     @GetMapping("sub7")
     public String sub7(@RequestParam(defaultValue = "1") Integer page) {
+        //연습
         // 가격순(asc) 한페이지에 10개씩 상품 보여주기
         // 각페이지 출력할 때마다 다음페이지 있는지 여부 출력
         // 총페이지 수, 총 레코드 수 출력
