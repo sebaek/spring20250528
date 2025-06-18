@@ -83,6 +83,17 @@ public class Service7 {
         entity28Repository.save(p4);
         entity28Repository.save(p5);
         entity28Repository.save(p6);
-            
+
+    }
+
+    public void action3(Integer id) {
+        Entity27 entity27 = entity27Repository.findById(id).get();
+        System.out.println("entity27 = " + entity27);
+
+    }
+
+    public void action4(Integer id) {
+        Entity28 entity28 = entity28Repository.findById(id).get();
+        System.out.println("entity28 = " + entity28);
     }
 }
