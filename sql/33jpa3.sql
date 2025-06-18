@@ -13,3 +13,28 @@ FROM customer;
 SELECT COUNT(*)
 FROM customer
 WHERE country = 'mexico';
+
+
+CREATE TABLE my_table20
+(
+    name  VARCHAR(30),
+    money INT,
+    PRIMARY KEY (name)
+);
+INSERT INTO my_table20
+    (name, money)
+VALUES ('a', 10000),
+       ('b', 10000);
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -58,10 +58,25 @@ public class Controller23 {
         return "main23/sub5";
     }
 
+    // TODO : 다시 설명...
     // /main23/sub6?country=mexico
     @GetMapping("sub6")
     public String sub6(String country) {
         service5.action6(country);
         return "main23/sub6";
+    }
+
+    // /main23/sub7
+    @GetMapping("sub7")
+    public String sub7() {
+        service5.action7();
+        return "main23/sub7";
+    }
+
+    // /main23/sub8
+    @GetMapping("sub8")
+    public String sub8() {
+        service5.action8();
+        return "main23/sub8";
     }
 }
