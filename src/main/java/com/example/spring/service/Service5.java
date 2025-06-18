@@ -23,4 +23,20 @@ public class Service5 {
         List<Entity16> content = pageContent.getContent();
         content.forEach(System.out::println);
     }
+
+    public void action2(String country) {
+        List<Entity16> list = entity16Repository
+                .findByCountry(country);
+        list.forEach(System.out::println);
+    }
+
+    public void action3(String country, Integer page) {
+        Page<Entity16> pageContent = entity16Repository
+                .findByCountry(country,
+                        PageRequest.of(page - 1, 10, Sort.by("id").descending()));
+
+        List<Entity16> content = pageContent.getContent();
+        content.forEach(System.out::println);
+
+    }
 }

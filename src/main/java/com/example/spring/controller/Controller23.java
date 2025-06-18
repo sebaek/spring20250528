@@ -20,4 +20,21 @@ public class Controller23 {
 
         return "main23/sub1"; // Exception
     }
+
+    // /main23/sub2?country=mexico
+    @GetMapping("sub2")
+    public String sub2(String country) {
+        service5.action2(country);
+
+        return "main23/sub2";
+    }
+
+    // /main23/sub2?country=mexico&page=1
+    @GetMapping("sub3")
+    public String sub3(String country,
+                       @RequestParam(defaultValue = "1") Integer page) {
+        service5.action3(country, page);
+
+        return "main23/sub3";
+    }
 }
