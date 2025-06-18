@@ -106,4 +106,6 @@ public interface Entity16Repository extends JpaRepository<Entity16, Integer> {
     List<Entity16> findByCustomerNameContainingOrContactNameContaining(String keyword, String keyword1);
 
     Page<Entity16> findByCustomerNameContainingOrContactNameContaining(String keyword, String keyword1, Pageable pageable);
+
+    void deleteByCountry(String country);
 }

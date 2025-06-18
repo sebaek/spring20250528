@@ -2,6 +2,7 @@ package com.example.spring.service;
 
 import com.example.spring.entity.Entity16;
 import com.example.spring.repository.Entity16Repository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -51,5 +52,13 @@ public class Service5 {
 
         list.forEach(System.out::println);
 
+    }
+
+    public void action5(Integer id) {
+        entity16Repository.deleteById(id);
+    }
+
+    public void action6(String country) {
+        entity16Repository.deleteByCountry(country);
     }
 }

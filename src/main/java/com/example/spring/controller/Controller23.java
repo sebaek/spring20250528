@@ -48,4 +48,20 @@ public class Controller23 {
 
         return "main23/sub4";
     }
+
+    // /main23/sub5?id=1
+    // 참고 : 지울 때 post(delete) method 사용, 편의상 get method
+    @GetMapping("sub5")
+    public String sub5(Integer id) {
+        service5.action5(id);
+
+        return "main23/sub5";
+    }
+
+    // /main23/sub6?country=mexico
+    @GetMapping("sub6")
+    public String sub6(String country) {
+        service5.action6(country);
+        return "main23/sub6";
+    }
 }
