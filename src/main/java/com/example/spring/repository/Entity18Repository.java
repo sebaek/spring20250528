@@ -54,10 +54,11 @@ public interface Entity18Repository extends JpaRepository<Entity18, Integer> {
 
     void deleteByCountry(String country);
 
-    @Modifying // update, delete, insert에 붙이는 어노테이션
+
+    @Modifying
     @Query("""
-            DELETE FROM Entity16 e
+            DELETE FROM Entity18 e
             WHERE e.country = :country
             """)
-    void bulkDeleteByCountry(String country);
+    void deleteAllByCountry(String country);
 }

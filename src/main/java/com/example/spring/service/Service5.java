@@ -110,6 +110,13 @@ public class Service5 {
 //        entity16Repository.deleteByCountry(country);
 
         // -> jpql이나 sql로 직접 작성해서 지워야함
-        entity18Repository.bulkDeleteByCountry(country);
+        entity16Repository.bulkDeleteByCountry(country);
+    }
+
+    @Transactional
+    public void action11(String country) {
+        // 성능 이슈
+//        entity18Repository.deleteByCountry(country);
+        entity18Repository.deleteAllByCountry(country);
     }
 }

@@ -97,4 +97,13 @@ public class Controller23 {
         return "main23/sub10";
     }
 
+    // 연습
+    // /main23/sub11?country=usa
+    // usa인 모든 공급자 지우는 로직 완성
+    @GetMapping("sub11")
+    public String sub11(String country) {
+        service5.action11(country);
+        return "main23/sub11";
+    }
+
 }
