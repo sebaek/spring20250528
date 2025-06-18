@@ -139,7 +139,8 @@ CREATE TABLE my_table30
 );
 
 # 연습 : 29,30 엔티티 만들기
-# repository 만들기
+# repository * 2 만들기
+    
 # insert 해보기
 # select 해보기
 
