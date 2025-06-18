@@ -81,9 +81,25 @@ CREATE TABLE my_table24
 );
 
 # 복합키가 있는 my_table25 테이블 만들고 entity 만들어보기
+CREATE TABLE my_table25
+(
+    class_number   INT,
+    student_number INT,
+    name           VARCHAR(20),
+    score          INT,
+    PRIMARY KEY (class_number, student_number)
+);
 
 # 복합키가 있는 Entity26 만들고 my_table26 만들어보기
-
+CREATE TABLE my_table26
+(
+    country VARCHAR(255) NULL,
+    state   VARCHAR(255) NULL,
+    phone   VARCHAR(15)  NOT NULL,
+    name    VARCHAR(255) NOT NULL,
+    number  INT          NOT NULL,
+    CONSTRAINT pk_my_table26 PRIMARY KEY (name, number)
+);
 
 
 
