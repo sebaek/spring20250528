@@ -5,7 +5,8 @@ import com.example.spring.entity.Entity20;
 import com.example.spring.repository.Entity16Repository;
 import com.example.spring.repository.Entity18Repository;
 import com.example.spring.repository.Entity20Repository;
-import jakarta.transaction.Transactional;
+//import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -118,5 +119,48 @@ public class Service5 {
         // 성능 이슈
 //        entity18Repository.deleteByCountry(country);
         entity18Repository.deleteAllByCountry(country);
+    }
+
+    @Transactional
+    public void action12(String country) {
+        // update, delete, insert
+
+        // rollback 됨
+        // throw new RuntimeException();
+
+        // update, delete, insert
+    }
+
+    @Transactional
+    public void action13(String country) {
+        // update, delete, insert
+
+        // rollback 안됨
+        // throw new Exception();
+
+        // update, delete, insert
+    }
+
+    @Transactional
+    public void action14(String country) {
+        // update, delete, insert
+
+        // rollback 안됨
+        // throw new Exception();
+        if (true) {
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        // update, delete, insert
     }
 }
