@@ -177,4 +177,15 @@ public class Service7 {
         Entity30 o = entity30Repository.findById(id).get();
         System.out.println("o = " + o);
     }
+
+    public void action9(Integer id) {
+        Entity30 o = entity30Repository.findById(id).get();
+
+        System.out.println("o.getOrderDate() = " + o.getOrderDate());
+        System.out.println("o.getInfo() = " + o.getInfo());
+
+        // 직원정보
+        System.out.println("o.getEmployee().getLastName() = " + o.getEmployee().getLastName());
+
+    }
 }
