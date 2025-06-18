@@ -39,8 +39,13 @@ public class Controller23 {
     }
 
     // 연습
-    // get /main23/sub4?keyword=alex&page=2
-    // 고객명 또는 고객의계약명 에  "alex"가 포함된 고객들 조회 with paging
+    // get /main23/sub4?keyword=ed&page=2
+    // 고객명 또는 고객의계약명 에  "ed"가 포함된 고객들 조회 with paging
     // request handler method, service.action4(), repository 메소드
-    
+    @GetMapping("sub4")
+    public String sub4(@RequestParam(defaultValue = "1") Integer page, String keyword) {
+        service5.action4(keyword, page);
+
+        return "main23/sub4";
+    }
 }

@@ -39,4 +39,17 @@ public class Service5 {
         content.forEach(System.out::println);
 
     }
+
+    public void action4(String keyword, Integer page) {
+        // SELECT * FROM customer
+        // WHERE customer_name LIKE '%ed%' OR contact_name LIKE '%ed%'
+        List<Entity16> list = entity16Repository
+                .findByCustomerNameContainingOrContactNameContaining(keyword,
+                        keyword,
+                        PageRequest.of(page - 1, 10, Sort.by("id").descending()))
+                .getContent();
+
+        list.forEach(System.out::println);
+
+    }
 }
