@@ -41,4 +41,34 @@ public class Controller25 {
         service7.action4(id);
         return "main25/sub4";
     }
+
+
+    // 직원 입력
+    @GetMapping("sub5")
+    public String sub5() {
+        service7.action5();
+        return "main25/sub5";
+    }
+
+    // 주문 입력
+    @GetMapping("sub6")
+    public String sub6() {
+        service7.action6();
+        return "main25/sub6";
+    }
+
+    // 직원 조회
+    @GetMapping("sub7")
+    public String sub7(Integer id) {
+        service7.action7(id);
+        return "main25/sub7";
+    }
+
+    // 주문 조회
+
+    @GetMapping("sub8")
+    public String sub8(Integer id) {
+        service7.action8(id);
+        return "main25/sub8";
+    }
 }
