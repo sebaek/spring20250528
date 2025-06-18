@@ -62,6 +62,7 @@ public class Service5 {
         entity16Repository.deleteById(id);
     }
 
+    @Transactional
     public void action6(String country) {
         entity16Repository.deleteByCountry(country);
     }
