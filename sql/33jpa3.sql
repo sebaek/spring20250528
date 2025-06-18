@@ -27,6 +27,24 @@ VALUES ('a', 10000),
        ('b', 10000);
 
 
+create table my_table21
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(20),
+    address     VARCHAR(20),
+    inserted_at DATETIME NOT NULL DEFAULT NOW()
+);
+
+INSERT INTO my_table21
+    (name, address)
+VALUES ('lee', 'seoul');
+
+INSERT INTO my_table21
+    (name, address)
+VALUES ('kim', 'busan');
+SELECT *
+FROM my_table21;
+
 
 
 
