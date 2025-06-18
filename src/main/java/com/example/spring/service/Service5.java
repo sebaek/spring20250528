@@ -3,6 +3,7 @@ package com.example.spring.service;
 import com.example.spring.entity.Entity16;
 import com.example.spring.entity.Entity20;
 import com.example.spring.repository.Entity16Repository;
+import com.example.spring.repository.Entity18Repository;
 import com.example.spring.repository.Entity20Repository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class Service5 {
     private final Entity16Repository entity16Repository;
     private final Entity20Repository entity20Repository;
+    private final Entity18Repository entity18Repository;
 
     public void action1(Integer page) {
         // repository 사용
@@ -94,5 +96,20 @@ public class Service5 {
 
         b.setMoney(b.getMoney() + 500);
         entity20Repository.save(b);
+    }
+
+
+    @Transactional
+    public void action9(String country) {
+        entity18Repository.deleteByCountry(country);
+    }
+
+    @Transactional
+    public void action10(String country) {
+        // select 후 하나씩 지움 : 성능 이슈 있음
+//        entity16Repository.deleteByCountry(country);
+
+        // -> jpql이나 sql로 직접 작성해서 지워야함
+        entity18Repository.bulkDeleteByCountry(country);
     }
 }

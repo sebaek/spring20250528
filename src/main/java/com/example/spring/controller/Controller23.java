@@ -83,5 +83,18 @@ public class Controller23 {
     // get /main23/sub9?country=germany
     // supplier 테이블의 국가가 germany인 공급자 삭제하는 로직 완성
     // request handler method, service.action9(), repository.deleteByCountry
-    
+    @GetMapping("sub9")
+    public String sub9(String country) {
+        service5.action9(country);
+        return "main23/sub9";
+    }
+
+    // /main23/sub10?country=usa
+    @GetMapping("sub10")
+    public String sub10(String country) {
+        //  국가가 country인 모든 고객 지우기
+        service5.action10(country);
+        return "main23/sub10";
+    }
+
 }

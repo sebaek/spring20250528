@@ -2,6 +2,8 @@ package com.example.spring.repository;
 
 import com.example.spring.entity.Entity18;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -47,5 +49,15 @@ public interface Entity18Repository extends JpaRepository<Entity18, Integer> {
 
     //    SELECT * FROM supplier WHERE supplier_name LIKE :keyword ORDER BY supplier_name DESC
     List<Entity18> findBySupplierNameContainsOrderBySupplierNameDesc(String supplierName);
+
     // query method 만들기
+
+    void deleteByCountry(String country);
+
+    @Modifying // update, delete, insert에 붙이는 어노테이션
+    @Query("""
+            DELETE FROM Entity16 e
+            WHERE e.country = :country
+            """)
+    void bulkDeleteByCountry(String country);
 }
