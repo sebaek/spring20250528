@@ -29,7 +29,7 @@ public class Controller23 {
         return "main23/sub2";
     }
 
-    // /main23/sub2?country=mexico&page=1
+    // /main23/sub3?country=mexico&page=1
     @GetMapping("sub3")
     public String sub3(String country,
                        @RequestParam(defaultValue = "1") Integer page) {
@@ -37,4 +37,10 @@ public class Controller23 {
 
         return "main23/sub3";
     }
+
+    // 연습
+    // get /main23/sub4?keyword=alex&page=2
+    // 고객명 또는 고객의계약명 에  "alex"가 포함된 고객들 조회 with paging
+    // request handler method, service.action4(), repository 메소드
+    
 }
