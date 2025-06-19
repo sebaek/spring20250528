@@ -88,4 +88,40 @@ CREATE TABLE my_table38
     FOREIGN KEY (author) REFERENCES my_table37 (email)
 );
 
+# 상품
+CREATE TABLE my_table39
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(30),
+    unit        VARCHAR(30),
+    price       INT,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES my_table40 (id)
+
+);
+# 카테고리
+CREATE TABLE my_table40
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(40),
+    description VARCHAR(50)
+);
+
+SELECT p.id, p.name product_name, p.price, c.name category_name
+FROM my_table39 p
+         JOIN my_table40 c ON p.category_id = c.id;
+SELECT *
+FROM my_table39;
+SELECT *
+FROM my_table40;
+
+INSERT INTO my_table40
+    (name, description)
+SELECT CategoryName, SUBSTR(Description, 1, 10)
+FROM w3schools.Categories;
+INSERT INTO my_table39
+    (name, unit, price, category_id)
+SELECT ProductName, Unit, ROUND(Price, 0), CategoryID + 1
+FROM w3schools.Products
+Limit 5;
 
