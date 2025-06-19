@@ -128,9 +128,9 @@ Limit 5;
 # 연습
 # projection
 
-# OrderInfo interface * 1
 # Entity41 * 1
 # Entity41Repository * 1
+# OrderInfo interface * 1
 # Entity41Repository.query1() * 1
 # service.action() * 1
 # controller.sub() * 1
