@@ -9,6 +9,10 @@
     파일 업로드 예제
 </h3>
 
+<!--/*
+연습 :
+여러 파일을 올리는 form, request handler method, service 메소드
+*/-->
 <form th:action="@{/main27/sub3}" method="post" enctype="multipart/form-data">
     <input type="file" name="upload" accept="image/*" multiple>
     <button>전송</button>
