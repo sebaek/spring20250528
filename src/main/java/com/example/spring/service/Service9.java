@@ -20,7 +20,7 @@ public class Service9 {
             BufferedInputStream bis = new BufferedInputStream(is);
 
             String filePath = "C:/Temp/uploadFiles/" + upload.getOriginalFilename();
-            
+
             OutputStream os = new FileOutputStream(filePath);
             BufferedOutputStream bos = new BufferedOutputStream(os);
 
@@ -36,6 +36,39 @@ public class Service9 {
         } catch (Exception e) {
             e.printStackTrace();
             new RuntimeException(e);
+        }
+    }
+
+    public void action2(String address, MultipartFile upload) {
+        System.out.println("address = " + address);
+        System.out.println("upload = " + upload.getOriginalFilename());
+
+        if (upload != null) {
+            if (upload.getSize() > 0) {
+                try {
+                    // inputStream
+                    // outputStream
+                    String path = "C:/Temp/uploadFiles/" + upload.getOriginalFilename();
+                    OutputStream os = new FileOutputStream(path);
+                    BufferedOutputStream bos = new BufferedOutputStream(os);
+
+                    InputStream is = new BufferedInputStream(upload.getInputStream());
+
+                    try (is; bos; os;) {
+//                        is.transferTo(bos);
+
+                        byte[] buffer = new byte[1024];
+                        int length;
+                        while ((length = is.read(buffer)) != -1) {
+                            bos.write(buffer, 0, length);
+                        }
+                        bos.flush();
+                    }
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 }

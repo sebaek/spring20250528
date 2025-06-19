@@ -15,7 +15,7 @@
  service의 메소드 *1
  C:/Temp/uploadFiles/ 안에 업로드 한 파일 저장
  */-->
-<form th:action="@{/main27/sub2}">
+<form th:action="@{/main27/sub2}" method="post" enctype="multipart/form-data">
     <div>
         <label for="fileText2">주소</label>
         <input type="text" id="fileText2" name="address">

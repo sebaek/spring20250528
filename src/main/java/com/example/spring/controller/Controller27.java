@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -27,4 +28,18 @@ public class Controller27 {
 
         return "redirect:/main27/sub1";
     }
+
+    @PostMapping("sub2")
+    public String post2(String address,
+                        @RequestParam(name = "uploadFile", required = false)
+                        MultipartFile upload) {
+
+        service9.action2(address, upload);
+
+        return "redirect:/main27/sub1";
+    }
 }
+
+
+
+
