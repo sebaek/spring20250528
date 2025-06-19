@@ -8,6 +8,13 @@
 <h3>
     파일 업로드 예제
 </h3>
+
+<form th:action="@{/main27/sub3}" method="post" enctype="multipart/form-data">
+    <input type="file" name="upload" accept="image/*" multiple>
+    <button>전송</button>
+</form>
+
+<hr>
 <!--/*
  연습
  아래 form을 완성하고

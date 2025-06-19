@@ -38,6 +38,13 @@ public class Controller27 {
 
         return "redirect:/main27/sub1";
     }
+
+    @PostMapping("sub3")
+    public String post3(MultipartFile[] upload) {
+        service9.action3(upload);
+
+        return "redirect:/main27/sub1";
+    }
 }
 
 
