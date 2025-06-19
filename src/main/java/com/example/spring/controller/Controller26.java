@@ -30,4 +30,31 @@ public class Controller26 {
         service8.action2();
         return "main26/sub2";
     }
+
+    @RequestMapping("sub3")
+    public String sub3() {
+        service8.action3();
+
+        return "main26/sub3";
+    }
+
+    @RequestMapping("sub4")
+    public String sub4() {
+        service8.action4();
+
+        return "main26/sub4";
+    }
+
+    @RequestMapping("sub5")
+    public String sub5() {
+        service8.action5();
+
+        return "main26/sub5";
+    }
+
+    @RequestMapping("sub6")
+    public String sub6() {
+        service8.action6();
+        return "main26/sub6";
+    }
 }
