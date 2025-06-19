@@ -137,6 +137,7 @@ public class Service8 {
     public void action6() {
         // 연습
         // 3번 강의 지우기
-        
+        entity36Repository.deleteByLectureId(3);
+        entity35Repository.deleteById(3);
     }
 }
