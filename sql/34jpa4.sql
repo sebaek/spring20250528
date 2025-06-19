@@ -69,4 +69,23 @@ CREATE TABLE my_table36
 # 2. 지우고, 직접 만들기
 
 
+#
+CREATE TABLE my_table37
+(
+    email       VARCHAR(30) PRIMARY KEY,
+    password    VARCHAR(30) NOT NULL,
+    info        VARCHAR(30) NOT NULL,
+    inserted_at DATETIME    NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE my_table38
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    title       VARCHAR(30) NOT NULL,
+    content     VARCHAR(50) NOT NULL,
+    author      VARCHAR(30) NOT NULL,
+    inserted_at DATETIME    NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (author) REFERENCES my_table37 (email)
+);
+
 

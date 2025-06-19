@@ -1,5 +1,6 @@
 package com.example.spring.service;
 
+import com.example.spring.dto.Entity36Dto;
 import com.example.spring.entity.Entity34;
 import com.example.spring.entity.Entity35;
 import com.example.spring.entity.Entity36;
@@ -139,5 +140,35 @@ public class Service8 {
         // 3번 강의 지우기
         entity36Repository.deleteByLectureId(3);
         entity35Repository.deleteById(3);
+    }
+
+    public void action7() {
+        Entity36 l1 = entity36Repository.findById(1).get();
+        System.out.println(l1.getRegisteredAt());
+
+        Entity34 s1 = l1.getStudent();
+
+        // LAZY일 경우 이 때 select 쿼리 실행
+        String name = s1.getName();
+        System.out.println("name = " + name);
+    }
+
+    public Entity36 action8() {
+        Entity36 l1 = entity36Repository.findById(1).get();
+
+        return l1;
+
+    }
+
+    public Entity36Dto action9() {
+        Entity36 l1 = entity36Repository.findById(1).get();
+
+        Entity36Dto d1 = new Entity36Dto();
+        d1.setRegisteredAt(l1.getRegisteredAt());
+        d1.setStudentName(l1.getStudent().getName());
+
+        // entity 리턴하면 안됨
+        // ->dto로 값 옮겨 담고 리턴하기
+        return d1;
     }
 }

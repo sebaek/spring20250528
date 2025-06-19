@@ -22,11 +22,11 @@ public class Entity36 {
     private String enabled;
     private String money;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Entity34 student;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lecture_id")
     private Entity35 lecture;
 }
