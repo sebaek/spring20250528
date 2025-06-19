@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface Entity39Repository extends JpaRepository<Entity39, Integer> {
-    @Query(name = """
+    @Query(value = """
             SELECT p.id, p.name product_name, p.price, c.name category_name
             FROM my_table39 p JOIN my_table40 c
                                 ON p.category_id = c.id
