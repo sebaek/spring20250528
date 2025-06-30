@@ -62,7 +62,9 @@
         },
         className: "중앙"
     };
-    const h = g; // 깊은 복사로 바꾸기
+    // const h = g; // 참조값 복사
+    // const h = {...g}; // 얕은 복사
+    const h = structuredClone(g); // 깊은 복사
     console.log(h);
     console.log(g);
 
