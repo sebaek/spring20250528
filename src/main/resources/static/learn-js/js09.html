@@ -54,9 +54,9 @@
 
     // 연습 : spread 연산자 활용
     const k = ["css", "react", "vue"];
-    const l;
-    const m;
-    const n;
+    const l = [...k];
+    const m = ["java", ...k];
+    const n = [...k, "spring"];
 
     console.log(l); // css, react, vue
     console.log(m); // java, css, react, vue
