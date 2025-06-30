@@ -25,8 +25,46 @@
     const h = ["java", "boot", "react"];
 
     //적절한 코드 작성(분해 할당)
+    const [i, j, k] = h;
 
     console.log(i, j, k); // java boot react
+
+    const [l, m] = h;
+    console.log(l)
+    console.log(m);
+
+    // destructuring assignment
+    // 객체
+    const n = {
+        name: "park",
+        address: "강남",
+        city: "서울",
+        country: "한국"
+    };
+    const name = n.name;
+    const address = n.address;
+    console.log(name);
+    console.log(address);
+
+    // 분해 할당
+    const {city, country} = n;
+    console.log(city);
+    console.log(country);
+
+    // const {name, address} = n;
+    // console.log(name);
+    // console.log(address);
+
+    //연습
+    const o = {score: 99.11, nick: "trump", skill: "java"};
+
+    // 분해 할당 코드 작성
+
+    console.log(score); // 99.11
+    console.log(nick); // trump
+    console.log(skill) // java
+
+
 </script>
 
 </body>
