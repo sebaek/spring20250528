@@ -36,7 +36,7 @@
 
     // 연습
     const d = {birth: "98-10-12", married: true, team: "korea"}
-    const {} = d; // 이 코드 완성
+    const {birth = "01-01-01", company = "tesla"} = d; // 이 코드 완성
 
     console.log(birth); // 98-10-12
     console.log(company); // tesla
