@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const a = [5, 3, 1, 9, -7, -5];
+
+    // 배열 메소드
+    // filter는 제공된 함수에
+    // 각 원소를 넣어서 true를 리턴한 것만 모은 배열을 리턴
+    const b = a.filter(e => {
+        return true;
+    });
+
+    console.log(b);
+    b[0] = 10;
+    console.log(a);
+    console.log(b);
+
+    const c = a.filter(e => {
+        return false;
+    });
+    console.log(c);
+    console.log(a);
+
+    // const d = a.filter(e => {
+    //     return e > 0;
+    // });
+    const d = a.filter(e => e > 0);
+    console.log(d);
+
+    // 연습
+    const e; // a의 filter 메소드 사용
+    console.log(e); // [-7, -5]
+
+</script>
+</body>
+</html>
