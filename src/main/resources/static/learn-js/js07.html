@@ -33,9 +33,31 @@
     console.log(d);
 
     // 연습
-    const e; // a의 filter 메소드 사용
+    const e = a.filter(e => e < 0); // a의 filter 메소드 사용
     console.log(e); // [-7, -5]
 
+    // map : 각 원소를 제공된 함수에 넣은 결과를 모은 배열 리턴
+    const f = ["java", "python", "react", "vue"];
+    const g = f.map((e) => "hello");
+    console.log(g);
+    const h = f.map(e => e)
+    console.log(h);
+    h[0] = "css";
+    console.log(h);
+    console.log(f)
+
+    const i = f.map(e => `hello ${e}`);
+    console.log(i);
+
+    const j = f.map(e => e.length)
+    console.log(j);
+
+    //연습
+    const k = [5, 7, 1, 0, -2, -1, 9];
+
+    const l = k.map(e => e * e); // {}내에 코드 작성
+
+    console.log(l); // [25, 49, 1, 0, 4, 1, 81]
 </script>
 </body>
 </html>
