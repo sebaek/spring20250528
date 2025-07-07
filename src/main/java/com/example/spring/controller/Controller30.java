@@ -20,4 +20,16 @@ public class Controller30 {
         System.out.println("Controller30.sub2");
         return null;
     }
+
+    @PutMapping("sub3")
+    public String sub3() {
+        System.out.println("Controller30.sub3");
+        return null;
+    }
+
+    @DeleteMapping("sub4")
+    public String sub4() {
+        System.out.println("Controller30.sub4");
+        return null;
+    }
 }
