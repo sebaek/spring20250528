@@ -41,4 +41,12 @@ public class Controller30 {
         System.out.println(dto);
         return null;
     }
+
+    @DeleteMapping("sub6")
+    public String sub6(String name, Integer id) {
+        System.out.println("name = " + name);
+        System.out.println("id = " + id);
+        return null;
+
+    }
 }
