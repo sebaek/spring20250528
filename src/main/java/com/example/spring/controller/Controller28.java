@@ -58,7 +58,7 @@ public class Controller28 {
 
     }
 
-    // 연습 : react에서 아래 메소드가 일할 수 있도록 8번 째 메소드 만들고 클릭
+    // 연습 : react에서 아래 메소드가 일할 수 있도록 9번 째 메소드 만들고 클릭
     @GetMapping("sub9")
     public String sub9(String address, Double score) {
         System.out.println("address = " + address);
