@@ -77,6 +77,8 @@ public class Controller29 {
         System.out.println(age.getClass().getSimpleName()); // Integer
         System.out.println(married.getClass().getSimpleName()); // Boolean
 
+        System.out.println(map);
+
         return null;
 
     }
