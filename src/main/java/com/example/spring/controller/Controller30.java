@@ -1,0 +1,23 @@
+package com.example.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@ResponseBody
+@RequestMapping("/api/main30")
+public class Controller30 {
+    //    @RequestMapping(method = RequestMethod.PUT, path = "sub1")
+    @PutMapping("sub1")
+    public String sub1() {
+        System.out.println("Controller30.sub1");
+        return null;
+    }
+
+    //    @RequestMapping(method = RequestMethod.DELETE, path = "sub2")
+    @DeleteMapping("sub2")
+    public String sub2() {
+        System.out.println("Controller30.sub2");
+        return null;
+    }
+}
