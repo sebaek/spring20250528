@@ -133,4 +133,13 @@ public class Controller28 {
         System.out.println();
         return null;
     }
+
+    @GetMapping({"sub17", "sub18", "sub19", "sub20"})
+    public String sub17(String name, Integer age, String city) {
+        System.out.println("name = " + name);
+        System.out.println("age = " + age);
+        System.out.println("city = " + city);
+        System.out.println();
+        return null;
+    }
 }
