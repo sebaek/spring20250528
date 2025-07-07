@@ -23,7 +23,7 @@ public class Controller29 {
         return null;
     }
 
-    // 연습 : react 에서 3번째 버튼 만들고 클릭 해서 아래 메소드가 일하게 
+    // 연습 : react 에서 3번째 버튼 만들고 클릭 해서 아래 메소드가 일하게
     @PostMapping("sub3")
     public String sub3() {
         System.out.println("Controller29.sub3");
