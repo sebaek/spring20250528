@@ -109,7 +109,7 @@ public class Controller29 {
         return null;
     }
 
-    // 연습 : react 에서 10번째 버튼과 메소드 작성해보기 
+    // 연습 : react 에서 10번째 버튼과 메소드 작성해보기
     @PostMapping("sub10")
     public String sub10(@RequestBody Map<String, Object> map) {
         Object cityList = map.get("cityList");
