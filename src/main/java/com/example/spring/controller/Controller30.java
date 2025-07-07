@@ -4,6 +4,7 @@ import com.example.spring.dto.MyBean291;
 import com.example.spring.dto.MyBean292;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @ResponseBody
@@ -49,4 +50,18 @@ public class Controller30 {
         return null;
 
     }
+
+    @PostMapping("sub7")
+    public String sub7(String name,
+                       Integer age,
+                       @RequestParam("myFile")
+                       MultipartFile myFile) {
+        System.out.println("name = " + name);
+        System.out.println("age = " + age);
+        System.out.println("myFile = " + myFile.getOriginalFilename());
+        System.out.println("myFile = " + myFile.getSize());
+
+        return null;
+    }
+
 }
