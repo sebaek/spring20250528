@@ -54,7 +54,6 @@ public class Controller30 {
     @PostMapping("sub7")
     public String sub7(String name,
                        Integer age,
-                       @RequestParam("myFile")
                        MultipartFile myFile) {
         System.out.println("name = " + name);
         System.out.println("age = " + age);
