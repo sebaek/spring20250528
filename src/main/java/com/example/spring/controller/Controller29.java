@@ -82,4 +82,45 @@ public class Controller29 {
         return null;
 
     }
+
+    @PostMapping("sub8")
+    public String sub8(@RequestBody Map<String, Object> map) {
+        Object address = map.get("address");
+        Object age = map.get("age");
+        Object fruits = map.get("fruits");
+
+        // JSON의 array 타입은 JAVA의 ArrayList로 파싱됨
+        System.out.println(fruits.getClass().getSimpleName()); // ArrayList
+        System.out.println("fruits = " + fruits);
+
+        return null;
+
+
+    }
+
+    @PostMapping("sub9")
+    public String sub9(@RequestBody Map<String, Object> map) {
+        Object name = map.get("name");
+        Object teams = map.get("teams"); // ArrayList
+        Object person = map.get("person");// object -> Map 으로 parsing
+
+        System.out.println(person.getClass().getSimpleName()); // Map
+        System.out.println(person);
+        return null;
+    }
+
+    // 연습 : react 에서 10번째 버튼과 메소드 작성해보기 
+    @PostMapping("sub10")
+    public String sub10(@RequestBody Map<String, Object> map) {
+        Object cityList = map.get("cityList");
+        Object team = map.get("team");
+
+        System.out.println(cityList.getClass().getSimpleName()); // ArrayList
+        System.out.println(team.getClass().getSimpleName()); // ...Map
+
+        System.out.println(cityList);
+        System.out.println(team);
+
+        return null;
+    }
 }
