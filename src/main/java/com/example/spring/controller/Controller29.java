@@ -131,4 +131,12 @@ public class Controller29 {
 
         return null;
     }
+
+    @PostMapping("sub12")
+    public String sub12(@RequestBody List<Map<String, Object>> data) {
+        for (Map<String, Object> map : data) {
+            System.out.println(map);
+        }
+        return null;
+    }
 }
