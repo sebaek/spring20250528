@@ -82,4 +82,14 @@ public class Controller28 {
         System.out.println();
         return null;
     }
+
+    // 연습: 아래 메소드가 일하도록 react에 12번째 버튼 만들고 클릭
+    //      config.params 활용
+    @GetMapping("sub12")
+    public String sub12(String fruit, Integer price) {
+        System.out.println("fruit = " + fruit);
+        System.out.println("price = " + price);
+        System.out.println();
+        return null;
+    }
 }
