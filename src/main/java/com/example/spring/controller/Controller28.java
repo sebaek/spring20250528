@@ -48,4 +48,22 @@ public class Controller28 {
         System.out.println("Controller28.sub7");
         return null;
     }
+
+    @GetMapping("sub8")
+    public String sub8(String name, Integer age) {
+        System.out.println("name = " + name);
+        System.out.println("age = " + age);
+        System.out.println();
+        return null;
+
+    }
+
+    // 연습 : react에서 아래 메소드가 일할 수 있도록 8번 째 메소드 만들고 클릭
+    @GetMapping("sub9")
+    public String sub9(String address, Double score) {
+        System.out.println("address = " + address);
+        System.out.println("score = " + score);
+        System.out.println();
+        return null;
+    }
 }
