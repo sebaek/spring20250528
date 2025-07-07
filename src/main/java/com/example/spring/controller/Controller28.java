@@ -66,4 +66,20 @@ public class Controller28 {
         System.out.println();
         return null;
     }
+
+    @GetMapping("sub10")
+    public String sub10(String address, Double score) {
+        System.out.println("address = " + address);
+        System.out.println("score = " + score);
+        System.out.println();
+        return null;
+    }
+
+    @GetMapping("sub11")
+    public String sub11(String address, Double score) {
+        System.out.println("address = " + address);
+        System.out.println("score = " + score);
+        System.out.println();
+        return null;
+    }
 }
