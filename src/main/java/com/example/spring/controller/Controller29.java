@@ -50,20 +50,34 @@ public class Controller29 {
 
     @PostMapping("sub6")
     public String sub6(@RequestBody Map<String, Object> map) {
-        Object val1 = map.get("val1");
-        Object val2 = map.get("val2");
-        Object val3 = map.get("val3");
-        Object val4 = map.get("val4");
-        Object val5 = map.get("val5");
-        Object val6 = map.get("val6");
+        Object val1 = map.get("val1"); // "신촌" string
+        Object val2 = map.get("val2"); // 66 number
+        Object val3 = map.get("val3"); // 77.12 number
+        Object val4 = map.get("val4"); // true boolean
+        Object val5 = map.get("val5"); // null
 
-        System.out.println("val1 = " + val1.getClass().getSimpleName());
-        System.out.println("val2 = " + val1.getClass().getSimpleName());
-        System.out.println("val3 = " + val1.getClass().getSimpleName());
-        System.out.println("val4 = " + val1.getClass().getSimpleName());
-        System.out.println("val5 = " + val1.getClass().getSimpleName());
-        System.out.println("val6 = " + val6); // null
+        System.out.println("val1 = " + val1.getClass().getSimpleName()); // String
+        System.out.println("val2 = " + val2.getClass().getSimpleName()); // Integer
+        System.out.println("val3 = " + val3.getClass().getSimpleName()); // Double
+        System.out.println("val4 = " + val4.getClass().getSimpleName()); // Boolean
+        System.out.println("val5 = " + val5); // null
 
         return null;
+    }
+
+    @PostMapping("sub7")
+    public String sub7(@RequestBody Map<String, Object> map) {
+        Object address = map.get("address");
+        Object score = map.get("score");
+        Object age = map.get("age");
+        Object married = map.get("married");
+
+        System.out.println(address.getClass().getSimpleName()); // String
+        System.out.println(score.getClass().getSimpleName()); // Double
+        System.out.println(age.getClass().getSimpleName()); // Integer
+        System.out.println(married.getClass().getSimpleName()); // Boolean
+
+        return null;
+
     }
 }
