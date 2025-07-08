@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean311;
+import com.example.spring.dto.MyBean312;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,5 +83,20 @@ public class Controller31 {
 
     // 연습 : post /api/main31/sub5 의 요청을 다루는 메소드 만들기
     // request parameters 는 dto(MyBean312) 받기
-    
+    @PostMapping("sub5")
+    public String sub5(MyBean312 dto) {
+        System.out.println("dto.getClassName() = " + dto.getClassName());
+        System.out.println("dto.getScore() = " + dto.getScore());
+        System.out.println("dto.getLocation() = " + dto.getLocation());
+
+        MultipartFile[] uploads = dto.getUploads();
+        if (uploads != null && uploads.length > 0) {
+            for (MultipartFile file : uploads) {
+                System.out.println("file = " + file.getOriginalFilename());
+                System.out.println("file = " + file.getSize());
+            }
+        }
+
+        return null;
+    }
 }
