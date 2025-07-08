@@ -28,4 +28,21 @@ public class Controller31 {
 
         return null;
     }
+
+    @PostMapping("sub2")
+    public String sub2(String address, Double score,
+                       @RequestParam("yourFiles[]")
+                       MultipartFile[] yourFiles) {
+        System.out.println("address = " + address);
+        System.out.println("score = " + score);
+        if (yourFiles != null && yourFiles.length > 0) {
+            for (MultipartFile file : yourFiles) {
+                System.out.println("file = " + file.getOriginalFilename());
+                System.out.println("file = " + file.getSize());
+            }
+        }
+        System.out.println();
+
+        return null;
+    }
 }
