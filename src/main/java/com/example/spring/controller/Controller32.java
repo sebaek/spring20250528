@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean321;
+import com.example.spring.dto.MyBean322;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,5 +75,19 @@ public class Controller32 {
         // "fruits": ["apple", "lemon"], "address": {"city":"신촌", "country":"한국"}}
 
         return myBean321;
+    }
+
+    // 연습 : react에 8번째 버튼 클릭시 dto의 모든 값을 출력 하는 코드 완
+    @GetMapping("sub8")
+    @ResponseBody
+    public MyBean322 sub8() {
+        MyBean322 myBean322 = new MyBean322();
+        myBean322.setId(912);
+        myBean322.setTitle("소년이");
+        myBean322.setCategory(Map.of("author", "한강", "genre", "소설"));
+        myBean322.setOrders(List.of("교보", "알라딘"));
+        myBean322.setPrice(9000.00);
+
+        return myBean322;
     }
 }
