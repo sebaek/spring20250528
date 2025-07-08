@@ -1,10 +1,12 @@
 package com.example.spring.controller;
 
+import com.example.spring.dto.MyBean321;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -36,10 +38,41 @@ public class Controller32 {
         return Map.of("name", "흥민", "age", 88);
     }
 
-    // 연습 : react에 4번째 버튼 클릭시, "서울, 신촌, 한국" 출력되도록 코드 작성  
+    // 연습 : react에 4번째 버튼 클릭시, "서울, 신촌, 한국" 출력되도록 코드 작성
     @GetMapping("sub4")
     @ResponseBody
     public Map<String, Object> sub4() {
         return Map.of("city", "서울", "address", "신촌", "country", "한국");
+    }
+
+    @GetMapping("sub5")
+    @ResponseBody
+    public Map<String, Object> sub5() {
+        return Map.of("id", 55,
+                "city", "london",
+                "phone", Map.of("phone1", "9999", "phone2", "8888"));
+    }
+
+    @GetMapping("sub6")
+    @ResponseBody
+    public Map<String, Object> sub6() {
+        return Map.of("id", 53,
+                "name", "흥민",
+                "address", List.of("서울", "런던", "파리"));
+    }
+
+    @GetMapping("sub7")
+    @ResponseBody
+    public MyBean321 sub7() {
+        MyBean321 myBean321 = new MyBean321();
+        myBean321.setId(912);
+        myBean321.setName("차범근");
+        myBean321.setFruits(List.of("apple", "lemon"));
+        myBean321.setAddress(Map.of("city", "신촌", "country", "한국"));
+        // json
+        // {"id": 912, "name": "차범근",
+        // "fruits": ["apple", "lemon"], "address": {"city":"신촌", "country":"한국"}}
+
+        return myBean321;
     }
 }
