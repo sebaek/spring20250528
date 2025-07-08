@@ -156,5 +156,31 @@ public class Controller32 {
         return ResponseEntity.status(500).build();
     }
 
-    
+    @GetMapping("sub19")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> sub19() {
+
+        return ResponseEntity.ok().body(Map.of("name", "흥민", "address", "런던"));
+    }
+
+    @GetMapping("sub20")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> sub20() {
+
+        return ResponseEntity.badRequest().body(Map.of("city", "서울", "text", "hello"));
+    }
+
+    // 연습: react 21번째,22번째 버튼 클릭시 아래 응답 데이터가 콘솔에 출력하도록 코드 완성
+    @GetMapping("sub21")
+    @ResponseBody
+    public ResponseEntity<List<String>> sub21() {
+        return ResponseEntity.status(201).body(List.of("java", "css", "react"));
+    }
+
+    @GetMapping("sub22")
+    @ResponseBody
+    public ResponseEntity<List<String>> sub22() {
+        return ResponseEntity.status(500).body(List.of("apple", "lemon", "mango"));
+    }
+
 }
