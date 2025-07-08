@@ -143,4 +143,18 @@ public class Controller32 {
     public ResponseEntity sub16() {
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("sub17")
+    @ResponseBody
+    public ResponseEntity sub17() {
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("sub18")
+    @ResponseBody
+    public ResponseEntity sub18() {
+        return ResponseEntity.status(500).build();
+    }
+
+    
 }
